@@ -1,12 +1,12 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const users = ['Bob', 'Alex', 'Will', 'Tristan'];
+const users = ["Bob", "Alex", "Will", "Tristan"];
 
 module.exports = (db) => {
-  // all routes will go here 
-  router.get('/', (req, res) => {
-      res.json(users);
+  // all routes will go here
+  router.get("/", (req, res) => {
+    res.json(users);
   });
 
   return router;
-}
+};

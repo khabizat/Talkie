@@ -7,6 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const history = useHistory();
+
   const handleLoginButton = (e) => {
     e.preventDefault();
 
@@ -18,7 +19,6 @@ export default function Login() {
     axios
       .post("http://localhost:8080/auth/login", userCredentials)
       .then((response) => {
-        console.log(response.data[0]);
         localStorage.setItem("user", JSON.stringify(response.data[0]));
         history.push("/");
       })
