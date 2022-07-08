@@ -9,8 +9,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var authenticationRouter = require("./routes/authentication");
 // db connection
-const db = require('./configs/db.config');
-
+const db = require("./configs/db.config");
 
 var app = express();
 
@@ -30,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter());
+app.use("/users", usersRouter(db));
 app.use("/auth", authenticationRouter);
 
 app.listen(8080, () => {
