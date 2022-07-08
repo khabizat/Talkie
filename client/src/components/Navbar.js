@@ -7,12 +7,10 @@ function Navbar() {
     history.push("/login");
   };
   return (
-    <div>
-      <form>
-        <button onClick={handleLoginButton}>Login</button>
-        <button>Register</button>
-      </form>
-    </div>
+    <nav>
+      <button onClick={handleLoginButton}>Login</button>
+      <button>Register</button>
+    </nav>
   );
 }
 
