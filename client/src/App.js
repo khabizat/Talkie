@@ -1,23 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import TestHome from "./components/TestHome";
 
 function App() {
-  const user = JSON.parse(localStorage.getItem("user"));
-
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Navbar user={user} />
-          <h1>Home page</h1>
+          <TestHome />
         </Route>
         <Route exact path="/login">
           <Login />
