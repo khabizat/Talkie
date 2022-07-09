@@ -5,7 +5,6 @@ const axios = require("axios");
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthenticated } = props;
 
   const history = useHistory();
 
@@ -21,7 +20,6 @@ export default function Login(props) {
       .post("http://localhost:8080/auth/login", userCredentials)
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data[0]));
-        setAuthenticated(true);
         history.push("/");
       })
       .catch((err) => {

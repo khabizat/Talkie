@@ -10,17 +10,17 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Navbar authenticated={authenticated} />
+          <Navbar user={user} />
           <h1>Home page</h1>
         </Route>
         <Route exact path="/login">
-          <Login setAuthenticated={setAuthenticated} />
+          <Login />
         </Route>
         <Route exact path="/register">
           <Register />
