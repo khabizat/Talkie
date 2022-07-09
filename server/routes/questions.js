@@ -9,8 +9,13 @@ module.exports = (db) => {
     });
   });
 
-  router.post("/new", (req, res)=> {
-    const { question } = req.body;
+  router.post("/", (req, res)=> {
+    const { question, tag } = req.body;
+    
+    db.query(`INSERT INTO questions (name, tag_id) VALUES ($1, $2)`, [question, tag])
+    .then((response) => {
+      return res.json(response); 
+    });
   })
 
   return router;
