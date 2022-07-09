@@ -6,10 +6,14 @@ function Navbar() {
   const handleLoginButton = () => {
     history.push("/login");
   };
+
+  const handleRegisterButton = () => {
+    history.push("/register");
+  };
   return (
     <nav>
       <button onClick={handleLoginButton}>Login</button>
-      <button>Register</button>
+      <button onClick={handleRegisterButton}>Register</button>
     </nav>
   );
 }

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
+  // confirm if typed email and password are correct
   router.post("/login", (req, res) => {
     const { email, password } = req.body;
 
@@ -17,13 +18,17 @@ module.exports = (db) => {
     });
   });
 
-  router.get("/login", (req, res) => {
-    const { email, password } = req.body;
+  // insert the data when registered
+  router.post("/register", (req, res) => {
+    const { name, email, password } = req.body;
 
-    db.query("SELECT * FROM users;").then((data) => {
-      console.log(data.rows);
-      const usersInfo = data.row;
-      return res.json(usersInfo);
+    db.query(
+      `
+    INSERT INTO users (name, email, password) VALUES ($1, $2, $3); 
+    `,
+      [name, email, password]
+    ).then((response) => {
+      return res.json(response);
     });
   });
   return router;
