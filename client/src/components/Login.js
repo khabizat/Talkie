@@ -36,13 +36,11 @@ export default function Login() {
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        {email}
         <input
           type="text"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        {password}
         <button onClick={handleLoginButton} value="Log in">
           Login
         </button>
