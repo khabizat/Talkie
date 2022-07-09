@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter(db));
-app.use("/auth", authenticationRouter);
+app.use("/auth", authenticationRouter(db));
 
 app.listen(8080, () => {
   console.log("server is running");
