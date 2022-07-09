@@ -7,8 +7,9 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-import QuestionList from "./compontents/QuestionList"
 import Register from "./components/Register";
+import HomeBanner from "./components/HomeBanner";
+import HomeWelcome from "./components/HomeWelcome";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -18,7 +19,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Navbar authenticated={authenticated} />
+          <HomeBanner />
           <h1>Home page</h1>
+          <HomeWelcome />
         </Route>
         <Route exact path="/login">
           <Login setAuthenticated={setAuthenticated} />

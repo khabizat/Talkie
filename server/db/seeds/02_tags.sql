@@ -21,7 +21,7 @@ VALUES
 ('PHP'),
 ('Java'),
 ('APIs'),
-('System Design');
-
+('System Design'),
+('Behavioural');
 
 
