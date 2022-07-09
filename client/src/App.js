@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import AddQuestionForm from "./components/AddQuestionForm";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/questions/new">
+          <AddQuestionForm authenticated={authenticated}/>
         </Route>
       </Switch>
     </Router>

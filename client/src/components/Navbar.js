@@ -6,10 +6,15 @@ function Navbar() {
   const handleLoginButton = () => {
     history.push("/login");
   };
+  const handleQuestionSubmit = () => {
+    history.push("/questions/new");
+  };
+
   return (
     <nav>
       <button onClick={handleLoginButton}>Login</button>
       <button>Register</button>
+      <button onClick={handleQuestionSubmit}>Add Question</button>
     </nav>
   );
 }
