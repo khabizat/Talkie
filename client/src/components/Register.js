@@ -21,7 +21,7 @@ export default function Register() {
     axios
       .post("http://localhost:8080/auth/register", UserInfo)
       .then((response) => {
-        history.push("/");
+        history.push("/login");
       })
       .catch((error) => {
         console.log(error);
