@@ -6,10 +6,10 @@ import {
   Redirect,
 } from "react-router-dom";
 import Login from "./components/Login";
-import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
 import HomePage from "./components/HomePage";
-import QuestionPage from "./components/QuestionPage";
+import QuestionsPage from "./components/QuestionsPage";
+import AddQuestionFrom from "./components/AddQuestionForm";
 
 function App() {
   return (
@@ -25,9 +25,10 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/questions">
-          <QuestionPage />
+          <QuestionsPage />
         </Route>
-        <Route exact path="/questions">
+        <Route exact path="/questions/new">
+          <AddQuestionFrom />
         </Route>
       </Switch>
     </Router>

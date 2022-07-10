@@ -1,34 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-// import QuestionListItem from "./QuestionListItem";
+import QuestionListItem from "./QuestionListItem";
 const axios = require("axios");
 
 export default function QuestionList(props) {
+  const [result, setResult] = useState(null);
+  const [questions, setQuestions] = useState(null);
 
-  const url = 'http://localhost:3000/questions'
-  const [result, setResult] = useState(null)
+  const getAllQuestions = () => {
+    axios
+      .get("http://localhost:8080/questions")
+      .then((response) => {
+        setQuestions(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
-  const questions = props.questions.map((question) => {
-    return (
-      <QuestionListItem
-        key={question.id}
-        name = {question.name}
-        date = {question.date}
-      />
-    );
-  });
+  useEffect(() => {
+    getAllQuestions();
+  }, []);
 
-    return (
-      <section>
-        <ul>
+  return (
+    <section>
+      {questions &&
+        questions.map((question) => (
           <li>
-            Questions go here
+            <QuestionListItem
+              key={question.id}
+              name={question.name}
+              date={question.date}
+            />
           </li>
-          <li>
-            Questions go here
-          </li>
-        </ul>
-      </section>
-    );
+        ))}
+    </section>
+  );
 }
-
