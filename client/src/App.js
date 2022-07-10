@@ -20,7 +20,6 @@ function App() {
         <Route exact path="/">
           <Navbar authenticated={authenticated} />
           <HomeBanner />
-          <h1>Home page</h1>
           <HomeWelcome />
         </Route>
         <Route exact path="/login">

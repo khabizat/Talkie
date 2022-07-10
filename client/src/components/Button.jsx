@@ -1,13 +1,17 @@
 import React from "react";
+import "./Button.css"
 
 
-export default function Button() {
-  //  let btnClass = classNames('button', {
-  //     'button--confirm': props.confirm, 
-  //     'button--danger': props.danger
-  //  });
+export default function Button(props) {
 
    return (
-     <div>Button</div>
+     <button 
+      className="button"
+      onClick={props.onClick}
+      // disabled={props.disabled}
+      >
+      {props.children}
+     </button>
    );
 }
+
