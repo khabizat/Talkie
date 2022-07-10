@@ -5,7 +5,7 @@ const axios = require("axios");
 
 export default function QuestionList(props) {
   const [result, setResult] = useState(null);
-  const [questions, setQuestions] = useState(null);
+  const { questions, setQuestions, setQuestionId } = props;
 
   const getAllQuestions = () => {
     axios
@@ -26,9 +26,11 @@ export default function QuestionList(props) {
         questions.map((question) => (
           <li>
             <QuestionListItem
+              id={question.id}
               key={question.id}
               name={question.name}
               date={question.date}
+              setQuestionId={setQuestionId}
             />
           </li>
         ))}

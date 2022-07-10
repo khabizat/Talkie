@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 
 export default function QuestionListItem(props) {
   return (
-    <>
-      <div>{props.name}</div>
+    <div>
+      <div onClick={() => props.setQuestionId(props.id)}>{props.name}</div>
       <div>{props.date}</div>
-    </>
+    </div>
   );
 }

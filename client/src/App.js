@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import HomePage from "./components/HomePage";
 import QuestionsPage from "./components/QuestionsPage";
 import AddQuestionFrom from "./components/AddQuestionForm";
+import EachQuestionPage from "./components/EachQuestionPage";
 
 function App() {
   return (
