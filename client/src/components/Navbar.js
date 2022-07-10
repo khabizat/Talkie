@@ -2,31 +2,33 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 function Navbar(props) {
-
-  const { authenticated } = props;
+  const { currentUser, setCurrentUser } = props;
   const history = useHistory();
-  
+
   const handleLoginButton = () => {
     history.push("/login");
   };
-  const handleQuestionSubmit = () => {
-    history.push("/questions/new");
-  };
-
   const handleRegisterButton = () => {
     history.push("/register");
+  };
+  const handleLogoutButton = () => {
+    window.localStorage.removeItem("user");
+    setCurrentUser(null);
+    history.go(0);
   };
 
   return (
     <nav>
-      {!authenticated ? (
+      {!currentUser ? (
         <>
           <button onClick={handleLoginButton}>Login</button>
-          <button onClick={handleRegisterButton}>Register</button>{" "}
-          <button onClick={handleQuestionSubmit}>Add Question</button>
+          <button onClick={handleRegisterButton}>Register</button>
         </>
       ) : (
-        <h1>hello</h1>
+        <>
+          <h1>{currentUser.name}</h1>
+          <button onClick={handleLogoutButton}>Logout</button>
+        </>
       )}
     </nav>
   );
