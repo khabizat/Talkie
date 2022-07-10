@@ -26,6 +26,8 @@ function App() {
         <Route exact path="/questions/new">
           <AddQuestionForm />
         </Route>
+        <Route exact path="/questions">
+        </Route>
       </Switch>
     </Router>
   );
