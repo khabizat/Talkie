@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import HomeWelcome from "./HomeWelcome";
+import HomeBanner from "./HomeBanner";
 import Navbar from "./Navbar";
+
 
 export default function TestHome() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -14,7 +17,8 @@ export default function TestHome() {
   return (
     <>
       <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <div>Home page</div>
+      <HomeBanner />
+      <HomeWelcome />
     </>
   );
 }
