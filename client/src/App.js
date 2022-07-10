@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
 import HomeBanner from "./components/HomeBanner";
 import HomeWelcome from "./components/HomeWelcome";
+import TestHome from "./components/TestHome";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
-
   return (
     <Router>
       <Switch>
@@ -21,12 +20,16 @@ function App() {
           <Navbar authenticated={authenticated} />
           <HomeBanner />
           <HomeWelcome />
+          <TestHome />
         </Route>
         <Route exact path="/login">
-          <Login setAuthenticated={setAuthenticated} />
+          <Login />
         </Route>
         <Route exact path="/register">
           <Register />
+        </Route>
+        <Route exact path="/questions/new">
+          <AddQuestionForm authenticated={authenticated}/>
         </Route>
       </Switch>
     </Router>
