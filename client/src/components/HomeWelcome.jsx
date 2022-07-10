@@ -7,15 +7,7 @@ export default function HomeWelcome() {
 
   const handleStartButton = () => {
     history.push("/questions");
-  }
-  return <section className="main-content">
-    <main className="home-welcome">
-      <h1>Welcome to the Talkie home page!!🎉🎉</h1>
-      <section>
-        <Button onClick={handleStartButton} value="Log in">Start</Button>
-      </section>
-    </main>
-  </section>
+  };
 
   return (
     <section className="main-content">
