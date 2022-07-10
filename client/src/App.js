@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
 import HomePage from "./components/HomePage";
+import QuestionPage from "./components/QuestionPage";
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
         <Route exact path="/register">
           <Register />
         </Route>
-        <Route exact path="/questions/new">
-          <AddQuestionForm />
+        <Route exact path="/questions">
+          <QuestionPage />
         </Route>
         <Route exact path="/questions">
         </Route>
