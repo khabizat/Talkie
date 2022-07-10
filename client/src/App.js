@@ -8,6 +8,7 @@ import {
 import Login from "./components/Login";
 import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
+import QuestionList from "./components/QuestionList";
 import Home from "./components/Home";
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route exact path="/questions/new">
           <AddQuestionForm />
+        </Route>
+        <Route exact path="/questions">
+          <QuestionList />
         </Route>
       </Switch>
     </Router>
