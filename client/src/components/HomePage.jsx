@@ -3,8 +3,7 @@ import HomeWelcome from "./HomeWelcome";
 import HomeBanner from "./HomeBanner";
 import Navbar from "./Navbar";
 
-
-export default function TestHome() {
+export default function HomePage() {
   const [currentUser, setCurrentUser] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -16,8 +15,8 @@ export default function TestHome() {
 
   return (
     <>
-      <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <HomeBanner />
+      <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <HomeWelcome />
     </>
   );
