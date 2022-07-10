@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Login from "./components/Login";
+import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
 import TestHome from "./components/TestHome";
 
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/register">
           <Register />
+        </Route>
+        <Route exact path="/questions/new">
+          <AddQuestionForm authenticated={authenticated}/>
         </Route>
       </Switch>
     </Router>
