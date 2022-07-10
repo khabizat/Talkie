@@ -8,7 +8,7 @@ import {
 import Login from "./components/Login";
 import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
-import Home from "./components/HomePage";
+import HomePage from "./components/HomePage";
 import QuestionPage from "./components/QuestionPage";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <HomePage />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -26,6 +26,8 @@ function App() {
         </Route>
         <Route exact path="/questions">
           <QuestionPage />
+        </Route>
+        <Route exact path="/questions">
         </Route>
       </Switch>
     </Router>
