@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
+import QuestionList from "./components/QuestionList";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route exact path="/questions/new">
           <AddQuestionForm authenticated={authenticated}/>
+        </Route>
+        <Route exact path="/questions">
+          <QuestionList />
         </Route>
       </Switch>
     </Router>
