@@ -8,14 +8,14 @@ import {
 import Login from "./components/Login";
 import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
-import TestHome from "./components/TestHome";
+import Home from "./components/Home";
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <TestHome />
+          <Home />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -24,7 +24,7 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/questions/new">
-          <AddQuestionForm authenticated={authenticated}/>
+          <AddQuestionForm />
         </Route>
       </Switch>
     </Router>
