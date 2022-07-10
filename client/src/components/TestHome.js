@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 export default function TestHome() {
   const [currentUser, setCurrentUser] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
-  
+
   useEffect(() => {
     if (user) {
       setCurrentUser(user);
@@ -13,7 +13,7 @@ export default function TestHome() {
 
   return (
     <>
-      <Navbar user={currentUser} setCurrentUser={setCurrentUser} />
+      <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <div>Home page</div>
     </>
   );

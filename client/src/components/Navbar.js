@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 function Navbar(props) {
-  const { user, handleCurrentUser } = props;
+  const { currentUser, setCurrentUser } = props;
   const history = useHistory();
 
   const handleLoginButton = () => {
@@ -13,20 +13,20 @@ function Navbar(props) {
   };
   const handleLogoutButton = () => {
     window.localStorage.removeItem("user");
-    handleCurrentUser(null);
+    setCurrentUser(null);
     history.go(0);
   };
 
   return (
     <nav>
-      {!user ? (
+      {!currentUser ? (
         <>
           <button onClick={handleLoginButton}>Login</button>
           <button onClick={handleRegisterButton}>Register</button>
         </>
       ) : (
         <>
-          <h1>{user.name}</h1>
+          <h1>{currentUser.name}</h1>
           <button onClick={handleLogoutButton}>Logout</button>
         </>
       )}
