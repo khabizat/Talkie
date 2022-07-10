@@ -8,7 +8,7 @@ import {
 import Login from "./components/Login";
 import AddQuestionForm from "./components/AddQuestionForm";
 import Register from "./components/Register";
-import Home from "./components/Home";
+import Home from "./components/HomePage";
 
 function App() {
   return (
