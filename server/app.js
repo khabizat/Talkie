@@ -30,11 +30,11 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter(db));
-app.use("/questions", questionsRouter(db));
-app.use("/answers", answersRouter(db));
-app.use("/auth", authenticationRouter(db));
+// app.use("/", indexRouter);
+app.use("/api/users", usersRouter(db));
+app.use("/api/questions", questionsRouter(db));
+app.use("/api/answers", answersRouter(db));
+app.use("/api/auth", authenticationRouter(db));
 
 app.listen(8080, () => {
   console.log("server is running");

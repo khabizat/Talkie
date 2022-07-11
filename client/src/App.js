@@ -8,9 +8,9 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import HomePage from "./components/HomePage";
-import QuestionsPage from "./components/QuestionsPage";
-import AddQuestionForm from "./components/AddQuestionForm";
+import HomePage from "./components/Home/HomePage";
+import QuestionsPage from "./components/Questions/QuestionsPage";
+import AddQuestionForm from "./components/Questions/AddQuestionForm";
 
 function App() {
   return (

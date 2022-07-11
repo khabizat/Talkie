@@ -1,5 +1,4 @@
 import React from "react";
-import CommentListItem from "./CommentListItem";
 
 export default function CommentList(props) {
   const { selectedAnswer } = props;
@@ -12,8 +11,6 @@ export default function CommentList(props) {
       </section>
     );
   });
-  console.log(comments);
-  console.log("asdasdasdasdas", selectedAnswer);
 
   return <div>{comments}</div>;
 }

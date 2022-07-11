@@ -17,7 +17,7 @@ export default function Login(props) {
     };
 
     axios
-      .post("http://localhost:8080/auth/login", userCredentials)
+      .post("/api/auth/login", userCredentials)
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data[0]));
         history.push("/");
