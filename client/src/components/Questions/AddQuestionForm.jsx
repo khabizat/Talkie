@@ -4,10 +4,8 @@ import { useHistory } from "react-router-dom";
 const axios = require("axios");
 
 export default function AddQuestionForm(props) {
-
   const [question, setQuestion] = useState("");
   const [tag, setTag] = useState("");
-
 
   const history = useHistory();
 
@@ -16,11 +14,11 @@ export default function AddQuestionForm(props) {
 
     const questionData = {
       question,
-      tag
+      tag,
     };
 
     axios
-      .post("http://localhost:8080/questions", questionData)
+      .post("/api/questions", questionData)
       .then((response) => {
         history.push("/");
       })
@@ -35,18 +33,16 @@ export default function AddQuestionForm(props) {
         <h1>Add New Question</h1>
         <form>
           <input
-          type="text"
-          placeholder="Type your question here"
-          onChange={(e) => setQuestion(e.target.value)}
+            type="text"
+            placeholder="Type your question here"
+            onChange={(e) => setQuestion(e.target.value)}
           ></input>
           <input
-          type="text"
-          placeholder="Add tag"
-          onChange={(e) => setTag(e.target.value)}
+            type="text"
+            placeholder="Add tag"
+            onChange={(e) => setTag(e.target.value)}
           ></input>
-          <button onClick={handleQuestionSubmit}>
-            Submit
-          </button>
+          <button onClick={handleQuestionSubmit}>Submit</button>
         </form>
       </div>
     </>

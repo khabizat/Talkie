@@ -19,7 +19,7 @@ export default function Register(props) {
     };
 
     axios
-      .post("http://localhost:8080/auth/register", UserInfo)
+      .post("/api/auth/register", UserInfo)
       .then((response) => {
         history.push("/login");
       })
