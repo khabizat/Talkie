@@ -5,15 +5,12 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-<<<<<<< HEAD
-import Home from "./components/HomePage";
-=======
 import HomePage from "./components/HomePage";
 import QuestionsPage from "./components/QuestionsPage";
 import AddQuestionFrom from "./components/AddQuestionForm";
->>>>>>> 64807af3c5bf2b4410193b291de0ab5ccc95f671
 
 function App() {
   return (
