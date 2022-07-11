@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import HomeWelcome from "./HomeWelcome";
 import HomeBanner from "./HomeBanner";
 import Navbar from "./Navbar";
+import Recorder from "./Recorder";
 
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
       <HomeBanner />
       <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <HomeWelcome />
+      <Recorder />
     </>
   );
 }
