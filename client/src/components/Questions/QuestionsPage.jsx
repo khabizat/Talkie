@@ -28,15 +28,16 @@ export default function QuestionsPage() {
   return (
     <>
       <section>
-        {tags.map((tag) => (
-          <div
-            onClick={() => {
-              setTagId(tag.id);
-            }}
-          >
-            {tag.name}
-          </div>
-        ))}
+        {tags &&
+          tags.map((tag) => (
+            <div
+              onClick={() => {
+                setTagId(tag.id);
+              }}
+            >
+              {tag.name}
+            </div>
+          ))}
       </section>
       {questionId && <EachQuestionPage questionId={questionId} />}
       {!questionId && (
