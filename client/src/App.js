@@ -10,7 +10,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import HomePage from "./components/HomePage";
 import QuestionsPage from "./components/QuestionsPage";
-import AddQuestionFrom from "./components/AddQuestionForm";
+import AddQuestionForm from "./components/AddQuestionForm";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <QuestionsPage />
         </Route>
         <Route exact path="/questions/new">
-          <AddQuestionFrom />
+          <AddQuestionForm />
         </Route>
       </Switch>
     </Router>
