@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 export default function QuestionListItem(props) {
+  const { id, setQuestionId, name, date } = props;
   return (
-    <>
-      <div>{props.name}</div>
-      <div>{props.date}</div>
-    </>
+    <div>
+      <div onClick={() => setQuestionId(id)}>{name}</div>
+      <div>{date}</div>
+    </div>
   );
 }
