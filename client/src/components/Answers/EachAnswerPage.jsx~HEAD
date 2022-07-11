@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CommentList from "./CommentList";
+import CommentList from "../Comments/CommentList";
 
 export default function EachAnswerPage(props) {
   const { answerId } = props;

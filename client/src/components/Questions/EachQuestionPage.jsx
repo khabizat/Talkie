@@ -8,7 +8,7 @@ export default function EachQuestionPage(props) {
 
   const getSelectedQuestion = (questionId) => {
     axios
-      .get(`http://localhost:8080/questions/${questionId}`)
+      .get(`/api/questions/${questionId}`)
       .then((response) => {
         setSelectedQuestion(response.data);
       })
@@ -24,6 +24,7 @@ export default function EachQuestionPage(props) {
   return (
     <>
       {selectedQuestion && selectedQuestion[0].name}
+
       {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
     </>
   );

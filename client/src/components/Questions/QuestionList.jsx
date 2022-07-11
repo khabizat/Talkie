@@ -8,7 +8,7 @@ export default function QuestionList(props) {
 
   const getAllQuestions = () => {
     axios
-      .get("http://localhost:8080/questions")
+      .get("/api/questions")
       .then((response) => {
         setQuestions(response.data);
       })

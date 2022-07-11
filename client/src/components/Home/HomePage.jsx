@@ -4,7 +4,6 @@ import HomeBanner from "./HomeBanner";
 import Navbar from "../Navbar";
 import Recorder from "../Recorder";
 
-
 export default function HomePage() {
   const [currentUser, setCurrentUser] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AnswerList from "./AnswerList";
+import AnswerList from "../Answers/AnswerList";
 
 export default function EachQuestionPage(props) {
   const { questionId } = props;

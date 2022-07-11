@@ -11,8 +11,6 @@ export default function CommentList(props) {
       </section>
     );
   });
-  console.log(comments);
-  console.log("asdasdasdasdas", selectedAnswer);
 
   return <div>{comments}</div>;
 }
