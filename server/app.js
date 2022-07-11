@@ -10,6 +10,7 @@ var usersRouter = require("./routes/users");
 var authenticationRouter = require("./routes/authentication");
 const questionsRouter = require("./routes/questions");
 const answersRouter = require("./routes/answers");
+const tagsRouter = require("./routes/tags");
 // db connection
 const db = require("./configs/db.config");
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/users", usersRouter(db));
 app.use("/api/questions", questionsRouter(db));
 app.use("/api/answers", answersRouter(db));
+app.use("/api/tags", tagsRouter(db));
 app.use("/api/auth", authenticationRouter(db));
 
 app.listen(8080, () => {
