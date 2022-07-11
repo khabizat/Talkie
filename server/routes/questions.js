@@ -22,11 +22,12 @@ module.exports = (db) => {
   router.get("/:questionId", (req, res) => {
     const { questionId } = req.params;
 
-    const queryString = `SELECT questions.name as qName, 
-                          FROM questions 
-                          JOIN answers 
-                          ON answers.question_id = questions.id 
-                          WHERE questions.id = $1`;
+    const queryString = `
+    SELECT answers.id as answer_id, answers.audio_url as audio_url, questions.tag_id as tag_id, questions.name as name, answers.date as date 
+    FROM questions 
+    JOIN answers 
+    ON answers.question_id = questions.id 
+    WHERE questions.id = $1`;
 
     db.query(queryString, [questionId])
       .then((response) => {

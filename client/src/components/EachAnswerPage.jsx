@@ -7,12 +7,10 @@ export default function EachAnswerPage(props) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const getSelectedAnswer = (answerId) => {
-    console.log("asdasdasdasdasasda", answerId);
     axios
       .get(`http://localhost:8080/answers/${answerId}`)
       .then((response) => {
         setSelectedAnswer(response.data);
-        console.log(response.data);
       })
       .catch((error) => console.log(error));
   };
@@ -21,6 +19,8 @@ export default function EachAnswerPage(props) {
       getSelectedAnswer(answerId);
     }
   }, []);
+
+  console.log(selectedAnswer);
 
   return (
     <>
