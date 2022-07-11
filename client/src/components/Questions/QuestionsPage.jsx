@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import QuestionList from "./QuestionList";
 import EachQuestionPage from "./EachQuestionPage";
+import TagQuestionList from "./TagQuestionList";
 import axios from "axios";
 
 export default function QuestionsPage() {
@@ -18,6 +19,7 @@ export default function QuestionsPage() {
   const getTags = () => {
     axios.get("/api/tags").then((response) => {
       setTags(response.data);
+      console.log(response.data);
     });
   };
 
@@ -40,10 +42,16 @@ export default function QuestionsPage() {
           ))}
       </section>
       {questionId && <EachQuestionPage questionId={questionId} />}
-      {!questionId && (
+      {!tagId && !questionId && (
         <>
           <button onClick={handleAddQuestion}>Add questions</button>
           <QuestionList setQuestionId={setQuestionId} />
+        </>
+      )}
+      {tagId && !questionId && (
+        <>
+          <button onClick={handleAddQuestion}>Add questions</button>
+          <TagQuestionList tagId={tagId} setQuestionId={setQuestionId} />
         </>
       )}
     </>
