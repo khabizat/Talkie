@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import "./Navbar.scss"
 
 function Navbar(props) {
   const { currentUser, setCurrentUser } = props;
@@ -21,8 +22,8 @@ function Navbar(props) {
     <nav>
       {!currentUser ? (
         <>
-          <button onClick={handleLoginButton}>Login</button>
-          <button onClick={handleRegisterButton}>Register</button>
+          <button onClick={handleLoginButton} class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Login</button>
+          <button onClick={handleRegisterButton} class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Register</button>
         </>
       ) : (
         <>
