@@ -1,7 +1,6 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
-  // all routes will go here
   router.get("/", (req, res) => {
     const command = "SELECT * FROM questions";
     db.query(command).then((data) => {
@@ -18,6 +17,25 @@ module.exports = (db) => {
     ]).then((response) => {
       return res.json(response);
     });
+  });
+
+  router.get("/:questionId", (req, res) => {
+    const { questionId } = req.params;
+
+    const queryString = `SELECT questions.name as qName, 
+                          FROM questions 
+                          JOIN answers 
+                          ON answers.question_id = questions.id 
+                          WHERE questions.id = $1`;
+
+    db.query(queryString, [questionId])
+      .then((response) => {
+        return res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log("query ERROR");
+        return res.json(err);
+      });
   });
 
   return router;

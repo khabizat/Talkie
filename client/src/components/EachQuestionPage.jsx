@@ -1,10 +1,30 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import QuestionListItem from "./QuestionListItem";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import AnswerList from "./AnswerList";
 
 export default function EachQuestionPage(props) {
-  const { questions, questionId } = props;
-  const eachQuestion = questions.find((question) => question.id === questionId);
+  const { questionId } = props;
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
 
-  return <div>{eachQuestion.name}</div>;
+  const getSelectedQuestion = (questionId) => {
+    axios
+      .get(`http://localhost:8080/questions/${questionId}`)
+      .then((response) => {
+        setSelectedQuestion(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (questionId) {
+      getSelectedQuestion(questionId);
+    }
+  }, []);
+
+  return (
+    <>
+      {selectedQuestion && selectedQuestion[0].name}
+      {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
+    </>
+  );
 }

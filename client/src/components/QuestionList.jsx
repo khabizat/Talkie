@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import QuestionListItem from "./QuestionListItem";
 const axios = require("axios");
 
 export default function QuestionList(props) {
-  const [result, setResult] = useState(null);
-  const { questions, setQuestions, setQuestionId } = props;
+  const [questions, setQuestions] = useState(null);
+  const { setQuestionId } = props;
 
   const getAllQuestions = () => {
     axios
