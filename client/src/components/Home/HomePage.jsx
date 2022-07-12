@@ -16,8 +16,8 @@ export default function HomePage() {
 
   return (
     <>
-      <HomeBanner />
       <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <HomeBanner />
       <HomeWelcome />
     </>
   );
