@@ -1,0 +1,24 @@
+.home-banner img {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 100%;
+  height: 300px;
+  opacity: 70%;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+}
+
+.recorder {
+  background-color: white;
+}
