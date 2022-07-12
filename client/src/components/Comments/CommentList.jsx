@@ -1,8 +1,35 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import CommentListItem from "./CommentListItem";
 
 export default function CommentList(props) {
+  const [comment, setComment] = useState("");
   const { selectedAnswer } = props;
+
+  const findUser = JSON.parse(localStorage.getItem("user"));
+  const userId = findUser.id;
+
+  const commentInfo = {
+    userId: userId,
+    answerId: selectedAnswer[0].answer_id,
+    comment: comment,
+  };
+
+  console.log(commentInfo);
+
+  const handleCommentButton = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("/api/comments", commentInfo)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const comments = selectedAnswer.map((sA) => {
     return (
       <CommentListItem
@@ -13,5 +40,14 @@ export default function CommentList(props) {
     );
   });
 
-  return <div>{comments}</div>;
+  return (
+    <>
+      <form>
+        <h6>Leave your feedback</h6>
+        <input onChange={(e) => setComment(e.target.value)}></input>
+        <button onClick={handleCommentButton}>comment</button>
+      </form>
+      <div>{comments}</div>
+    </>
+  );
 }

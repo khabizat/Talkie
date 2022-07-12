@@ -19,7 +19,6 @@ export default function QuestionsPage() {
   const getTags = () => {
     axios.get("/api/tags").then((response) => {
       setTags(response.data);
-      console.log(response.data);
     });
   };
 
