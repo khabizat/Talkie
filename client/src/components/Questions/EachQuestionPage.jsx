@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AnswerList from "../Answers/AnswerList";
+import Recorder from "../Recorder";
 
 export default function EachQuestionPage(props) {
   const { questionId } = props;
@@ -24,7 +25,7 @@ export default function EachQuestionPage(props) {
   return (
     <>
       {selectedQuestion && selectedQuestion[0].name}
-
+      <Recorder />
       {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
     </>
   );

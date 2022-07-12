@@ -1,7 +1,12 @@
 nav {
-  height: 5em;
-  padding: 1em;
+  height: 2em;
+  margin: 1em;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+}
+
+.navbar-logo {
+  width: 4em;
+  height: 4em;
 }
