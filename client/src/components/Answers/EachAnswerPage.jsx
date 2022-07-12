@@ -23,7 +23,12 @@ export default function EachAnswerPage(props) {
   return (
     <>
       {selectedAnswer && selectedAnswer[0].audio_url}
-      {selectedAnswer && <CommentList selectedAnswer={selectedAnswer} />}
+      {selectedAnswer && (
+        <CommentList
+          selectedAnswer={selectedAnswer}
+          setNewComments={setSelectedAnswer}
+        />
+      )}
     </>
   );
 }

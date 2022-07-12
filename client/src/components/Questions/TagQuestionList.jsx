@@ -7,7 +7,6 @@ export default function TagQuestionList(props) {
   const { tagId, setQuestionId } = props;
 
   const getTagQuestions = (tagId) => {
-    console.log(tagId);
     axios
       .get(`/api/tags/${tagId}/questions`)
       .then((response) => {
