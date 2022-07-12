@@ -22,13 +22,17 @@ function Navbar(props) {
     <nav>
       {!currentUser ? (
         <>
-          <button onClick={handleLoginButton} class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Login</button>
-          <button onClick={handleRegisterButton} class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Register</button>
+            <button onClick={handleLoginButton} class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Login</button>
+            <button onClick={handleRegisterButton} class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Register</button>  
         </>
       ) : (
         <>
           <h1>{currentUser.name}</h1>
-          <button onClick={handleLogoutButton}>Logout</button>
+          <button 
+            onClick={handleLogoutButton}
+            class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          >Logout
+          </button>
         </>
       )}
     </nav>
