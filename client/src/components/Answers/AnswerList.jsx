@@ -8,7 +8,9 @@ export default function AnswerList(props) {
 
   return (
     <section>
-      {answerId && <EachAnswerPage answerId={answerId} />}
+      {answerId && (
+        <EachAnswerPage answerId={answerId} setAnswerId={setAnswerId} />
+      )}
       {!answerId &&
         selectedQuestion.map((sQ) => (
           <li>

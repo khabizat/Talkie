@@ -4,7 +4,7 @@ import AnswerList from "../Answers/AnswerList";
 import Recorder from "../Recorder";
 
 export default function EachQuestionPage(props) {
-  const { questionId } = props;
+  const { questionId, setQuestionId } = props;
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   const getSelectedQuestion = (questionId) => {
@@ -24,6 +24,7 @@ export default function EachQuestionPage(props) {
 
   return (
     <>
+      <button onClick={() => setQuestionId(null)}>Back...</button>
       {selectedQuestion && selectedQuestion[0].name}
       <Recorder />
       {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
