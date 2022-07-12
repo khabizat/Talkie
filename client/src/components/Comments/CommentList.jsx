@@ -4,7 +4,7 @@ import CommentListItem from "./CommentListItem";
 
 export default function CommentList(props) {
   const [comment, setComment] = useState("");
-  const { selectedAnswer } = props;
+  const { selectedAnswer, setNewComments } = props;
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
@@ -15,8 +15,6 @@ export default function CommentList(props) {
     comment: comment,
   };
 
-  console.log(commentInfo);
-
   const handleCommentButton = (e) => {
     e.preventDefault();
 
@@ -24,6 +22,10 @@ export default function CommentList(props) {
       .post("/api/comments", commentInfo)
       .then((response) => {
         console.log(response.data);
+        setNewComments((prev) => {
+          return [...prev, response.data[0]];
+        });
+        setComment("");
       })
       .catch((error) => {
         console.log(error);
@@ -44,7 +46,10 @@ export default function CommentList(props) {
     <>
       <form>
         <h6>Leave your feedback</h6>
-        <input onChange={(e) => setComment(e.target.value)}></input>
+        <input
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        ></input>
         <button onClick={handleCommentButton}>comment</button>
       </form>
       <div>{comments}</div>

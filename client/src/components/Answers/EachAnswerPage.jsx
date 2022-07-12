@@ -10,6 +10,7 @@ export default function EachAnswerPage(props) {
     axios
       .get(`/api/answers/${answerId}`)
       .then((response) => {
+        console.log(response.data);
         setSelectedAnswer(response.data);
       })
       .catch((error) => console.log(error));
@@ -23,7 +24,12 @@ export default function EachAnswerPage(props) {
   return (
     <>
       {selectedAnswer && selectedAnswer[0].audio_url}
-      {selectedAnswer && <CommentList selectedAnswer={selectedAnswer} />}
+      {selectedAnswer && (
+        <CommentList
+          selectedAnswer={selectedAnswer}
+          setNewComments={setSelectedAnswer}
+        />
+      )}
     </>
   );
 }
