@@ -1,13 +1,12 @@
 import React from "react";
 import "../style.css";
+import banner from "../../Banner.jpg"
 
 export default function HomeBanner() {
   return (
     <div className="home-banner">
       <img
-        src={
-          "https://github.com/khabizat/Talkie/blob/components/home-page/client/docs/Banner.jpg?raw=true"
-        }
+        src={banner}
         alt={"Banner image"}
       />
     </div>
