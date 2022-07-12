@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import CommentList from "../Comments/CommentList";
 
 export default function EachAnswerPage(props) {
-  const { answerId } = props;
+  const { answerId, setAnswerId } = props;
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const getSelectedAnswer = (answerId) => {
@@ -27,6 +27,7 @@ export default function EachAnswerPage(props) {
         <CommentList
           selectedAnswer={selectedAnswer}
           setNewComments={setSelectedAnswer}
+          setAnswerId={setAnswerId}
         />
       )}
     </>
