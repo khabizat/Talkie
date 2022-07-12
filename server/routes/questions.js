@@ -3,8 +3,8 @@ const router = require("express").Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const command = "SELECT * FROM questions";
-    db.query(command).then((data) => {
-      res.json(data.rows);
+    db.query(command).then((response) => {
+      res.json(response.rows);
     });
   });
 
@@ -14,9 +14,14 @@ module.exports = (db) => {
     db.query(`INSERT INTO questions (name, tag_id) VALUES ($1, $2)`, [
       question,
       tag,
-    ]).then((response) => {
-      return res.json(response);
-    });
+    ])
+      .then((response) => {
+        return res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log("query ERROR");
+        return res.json(err);
+      });
   });
 
   router.get("/:questionId", (req, res) => {
@@ -35,6 +40,18 @@ module.exports = (db) => {
       })
       .catch((err) => {
         console.log("query ERROR");
+        return res.json(err);
+      });
+  });
+
+  router.get("/:tagId", (req, res) => {
+    const { tagId } = req.params;
+    db.query(`SELECT * FROM questions WHERE tag_id = $1`, [tagId])
+      .then((response) => {
+        return res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
         return res.json(err);
       });
   });
