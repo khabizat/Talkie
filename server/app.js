@@ -11,6 +11,7 @@ var authenticationRouter = require("./routes/authentication");
 const questionsRouter = require("./routes/questions");
 const answersRouter = require("./routes/answers");
 const tagsRouter = require("./routes/tags");
+const commentsRouter = require("./routes/comments");
 // db connection
 const db = require("./configs/db.config");
 
@@ -36,6 +37,7 @@ app.use("/api/users", usersRouter(db));
 app.use("/api/questions", questionsRouter(db));
 app.use("/api/answers", answersRouter(db));
 app.use("/api/tags", tagsRouter(db));
+app.use("/api/comments", commentsRouter(db));
 app.use("/api/auth", authenticationRouter(db));
 
 app.listen(8080, () => {
