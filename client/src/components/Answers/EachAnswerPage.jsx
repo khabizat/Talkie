@@ -10,7 +10,6 @@ export default function EachAnswerPage(props) {
     axios
       .get(`/api/answers/${answerId}`)
       .then((response) => {
-        console.log(response.data);
         setSelectedAnswer(response.data);
       })
       .catch((error) => console.log(error));

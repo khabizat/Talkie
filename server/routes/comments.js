@@ -12,7 +12,7 @@ module.exports = (db) => {
 
     db.query(
       `INSERT INTO comments (user_id, answer_id, comment) 
-    VALUES ($1, $2, $3) RETURNING *`,
+    VALUES ($1, $2, $3) RETURNING *;`,
       [userId, answerId, comment]
     ).then((response) => {
       res.json(response.rows);

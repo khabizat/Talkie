@@ -21,7 +21,6 @@ export default function CommentList(props) {
     axios
       .post("/api/comments", commentInfo)
       .then((response) => {
-        console.log(response.data);
         setNewComments((prev) => {
           return [...prev, response.data[0]];
         });

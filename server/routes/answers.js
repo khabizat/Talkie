@@ -10,7 +10,7 @@ module.exports = (db) => {
       JOIN comments
       ON answers.id = comments.answer_id
       WHERE answers.id = $1
-      ORDER BY comments.timestamp;`,
+      ORDER BY comments.timestamp DESC;`,
       [answerId]
     )
       .then((response) => {
