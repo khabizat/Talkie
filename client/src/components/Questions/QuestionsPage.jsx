@@ -34,6 +34,7 @@ export default function QuestionsPage() {
             <div
               onClick={() => {
                 setTagId(tag.id);
+                setQuestionId(null);
               }}
             >
               {tag.name}
