@@ -17,7 +17,6 @@ export default function AnswerList(props) {
             <AnswerListItem
               answer_id={sQ.answer_id}
               audio_url={sQ.audio_url}
-              tag_id={sQ.tag_id}
               date={sQ.date}
               setAnswerId={setAnswerId}
             />
