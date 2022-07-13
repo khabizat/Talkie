@@ -50,7 +50,7 @@ export default function Register(props) {
                 </input>
               </div>
               <div>
-                <lable htmlFor='email'>Email:</lable>
+                <label htmlFor='email'>Email:</label>
                 <input
                   type="text"
                   placeholder="Your Email"
