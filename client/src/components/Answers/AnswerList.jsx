@@ -5,7 +5,7 @@ import EachAnswerPage from "./EachAnswerPage";
 export default function AnswerList(props) {
   const [answerId, setAnswerId] = useState(null);
   const { selectedQuestion } = props;
-
+  console.log("asdasdasasd", selectedQuestion);
   return (
     <section>
       {answerId && (
@@ -13,7 +13,7 @@ export default function AnswerList(props) {
       )}
       {!answerId &&
         selectedQuestion.map((sQ) => (
-          <li>
+          <li key={sQ.answer_id}>
             <AnswerListItem
               answer_id={sQ.answer_id}
               audio_url={sQ.audio_url}

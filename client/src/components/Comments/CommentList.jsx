@@ -6,6 +6,7 @@ export default function CommentList(props) {
   const {
     selectedAnswer,
     setSelectedAnswer,
+    answerId,
     setAnswerId,
     comment,
     setComment,
@@ -15,9 +16,9 @@ export default function CommentList(props) {
   const userId = findUser.id;
 
   const commentInfo = {
-    userId: userId,
-    answerId: selectedAnswer[0].answer_id,
-    comment: comment,
+    userId,
+    answerId,
+    comment,
   };
 
   const handleCommentButton = (e) => {
@@ -41,6 +42,7 @@ export default function CommentList(props) {
   const comments = selectedAnswer.map((sA) => {
     return (
       <CommentListItem
+        key={sA.comment_id}
         user_id={sA.user_id}
         comment_id={sA.comment_id}
         comment={sA.comment}
@@ -53,11 +55,12 @@ export default function CommentList(props) {
 
   return (
     <>
-      <button 
+      <button
         onClick={() => setAnswerId(null)}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >Back
-        </button>
+      >
+        Back
+      </button>
       <form>
         <h6>Leave your feedback</h6>
         <input
