@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import QuestionList from "./QuestionList";
 import EachQuestionPage from "./EachQuestionPage";
 import TagQuestionList from "./TagQuestionList";
-import axios from "axios";
+import TagList from "./TagList";
+// import axios from "axios";
 
 export default function QuestionsPage() {
-  const [tags, setTags] = useState(null);
   const [tagId, setTagId] = useState(null);
   const [questionId, setQuestionId] = useState(null);
 
@@ -16,46 +16,37 @@ export default function QuestionsPage() {
     history.push("/questions/new");
   };
 
-  const getTags = () => {
-    axios.get("/api/tags").then((response) => {
-      setTags(response.data);
-    });
-  };
-
-  useEffect(() => {
-    getTags();
-  }, []);
-
   return (
     <>
-      <section>
-        {tags &&
-          tags.map((tag) => (
-            <div
-              onClick={() => {
-                setTagId(tag.id);
-                setQuestionId(null);
-              }}
-            >
-              {tag.name}
-            </div>
-          ))}
-      </section>
+      <h1>Select a category</h1>
+      <TagList 
+        setTagId={setTagId}
+        setQuestionId={setQuestionId}
+      />
+
       {questionId && (
         <EachQuestionPage
           questionId={questionId}
           setQuestionId={setQuestionId}
         />
       )}
+
       {!tagId && !questionId && (
         <>
-          <button onClick={handleAddQuestion}>Add questions</button>
+          <button 
+            onClick={handleAddQuestion}
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >Add questions
+          </button>
           <QuestionList setQuestionId={setQuestionId} />
         </>
       )}
+
       {tagId && !questionId && (
         <>
-          <button onClick={handleAddQuestion}>Add questions</button>
+          <button onClick={handleAddQuestion}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >Add questions</button>
           <TagQuestionList tagId={tagId} setQuestionId={setQuestionId} />
         </>
       )}
