@@ -42,9 +42,13 @@ export default function AddQuestionForm(props) {
   const handleQuestionSubmit = (e) => {
     e.preventDefault();
 
+    const findUser = JSON.parse(localStorage.getItem("user"));
+    const userId = findUser.id;
+
     const questionData = {
       question,
-      tag: Number(tag)
+      tag: Number(tag),
+      userId
     };
 
     axios
