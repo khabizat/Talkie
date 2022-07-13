@@ -4,10 +4,9 @@ import QuestionList from "./QuestionList";
 import EachQuestionPage from "./EachQuestionPage";
 import TagQuestionList from "./TagQuestionList";
 import TagList from "./TagList";
-// import axios from "axios";
 
-export default function QuestionsPage() {
-  const [tagId, setTagId] = useState(null);
+export default function QuestionsPage(props) {
+  const {tagId, setTagId} = props;
   const [questionId, setQuestionId] = useState(null);
 
   const history = useHistory();
