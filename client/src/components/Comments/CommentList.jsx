@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import CommentListItem from "./CommentListItem";
 
 export default function CommentList(props) {
-  const [comment, setComment] = useState("");
-  const { selectedAnswer, setNewComments, setAnswerId } = props;
+  const {
+    selectedAnswer,
+    setSelectedAnswer,
+    setAnswerId,
+    comment,
+    setComment,
+  } = props;
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
@@ -21,8 +26,10 @@ export default function CommentList(props) {
     axios
       .post("/api/comments", commentInfo)
       .then((response) => {
-        setNewComments((prev) => {
-          return [...prev, response.data[0]];
+        setSelectedAnswer((prev) => {
+          const comment = response.data[0];
+          comment.comment_id = comment.id;
+          return [...prev, comment];
         });
         setComment("");
       })
@@ -35,8 +42,11 @@ export default function CommentList(props) {
     return (
       <CommentListItem
         user_id={sA.user_id}
+        comment_id={sA.comment_id}
         comment={sA.comment}
         timestamp={sA.timestamp}
+        selectedAnswer={selectedAnswer}
+        setSelectedAnswer={setSelectedAnswer}
       />
     );
   });
