@@ -37,7 +37,7 @@ export default function CommentList(props) {
         console.log(error);
       });
   };
-  console.log(selectedAnswer);
+
   const comments = selectedAnswer.map((sA) => {
     return (
       <CommentListItem

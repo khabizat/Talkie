@@ -25,7 +25,6 @@ module.exports = (db) => {
 
   router.delete("/:commentId", (req, res) => {
     const { commentId } = req.params;
-    console.log(commentId);
     db.query(
       `DELETE FROM comments
     WHERE id = $1
@@ -34,7 +33,6 @@ module.exports = (db) => {
       [commentId]
     )
       .then((response) => {
-        console.log(response.rows);
         res.json(response.rows);
       })
       .catch((err) => {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function CommentListItem(props) {
   const {
@@ -31,8 +31,6 @@ export default function CommentListItem(props) {
         console.log(err);
       });
   };
-
-  useEffect(() => {}, [selectedAnswer]);
 
   return (
     <>
