@@ -35,6 +35,7 @@ export default function CommentList(props) {
     return (
       <CommentListItem
         user_id={sA.user_id}
+        comment_id={sA.comment_id}
         comment={sA.comment}
         timestamp={sA.timestamp}
       />
