@@ -14,9 +14,30 @@ module.exports = (db) => {
       `INSERT INTO comments (user_id, answer_id, comment) 
     VALUES ($1, $2, $3) RETURNING *;`,
       [userId, answerId, comment]
-    ).then((response) => {
-      res.json(response.rows);
-    });
+    )
+      .then((response) => {
+        res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  router.delete("/:commentId", (req, res) => {
+    const { commentId } = req.params;
+    db.query(
+      `DELETE FROM comments
+    WHERE id = $1
+    RETURNING *;
+    `,
+      [commentId]
+    )
+      .then((response) => {
+        res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
   return router;
 };

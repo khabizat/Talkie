@@ -32,7 +32,7 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/", indexRouter);
+app.use("/", indexRouter);
 app.use("/api/users", usersRouter(db));
 app.use("/api/questions", questionsRouter(db));
 app.use("/api/answers", answersRouter(db));

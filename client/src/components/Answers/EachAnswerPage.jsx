@@ -5,6 +5,7 @@ import CommentList from "../Comments/CommentList";
 export default function EachAnswerPage(props) {
   const { answerId, setAnswerId } = props;
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [comment, setComment] = useState("");
 
   const getSelectedAnswer = (answerId) => {
     axios
@@ -26,8 +27,10 @@ export default function EachAnswerPage(props) {
       {selectedAnswer && (
         <CommentList
           selectedAnswer={selectedAnswer}
-          setNewComments={setSelectedAnswer}
+          setSelectedAnswer={setSelectedAnswer}
           setAnswerId={setAnswerId}
+          setComment={setComment}
+          comment={comment}
         />
       )}
     </>
