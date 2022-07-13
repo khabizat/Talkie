@@ -9,11 +9,12 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    const { question, tag } = req.body;
+    const { question, tag, userId } = req.body;
 
-    db.query(`INSERT INTO questions (name, tag_id) VALUES ($1, $2)`, [
+    db.query(`INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3)`, [
       question,
       tag,
+      userId
     ])
       .then((response) => {
         return res.json(response.rows);
