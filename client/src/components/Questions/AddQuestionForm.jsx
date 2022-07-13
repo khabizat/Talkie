@@ -33,9 +33,10 @@ const options = [
 
 
 export default function AddQuestionForm(props) {
-
+  const {tagId, setTagId} = props;
   const [question, setQuestion] = useState("");
   const [tag, setTag] = useState(null);
+
 
   const history = useHistory();
   
@@ -81,7 +82,7 @@ export default function AddQuestionForm(props) {
                 placeholder="Select tag..."
                 onChange={(selectedOption) => setTag(selectedOption.value)}
                 options={options}
-                defaultValue = {tag}
+                // defaultValue = {tag}
               />
               <div className="flex justify-center items-center mt-6">
                 <button onClick={handleQuestionSubmit}

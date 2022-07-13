@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import HomePage from "./components/Home/HomePage";
@@ -13,6 +12,7 @@ import QuestionsPage from "./components/Questions/QuestionsPage";
 import AddQuestionForm from "./components/Questions/AddQuestionForm";
 
 function App() {
+  const [tagId, setTagId] = useState(null);
   return (
     <Router>
       <Switch>
@@ -26,10 +26,10 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/questions">
-          <QuestionsPage />
+          <QuestionsPage tagId={tagId} setTagId={setTagId}/>
         </Route>
         <Route exact path="/questions/new">
-          <AddQuestionForm />
+          <AddQuestionForm tagId={tagId} setTagId={setTagId}/>
         </Route>
       </Switch>
     </Router>
