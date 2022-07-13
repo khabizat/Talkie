@@ -12,6 +12,7 @@ export default function EachQuestionPage(props) {
       .get(`/api/questions/${questionId}`)
       .then((response) => {
         setSelectedQuestion(response.data);
+        console.log(questionId, response.data);
       })
       .catch((err) => console.log(err));
   };
@@ -24,12 +25,13 @@ export default function EachQuestionPage(props) {
 
   return (
     <>
-      <button 
+      <button
         onClick={() => setQuestionId(null)}
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >Back
+      >
+        Back
       </button>
-      {selectedQuestion && selectedQuestion[0].name}
+      {selectedQuestion && selectedQuestion[0] && selectedQuestion[0].name}
       <Recorder />
       {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
     </>
