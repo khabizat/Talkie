@@ -12,7 +12,7 @@ export default function HomePage() {
     if (user) {
       setCurrentUser(user);
     }
-  }, [currentUser, setCurrentUser]);
+  }, []);
 
   return (
     <>

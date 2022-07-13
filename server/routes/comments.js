@@ -23,18 +23,18 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/", (req, res) => {
-    const { comment_id } = req.body;
-
+  router.delete("/:commentId", (req, res) => {
+    const { commentId } = req.params;
+    console.log(commentId);
     db.query(
-      `DELETE FROM comments 
+      `DELETE FROM comments
     WHERE id = $1
     RETURNING *;
     `,
-      [comment_id]
+      [commentId]
     )
       .then((response) => {
-        console.log(response.row);
+        console.log(response.rows);
         res.json(response.rows);
       })
       .catch((err) => {

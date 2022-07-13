@@ -2,28 +2,37 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 export default function CommentListItem(props) {
-  const [commentId, setCommentId] = useState(null);
-  const { user_id, comment_id, comment, timestamp } = props;
+  const {
+    user_id,
+    comment_id,
+    comment,
+    timestamp,
+    selectedAnswer,
+    setSelectedAnswer,
+  } = props;
 
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
-  const handleDelete = () => {
-    setCommentId(comment_id);
+  const handleDelete = (e) => {
+    e.preventDefault();
 
     axios
-      .post("/api/comments", commentId)
+      .delete(`/api/comments/${comment_id}`)
       .then((response) => {
-        console.log(response.data);
+        const commentIndex = selectedAnswer.findIndex(
+          (e) => e.comment_id === comment_id
+        );
+        const thisComment = [...selectedAnswer];
+        thisComment.splice(commentIndex, 1);
+        setSelectedAnswer(thisComment);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  useEffect(() => {
-    handleDelete();
-  }, commentId);
+  useEffect(() => {}, [selectedAnswer]);
 
   return (
     <>
