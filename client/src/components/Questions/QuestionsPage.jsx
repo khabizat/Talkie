@@ -34,13 +34,19 @@ export default function QuestionsPage() {
             <div
               onClick={() => {
                 setTagId(tag.id);
+                setQuestionId(null);
               }}
             >
               {tag.name}
             </div>
           ))}
       </section>
-      {questionId && <EachQuestionPage questionId={questionId} />}
+      {questionId && (
+        <EachQuestionPage
+          questionId={questionId}
+          setQuestionId={setQuestionId}
+        />
+      )}
       {!tagId && !questionId && (
         <>
           <button onClick={handleAddQuestion}>Add questions</button>

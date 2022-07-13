@@ -4,7 +4,7 @@ import CommentListItem from "./CommentListItem";
 
 export default function CommentList(props) {
   const [comment, setComment] = useState("");
-  const { selectedAnswer, setNewComments } = props;
+  const { selectedAnswer, setNewComments, setAnswerId } = props;
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
@@ -43,6 +43,7 @@ export default function CommentList(props) {
 
   return (
     <>
+      <button onClick={() => setAnswerId(null)}>...Back...</button>
       <form>
         <h6>Leave your feedback</h6>
         <input
