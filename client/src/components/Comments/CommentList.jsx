@@ -43,7 +43,11 @@ export default function CommentList(props) {
 
   return (
     <>
-      <button onClick={() => setAnswerId(null)}>...Back...</button>
+      <button 
+        onClick={() => setAnswerId(null)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >Back
+        </button>
       <form>
         <h6>Leave your feedback</h6>
         <input
