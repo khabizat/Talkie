@@ -4,7 +4,7 @@ import CommentListItem from "./CommentListItem";
 
 export default function CommentList(props) {
   const [comment, setComment] = useState("");
-  const { selectedAnswer, setNewComments, setAnswerId } = props;
+  const { selectedAnswer, setSelectedAnswer, setAnswerId } = props;
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
@@ -21,7 +21,7 @@ export default function CommentList(props) {
     axios
       .post("/api/comments", commentInfo)
       .then((response) => {
-        setNewComments((prev) => {
+        setSelectedAnswer((prev) => {
           return [...prev, response.data[0]];
         });
         setComment("");

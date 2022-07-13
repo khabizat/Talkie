@@ -26,7 +26,7 @@ export default function EachAnswerPage(props) {
       {selectedAnswer && (
         <CommentList
           selectedAnswer={selectedAnswer}
-          setNewComments={setSelectedAnswer}
+          setSelectedAnswer={setSelectedAnswer}
           setAnswerId={setAnswerId}
         />
       )}
