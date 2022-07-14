@@ -25,10 +25,13 @@ export default function QuestionList(props) {
         questions.map((question) => (
           <li key={question.id}>
             <QuestionListItem
-              id={question.id}
+              questionId={question.id}
               key={question.id}
+              user_id={question.user_id}
               name={question.name}
               date={question.date}
+              questions={questions}
+              setQuestions={setQuestions}
               setQuestionId={setQuestionId}
             />
           </li>
