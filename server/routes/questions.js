@@ -11,11 +11,10 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const { question, tag, userId } = req.body;
 
-    db.query(`INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3)`, [
-      question,
-      tag,
-      userId
-    ])
+    db.query(
+      `INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3)`,
+      [question, tag, userId]
+    )
       .then((response) => {
         return res.json(response.rows);
       })
@@ -31,7 +30,7 @@ module.exports = (db) => {
     const queryString = `
     SELECT answers.id as answer_id, answers.audio_url as audio_url, questions.tag_id as tag_id, questions.name as name, answers.date as date 
     FROM questions 
-    JOIN answers 
+    LEFT JOIN answers 
     ON answers.question_id = questions.id 
     WHERE questions.id = $1`;
 
@@ -57,5 +56,21 @@ module.exports = (db) => {
       });
   });
 
+  router.delete("/:questionId", (req, res) => {
+    const { questionId } = req.params;
+    db.query(
+      `DELETE FROM questions
+      WHERE id = $1
+      RETURNING *;
+      `,
+      [questionId]
+    )
+      .then((response) => {
+        res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   return router;
 };

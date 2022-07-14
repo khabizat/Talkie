@@ -23,12 +23,15 @@ export default function QuestionList(props) {
     <section>
       {questions &&
         questions.map((question) => (
-          <li>
+          <li key={question.id}>
             <QuestionListItem
-              id={question.id}
+              questionId={question.id}
               key={question.id}
+              user_id={question.user_id}
               name={question.name}
               date={question.date}
+              questions={questions}
+              setQuestions={setQuestions}
               setQuestionId={setQuestionId}
             />
           </li>

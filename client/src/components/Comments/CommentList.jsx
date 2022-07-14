@@ -6,6 +6,7 @@ export default function CommentList(props) {
   const {
     selectedAnswer,
     setSelectedAnswer,
+    answerId,
     setAnswerId,
     comment,
     setComment,
@@ -13,11 +14,13 @@ export default function CommentList(props) {
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
+  const userName = findUser.name;
 
   const commentInfo = {
-    userId: userId,
-    answerId: selectedAnswer[0].answer_id,
-    comment: comment,
+    userId,
+    userName,
+    answerId,
+    comment,
   };
 
   const handleCommentButton = (e) => {
@@ -29,6 +32,7 @@ export default function CommentList(props) {
         setSelectedAnswer((prev) => {
           const comment = response.data[0];
           comment.comment_id = comment.id;
+          console.log(comment);
           return [...prev, comment];
         });
         setComment("");
@@ -39,9 +43,12 @@ export default function CommentList(props) {
   };
 
   const comments = selectedAnswer.map((sA) => {
+    console.log(sA);
     return (
       <CommentListItem
+        key={sA.comment_id}
         user_id={sA.user_id}
+        comment_name={sA.name}
         comment_id={sA.comment_id}
         comment={sA.comment}
         timestamp={sA.timestamp}
@@ -53,11 +60,12 @@ export default function CommentList(props) {
 
   return (
     <>
-      <button 
+      <button
         onClick={() => setAnswerId(null)}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >Back
-        </button>
+      >
+        Back
+      </button>
       <form>
         <h6>Leave your feedback</h6>
         <input
