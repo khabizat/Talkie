@@ -8,12 +8,12 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    const { userId, answerId, comment } = req.body;
+    const { userId, userName, answerId, comment } = req.body;
 
     db.query(
-      `INSERT INTO comments (user_id, answer_id, comment) 
-    VALUES ($1, $2, $3) RETURNING *;`,
-      [userId, answerId, comment]
+      `INSERT INTO comments (user_id, name, answer_id, comment) 
+    VALUES ($1, $2, $3, $4) RETURNING *;`,
+      [userId, userName, answerId, comment]
     )
       .then((response) => {
         res.json(response.rows);
