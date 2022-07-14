@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import HomePage from "./components/Home/HomePage";
 import QuestionsPage from "./components/Questions/QuestionsPage";
 import AddQuestionForm from "./components/Questions/AddQuestionForm";
+import User from "./components/User";
 
 function App() {
   const [tagId, setTagId] = useState(null);
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route exact path="/register">
           <Register />
+        </Route>
+        <Route exact path="/user">
+          <User userID={userId} />
         </Route>
         <Route exact path="/questions">
           <QuestionsPage tagId={tagId} setTagId={setTagId}/>
