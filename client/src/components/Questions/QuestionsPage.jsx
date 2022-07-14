@@ -50,7 +50,7 @@ export default function QuestionsPage(props) {
         </>
       )}
 
-      {tagId && (
+      {tagId && !questionId && (
         <>
           <button
             onClick={handleAddQuestion}
