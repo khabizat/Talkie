@@ -14,9 +14,11 @@ export default function CommentList(props) {
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
+  const userName = findUser.name;
 
   const commentInfo = {
     userId,
+    userName,
     answerId,
     comment,
   };
@@ -44,6 +46,7 @@ export default function CommentList(props) {
       <CommentListItem
         key={sA.comment_id}
         user_id={sA.user_id}
+        comment_name={sA.comment_name}
         comment_id={sA.comment_id}
         comment={sA.comment}
         timestamp={sA.timestamp}
