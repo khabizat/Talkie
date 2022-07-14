@@ -1,7 +1,9 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 export default function CommentListItem(props) {
+  const [good, setGood] = useState(0);
+  const [bad, setBad] = useState(0);
   const {
     user_id,
     comment_name,
@@ -32,11 +34,21 @@ export default function CommentListItem(props) {
         console.log(err);
       });
   };
+  const goodIncrement = () => {
+    setGood(good + 1);
+  };
 
+  const badIncrement = () => {
+    setBad(bad + 1);
+  };
   return (
     <>
       {creatorId === user_id ? (
         <>
+          <button onClick={goodIncrement}>Good</button>
+          <div>{good}</div>
+          <button onClick={badIncrement}>Bad</button>
+          <div>{bad}</div>
           <div>{comment_name}</div>
           <div>{comment}</div>
           <div>{timestamp}</div>
@@ -44,6 +56,10 @@ export default function CommentListItem(props) {
         </>
       ) : (
         <>
+          <button onClick={goodIncrement}>Good</button>
+          <div>{good}</div>
+          <button onClick={badIncrement}>Bad</button>
+          <div>{bad}</div>
           <div>{comment_name}</div>
           <div>{comment}</div>
           <div>{timestamp}</div>
