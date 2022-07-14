@@ -1,5 +1,6 @@
 INSERT INTO tags (name)
 VALUES
+('All'),
 ('Data Structures and Algorithms'),
 ('JavaScript'),
 ('HLML'),
