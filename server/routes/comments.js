@@ -16,7 +16,6 @@ module.exports = (db) => {
       [userId, userName, answerId, comment]
     )
       .then((response) => {
-        console.log(response.row);
         res.json(response.rows);
       })
       .catch((err) => {
