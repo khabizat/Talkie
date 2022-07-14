@@ -7,7 +7,8 @@ module.exports = (db) => {
       questions.date as date, questions.tag_id as tag_id, 
       users.name as user_name FROM questions 
       JOIN users 
-      ON users.id = questions.user_id;`
+      ON users.id = questions.user_id
+      ORDER BY questions.date DESC;`
     ).then((response) => {
       res.json(response.rows);
     });

@@ -14,7 +14,17 @@ module.exports = (db) => {
   router.get("/:tagId/questions", (req, res) => {
     const { tagId } = req.params;
 
-    db.query(`SELECT * FROM questions WHERE tag_id = $1`, [tagId])
+    db.query(
+      `SELECT questions.id as id, questions.name as name, 
+      questions.date as date, questions.user_id as user_id, 
+      questions.tag_id as tag_id, users.name as user_name
+      FROM questions 
+      JOIN users
+      ON users.id = questions.user_id
+      WHERE tag_id = $1
+      ORDER BY date DESC;`,
+      [tagId]
+    )
       .then((response) => {
         return res.json(response.rows);
       })

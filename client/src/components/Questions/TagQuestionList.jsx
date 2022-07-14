@@ -28,16 +28,17 @@ export default function TagQuestionList(props) {
               <TagQuestionListItem
                 key={tagQuestion.id}
                 questionId={tagQuestion.id}
-                user_id={tagQuestion.user_id}
                 name={tagQuestion.name}
                 date={tagQuestion.date}
+                user_id={tagQuestion.user_id}
                 tag={tagQuestion.tag_id}
+                user_name={tagQuestion.user_name}
                 tagQuestions={tagQuestions}
                 setTagQuestions={setTagQuestions}
                 setQuestionId={setQuestionId}
               />
             </li>
-          </ol>  
+          </ol>
         ))}
     </section>
   );
