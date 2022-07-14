@@ -27,9 +27,9 @@ module.exports = (db) => {
     const { commentId } = req.params;
     db.query(
       `DELETE FROM comments
-    WHERE id = $1
-    RETURNING *;
-    `,
+      WHERE id = $1
+      RETURNING *;
+      `,
       [commentId]
     )
       .then((response) => {
