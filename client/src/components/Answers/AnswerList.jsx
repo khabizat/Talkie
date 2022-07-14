@@ -17,6 +17,7 @@ export default function AnswerList(props) {
               answer_id={sQ.answer_id}
               audio_url={sQ.audio_url}
               date={sQ.date}
+              user_name={sQ.user_name}
               setAnswerId={setAnswerId}
             />
           </li>
