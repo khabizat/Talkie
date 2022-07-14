@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AnswerList from "../Answers/AnswerList";
-import Recorder from "../Recorder";
+import Recorder from "../AddAnswer";
+import AddAnswer from "../AddAnswer";
 
 export default function EachQuestionPage(props) {
   const { questionId, setQuestionId } = props;
@@ -31,7 +32,7 @@ export default function EachQuestionPage(props) {
         Back
       </button>
       {selectedQuestion && selectedQuestion[0] && selectedQuestion[0].name}
-      <Recorder />
+      <AddAnswer />
       {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
     </>
   );
