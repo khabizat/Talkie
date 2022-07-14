@@ -5,7 +5,6 @@ import EachAnswerPage from "./EachAnswerPage";
 export default function AnswerList(props) {
   const [answerId, setAnswerId] = useState(null);
   const { selectedQuestion } = props;
-  console.log("asdasdasasd", selectedQuestion);
   return (
     <section>
       {answerId && (

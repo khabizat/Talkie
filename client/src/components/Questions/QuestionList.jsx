@@ -24,14 +24,16 @@ export default function QuestionList(props) {
       {questions &&
         questions.map((question) => (
           <ol role="list" className="p-4 divide-y divide-slate-100">
-            <li>
+            <li key={question.id}>
               <QuestionListItem
-                id={question.id}
+                questionId={question.id}
                 key={question.id}
+                user_id={question.user_id}
                 name={question.name}
                 date={question.date}
-                user={question.user_id}
                 tag={question.tag_id}
+                questions={questions}
+                setQuestions={setQuestions}
                 setQuestionId={setQuestionId}
               />
             </li>

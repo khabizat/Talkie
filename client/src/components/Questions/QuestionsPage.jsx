@@ -6,8 +6,9 @@ import TagQuestionList from "./TagQuestionList";
 import TagList from "./TagList";
 
 export default function QuestionsPage(props) {
-  const {tagId, setTagId} = props;
+  const [seeAll, setSeeAll] = useState(true);
   const [questionId, setQuestionId] = useState(null);
+  const { tagId, setTagId } = props;
 
   const history = useHistory();
 
@@ -15,13 +16,20 @@ export default function QuestionsPage(props) {
     history.push("/questions/new");
   };
 
+  const handleSeeAll = () => {
+    setSeeAll(true);
+    setTagId(null);
+  };
+
   return (
     <>
       <div className="mb-8">
         <h1>Select a category</h1>
+        <button onClick={handleSeeAll}>See All</button>
         <TagList 
           setTagId={setTagId}
           setQuestionId={setQuestionId}
+          setSeeAll={setSeeAll}
         />
       </div>
 
@@ -33,9 +41,9 @@ export default function QuestionsPage(props) {
         />
       )}
 
-      {!tagId && !questionId && (
+      {seeAll && !tagId && (
         <>
-          <button 
+          <button
             onClick={handleAddQuestion}
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded flex items-center gap-2"
           >
@@ -49,11 +57,14 @@ export default function QuestionsPage(props) {
         </>
       )}
 
-      {tagId && !questionId && (
+      {tagId && (
         <>
-          <button onClick={handleAddQuestion}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >Add questions</button>
+          <button
+            onClick={handleAddQuestion}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Add questions
+          </button>
           <TagQuestionList tagId={tagId} setQuestionId={setQuestionId} />
         </>
       )}

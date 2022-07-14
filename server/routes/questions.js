@@ -56,5 +56,21 @@ module.exports = (db) => {
       });
   });
 
+  router.delete("/:questionId", (req, res) => {
+    const { questionId } = req.params;
+    db.query(
+      `DELETE FROM questions
+      WHERE id = $1
+      RETURNING *;
+      `,
+      [questionId]
+    )
+      .then((response) => {
+        res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   return router;
 };
