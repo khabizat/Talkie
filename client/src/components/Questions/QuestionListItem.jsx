@@ -38,11 +38,11 @@ export default function QuestionListItem(props) {
       {/* If user logged in */}
       {creatorId === user_id ? (
         <>
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg dark:bg-gray-800 transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
           {/* Header of the container */}
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="font-bold text-gray-700 cursor-pointer dark:text-gray-200">{user_id}</span> 
+              <span className="font-bold text-gray-700 cursor-pointer">{user_id}</span> 
               <span className="text-xs text-neutral-500">{date}</span>
               <button onClick={handleDelete}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -52,35 +52,35 @@ export default function QuestionListItem(props) {
             </div> 
           {/* Body of the container */}
             <div className="mt-2">
-              <p className="text-2xl font-bold text-gray-600 dark:text-white hover:text-gray-600 dark:hover:text-gray-200">{name}</p> 
+              <p className="text-2xl font-bold text-gray-600 hover:text-gray-600">{name}</p> 
             </div> 
           {/* Footer of the container */}
             <div className="flex items-center justify-between mt-4">
               <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold  text-neutral-500">{tag} tag here</button>
               <div className="flex items-center">
-              <button onClick={() => setQuestionId(questionId)} class="text-blue-600 dark:text-blue-400 hover:underline hover:cursor-pointer ">Listen to the answers ⟶</button>
+              <button onClick={() => setQuestionId(questionId)} class="text-blue-600 hover:underline hover:cursor-pointer ">Listen to the answers ⟶</button>
               </div>
             </div>
-          </div>    
+          </div>   
         </>
       ) : (
           //If user not logged in (no delete button)
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg dark:bg-gray-800 transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
           {/* Header of the container */}
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="font-bold text-gray-700 cursor-pointer dark:text-gray-200">{user_id}</span> 
+              <span className="font-bold text-gray-700 cursor-pointer">{user_id}</span> 
               <span className="text-xs text-neutral-500">{date}</span>
             </div> 
           {/* Body of the container */}
             <div className="mt-2">
-              <p className="text-2xl font-bold text-gray-600 dark:text-white hover:text-gray-600 dark:hover:text-gray-200">{name}</p> 
+              <p className="text-2xl font-bold text-gray-600 hover:text-gray-600">{name}</p> 
             </div> 
           {/* Footer of the container */}
             <div className="flex items-center justify-between mt-4">
               <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold  text-neutral-500">{tag} tag here</button>
               <div className="flex items-center">
-              <button onClick={() => setQuestionId(questionId)} class="text-blue-600 dark:text-blue-400 hover:underline hover:cursor-pointer ">Listen to the answers ⟶</button>
+              <button onClick={() => setQuestionId(questionId)} class="text-blue-600 hover:underline hover:cursor-pointer ">Listen to the answers ⟶</button>
               </div>
             </div>
           </div>     
