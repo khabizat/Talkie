@@ -12,7 +12,6 @@ export default function EachQuestionPage(props) {
       .get(`/api/questions/${questionId}`)
       .then((response) => {
         setSelectedQuestion(response.data);
-        console.log(questionId, response.data);
       })
       .catch((err) => console.log(err));
   };

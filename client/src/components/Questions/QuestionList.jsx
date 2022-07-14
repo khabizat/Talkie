@@ -23,7 +23,7 @@ export default function QuestionList(props) {
     <section>
       {questions &&
         questions.map((question) => (
-          <li>
+          <li key={question.id}>
             <QuestionListItem
               id={question.id}
               key={question.id}

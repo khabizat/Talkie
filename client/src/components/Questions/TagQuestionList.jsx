@@ -24,10 +24,13 @@ export default function TagQuestionList(props) {
       {tagQuestions &&
         tagQuestions.map((tagQuestion) => (
           <TagQuestionListItem
-            id={tagQuestion.id}
             key={tagQuestion.id}
+            questionId={tagQuestion.id}
+            user_id={tagQuestion.user_id}
             name={tagQuestion.name}
             date={tagQuestion.date}
+            tagQuestions={tagQuestions}
+            setTagQuestions={setTagQuestions}
             setQuestionId={setQuestionId}
           />
         ))}
