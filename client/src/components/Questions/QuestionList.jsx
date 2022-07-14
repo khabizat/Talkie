@@ -32,6 +32,7 @@ export default function QuestionList(props) {
                 name={question.name}
                 date={question.date}
                 tag={question.tag_id}
+                user_name={question.user_name}
                 questions={questions}
                 setQuestions={setQuestions}
                 setQuestionId={setQuestionId}

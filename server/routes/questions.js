@@ -2,8 +2,14 @@ const router = require("express").Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const command = "SELECT * FROM questions";
-    db.query(command).then((response) => {
+    db.query(
+      `SELECT questions.id as id, questions.user_id as user_id, questions.name as name, 
+      questions.date as date, questions.tag_id as tag_id, 
+      users.name as user_name FROM questions 
+      JOIN users 
+      ON users.id = questions.user_id
+      ORDER BY questions.date DESC;`
+    ).then((response) => {
       res.json(response.rows);
     });
   });
@@ -28,10 +34,15 @@ module.exports = (db) => {
     const { questionId } = req.params;
 
     const queryString = `
-    SELECT answers.id as answer_id, answers.audio_url as audio_url, questions.tag_id as tag_id, questions.name as name, answers.date as date 
+    SELECT answers.id as answer_id, 
+    answers.audio_url as audio_url, answers.date as date,
+    questions.tag_id as tag_id, questions.name as name, 
+    users.name as user_name
     FROM questions 
     LEFT JOIN answers 
     ON answers.question_id = questions.id 
+    JOIN users
+    ON users.id = answers.user_id
     WHERE questions.id = $1`;
 
     db.query(queryString, [questionId])
