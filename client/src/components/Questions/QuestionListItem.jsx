@@ -42,7 +42,7 @@ export default function QuestionListItem(props) {
             {/* Header of the container */}
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="font-bold text-gray-700 cursor-pointer">
+              <span className="text-xs text-neutral-500">
                 {user_name}
               </span>
               <span className="text-xs text-neutral-500">{date}</span>
@@ -91,7 +91,7 @@ export default function QuestionListItem(props) {
           {/* Header of the container */}
           <div className="flex items-center justify-between">
             <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-            <span className="font-bold text-gray-700 cursor-pointer">
+            <span className="text-xs text-neutral-500">
               {user_name}
             </span>
             <span className="text-xs text-neutral-500">{date}</span>
