@@ -19,6 +19,7 @@ export default function QuestionsPage(props) {
   const handleSeeAll = () => {
     setSeeAll(true);
     setTagId(null);
+    setQuestionId(null);
   };
 
   return (
@@ -38,7 +39,7 @@ export default function QuestionsPage(props) {
         />
       )}
 
-      {seeAll && !tagId && (
+      {seeAll && !questionId && !tagId && (
         <>
           <button
             onClick={handleAddQuestion}
@@ -50,7 +51,7 @@ export default function QuestionsPage(props) {
         </>
       )}
 
-      {tagId && (
+      {tagId && !questionId && (
         <>
           <button
             onClick={handleAddQuestion}

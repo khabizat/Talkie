@@ -14,9 +14,11 @@ export default function CommentList(props) {
 
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
+  const userName = findUser.name;
 
   const commentInfo = {
     userId,
+    userName,
     answerId,
     comment,
   };
@@ -30,6 +32,7 @@ export default function CommentList(props) {
         setSelectedAnswer((prev) => {
           const comment = response.data[0];
           comment.comment_id = comment.id;
+          console.log(comment);
           return [...prev, comment];
         });
         setComment("");
@@ -40,10 +43,12 @@ export default function CommentList(props) {
   };
 
   const comments = selectedAnswer.map((sA) => {
+    console.log(sA);
     return (
       <CommentListItem
         key={sA.comment_id}
         user_id={sA.user_id}
+        comment_name={sA.name}
         comment_id={sA.comment_id}
         comment={sA.comment}
         timestamp={sA.timestamp}

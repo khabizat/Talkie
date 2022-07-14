@@ -4,6 +4,7 @@ import React from "react";
 export default function CommentListItem(props) {
   const {
     user_id,
+    comment_name,
     comment_id,
     comment,
     timestamp,
@@ -36,14 +37,14 @@ export default function CommentListItem(props) {
     <>
       {creatorId === user_id ? (
         <>
-          <div>{user_id}</div>
+          <div>{comment_name}</div>
           <div>{comment}</div>
           <div>{timestamp}</div>
           <button onClick={handleDelete}>Delete</button>
         </>
       ) : (
         <>
-          <div>{user_id}</div>
+          <div>{comment_name}</div>
           <div>{comment}</div>
           <div>{timestamp}</div>
         </>
