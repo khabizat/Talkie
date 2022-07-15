@@ -38,9 +38,13 @@ export default function EachQuestionPage(props) {
           <Recorder />
         </div>
         {/* Answers section */}
-        {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
+        {selectedQuestion && (
+          <AnswerList
+            selectedQuestion={selectedQuestion}
+            setSelectedQuestion={setSelectedQuestion}
+          />
+        )}
       </div>
-    
     </>
   );
 }

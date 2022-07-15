@@ -34,7 +34,7 @@ module.exports = (db) => {
     const { questionId } = req.params;
 
     const queryString = `
-    SELECT answers.id as answer_id, 
+    SELECT answers.id as answer_id, answers.user_id as user_id,
     answers.audio_url as audio_url, answers.date as date,
     questions.tag_id as tag_id, questions.name as name, 
     users.name as user_name

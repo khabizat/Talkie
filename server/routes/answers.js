@@ -21,5 +21,22 @@ module.exports = (db) => {
       });
   });
 
+  router.delete("/:answerId", (req, res) => {
+    const { answerId } = req.params;
+    db.query(
+      `DELETE FROM answers
+      WHERE id = $1
+      RETURNING *;
+      `,
+      [answerId]
+    )
+      .then((response) => {
+        res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   return router;
 };
