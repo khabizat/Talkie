@@ -31,9 +31,21 @@ export default function EachQuestionPage(props) {
       >
         Back
       </button>
-      {selectedQuestion && selectedQuestion[0] && selectedQuestion[0].name}
-      <AddAnswer />
-      {selectedQuestion && <AnswerList selectedQuestion={selectedQuestion} />}
+
+      {/* orange container that holds everything */}
+      <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-orange-200 rounded-lg border p-5 shadow-lg transition hover:bg-orange-300 hover:border-blue-100">
+        {selectedQuestion && selectedQuestion[0] && selectedQuestion[0].name}
+        <div className="grid justify-items-center pb-2">
+        <AddAnswer />
+        </div>
+        {/* Answers section */}
+        {selectedQuestion && (
+          <AnswerList
+            selectedQuestion={selectedQuestion}
+            setSelectedQuestion={setSelectedQuestion}
+          />
+        )}
+      </div>
     </>
   );
 }
