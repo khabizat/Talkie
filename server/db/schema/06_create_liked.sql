@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS liked CASCADE;
+
+CREATE TABLE liked (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  question_name TEXT NOT NULL,
+  tag_name TEXT NOT NULL
+);

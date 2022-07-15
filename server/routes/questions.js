@@ -5,9 +5,12 @@ module.exports = (db) => {
     db.query(
       `SELECT questions.id as id, questions.user_id as user_id, questions.name as name, 
       questions.date as date, questions.tag_id as tag_id, 
-      users.name as user_name FROM questions 
+      users.name as user_name, tags.name as tag_name 
+      FROM questions
       JOIN users 
       ON users.id = questions.user_id
+      JOIN tags
+      ON questions.tag_id = tags.id
       ORDER BY questions.date DESC;`
     ).then((response) => {
       res.json(response.rows);
@@ -25,7 +28,6 @@ module.exports = (db) => {
         return res.json(response.rows);
       })
       .catch((err) => {
-        console.log("query ERROR");
         return res.json(err);
       });
   });
@@ -55,9 +57,17 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/:tagId", (req, res) => {
-    const { tagId } = req.params;
-    db.query(`SELECT * FROM questions WHERE tag_id = $1`, [tagId])
+  router.get("/user/:userId", (req, res) => {
+    const { userId } = req.params;
+    db.query(
+      `SELECT questions.name as question_name, 
+      questions.date as date, tags.name as tag_name
+      FROM questions 
+      JOIN tags
+      ON questions.tag_id = tags.id
+      WHERE user_id = $1`,
+      [userId]
+    )
       .then((response) => {
         return res.json(response.rows);
       })

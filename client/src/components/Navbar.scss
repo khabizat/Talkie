@@ -10,3 +10,11 @@ nav {
   width: 4em;
   height: 4em;
 }
+
+#user {
+  cursor: pointer;
+}
+
+#user:hover {
+  color: rgb(55, 55, 190);
+}
