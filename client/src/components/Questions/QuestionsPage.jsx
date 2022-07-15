@@ -25,8 +25,12 @@ export default function QuestionsPage(props) {
   return (
     <>
       <div className="mb-8">
+        <button
+          onClick={handleSeeAll}
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+        >See All Questions
+        </button>
         <h1>Select a category</h1>
-        <button onClick={handleSeeAll}>See All</button>
         <TagList 
           setTagId={setTagId}
           setQuestionId={setQuestionId}
