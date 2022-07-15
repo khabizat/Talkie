@@ -34,6 +34,7 @@ export default function CommentListItem(props) {
         console.log(err);
       });
   };
+  
   const goodIncrement = () => {
     setGood(good + 1);
   };
