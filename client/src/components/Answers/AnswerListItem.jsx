@@ -46,11 +46,27 @@ export default function AnswerListItem(props) {
         {/* Header of the container */}
         {creatorId === user_id ? (
           <>
-            <button onClick={handleDelete}>Delete</button>
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
               <span className="text-xs text-neutral-500">{user_name}</span>
               <span className="text-xs text-neutral-500">{date}</span>
+              {/* delete button */}
+              <button onClick={handleDelete}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </button>
             </div>
             {/* Body of the container */}
             <div className="mt-2">
@@ -59,7 +75,6 @@ export default function AnswerListItem(props) {
               </span>
             </div>
             {/* Footer of the container */}
-            {/* <div className="flex items-center justify-between mt-4"> */}
             <div className="flex justify-end">
               {/* comment button */}
               <button onClick={() => setAnswerId(answer_id)}>
@@ -95,7 +110,7 @@ export default function AnswerListItem(props) {
                   />
                 </svg>
               </button>
-              <div>{good}</div>
+              <span>{good}</span>
             </div>
           </>
         ) : (
@@ -148,7 +163,7 @@ export default function AnswerListItem(props) {
                   />
                 </svg>
               </button>
-              <div>{good}</div>
+              <span>{good}</span>
             </div>
           </>
         )}

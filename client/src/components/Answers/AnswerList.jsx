@@ -7,9 +7,11 @@ export default function AnswerList(props) {
   const { selectedQuestion, setSelectedQuestion } = props;
   return (
     <section>
+
       {answerId && (
         <EachAnswerPage answerId={answerId} setAnswerId={setAnswerId} />
       )}
+     
       {!answerId &&
         selectedQuestion.map((sQ) => (
           <ol role="list">
