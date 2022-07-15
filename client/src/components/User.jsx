@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 export default function User() {
   const [myQuestions, setMyQuestions] = useState(null);
   const [myAnswers, setMyAnswers] = useState(null);
+  const [favourites, setFavourites] = useState(null);
   const findUser = JSON.parse(localStorage.getItem("user"));
   const userId = findUser.id;
 
@@ -29,9 +30,21 @@ export default function User() {
       });
   };
 
+  const handleFavourites = () => {
+    axios
+      .get(`/api/liked/user/${userId}`)
+      .then((response) => {
+        setFavourites(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     handleMyQuestions(userId);
     handleMyAnswers(userId);
+    handleFavourites(userId);
   }, []);
 
   return (
@@ -56,6 +69,13 @@ export default function User() {
           </>
         ))}
       <div>Favorites Questions</div>
+      {favourites &&
+        favourites.map((favourite) => (
+          <>
+            <div>Question: {favourite.question_name}</div>
+            <div>Tag: {favourite.tag_name}</div>
+          </>
+        ))}
     </section>
   );
 }

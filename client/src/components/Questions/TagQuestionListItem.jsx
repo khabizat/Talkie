@@ -42,6 +42,7 @@ export default function TagQuestionListItem(props) {
           <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
             {/* Header of the container */}
             <div className="flex items-center justify-between">
+              <button>heart</button>
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
               <span className="font-bold text-gray-700 cursor-pointer">
                 {user_name}

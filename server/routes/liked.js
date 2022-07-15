@@ -27,5 +27,17 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/user/:userId", (req, res) => {
+    const { userId } = req.params;
+
+    db.query(`SELECT * FROM liked WHERE user_id = $1`, [userId])
+      .then((response) => {
+        return res.json(response.rows);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return router;
 };
