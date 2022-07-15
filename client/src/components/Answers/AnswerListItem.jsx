@@ -56,6 +56,7 @@ export default function AnswerListItem(props) {
             <div className="mt-2">
               <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
                 {audio_url}
+                <audio src={ audio_url } controls="controls" className="audio-player"/>
               </span>
             </div>
             {/* Footer of the container */}
@@ -157,3 +158,5 @@ export default function AnswerListItem(props) {
     </div>
   );
 }
+
+
