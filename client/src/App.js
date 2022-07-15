@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import HomePage from "./components/Home/HomePage";
