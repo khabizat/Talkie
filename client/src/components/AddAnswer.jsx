@@ -3,7 +3,7 @@ import React from "react";
 
 import Audio from "./Audio";
 
-export default function Recorder() {
+export default function AddAnswer() {
 
   return (
     <div>
