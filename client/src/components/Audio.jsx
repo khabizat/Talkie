@@ -80,31 +80,16 @@ export default class Audio extends Component {
         this.setState({ blobURL, isRecording: false });
         this.setState({ isRecordingStp: true });
 
-        //make buffer <doesn't like input>
-        // const binary = new Buffer(buffer, 'testAudio.mp3')
-
-        
-        //make File
-        const file = new File(buffer, 'testAudio.mp3', {
-          type: blob.type,
-          lastModified: Date.now()
-        });
-        
-        // blob = binary
-        //make FormData file
-
         const audioFile = new FormData();
         audioFile.append('testAudio.mp3', blob, 'testAudio.mp3')
-        // audioFile.append('testAudio.mp3', buffer);
-        
-        //set to state for submit method below
-        this.state.recordingFile = file;
+
+
 
         axios
-          .post("/api/s3upload", audioFile) // << what to put here
-          .then((req, res) => {
-            console.log("SUCCESS!!😁😴")
-            console.log(req.body.Location)
+          .post("/api/s3upload", audioFile)
+          .then((data) => {
+            console.log(data)
+
           })
           .catch(err => console.log("TEST FROM AXIOS ERR>>", err))
         //>>
@@ -118,11 +103,6 @@ export default class Audio extends Component {
   };
 
   submit() {
-    // const timeStamp = new Date()
-    // const testObj = {description: "this is a test file", time: timeStamp}
-    // const file = JSON.parse(testObj)
-    
-    console.log("this....>>>",this.state.recordingFile)
 
     const audioFile = new FormData();
     audioFile.append('testAudio.mp3', this.state.recordingFile);

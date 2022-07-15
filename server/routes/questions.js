@@ -28,7 +28,7 @@ module.exports = (db) => {
     const { questionId } = req.params;
 
     const queryString = `
-    SELECT answers.id as answer_id, answers.audio_url as audio_url, questions.tag_id as tag_id, questions.name as name, answers.date as date 
+    SELECT answers.user_id as user_id, answers.id as answer_id, answers.audio_url as audio_url, questions.tag_id as tag_id, questions.name as name, answers.date as date 
     FROM questions 
     LEFT JOIN answers 
     ON answers.question_id = questions.id 
