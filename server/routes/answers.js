@@ -21,6 +21,28 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/user/:userId", (req, res) => {
+    const { userId } = req.params;
+    db.query(
+      `SELECT answers.audio_url as answer_audio, answers.date as date, questions.name as question_name, tags.name as tag_name
+      FROM answers
+      JOIN questions
+      ON answers.question_id = questions.id
+      JOIN tags
+      ON questions.tag_id = tags.id
+      WHERE answers.user_id = $1;`,
+      [userId]
+    )
+      .then((response) => {
+        console.log(response.rows);
+        return res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.json(err);
+      });
+  });
+
   router.delete("/:answerId", (req, res) => {
     const { answerId } = req.params;
     db.query(

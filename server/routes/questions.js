@@ -55,23 +55,18 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/:tagId", (req, res) => {
-    const { tagId } = req.params;
-    db.query(`SELECT * FROM questions WHERE tag_id = $1`, [tagId])
-      .then((response) => {
-        return res.json(response.rows);
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.json(err);
-      });
-  });
-
-  router.get("/:userId", (req, res) => {
+  router.get("/user/:userId", (req, res) => {
     const { userId } = req.params;
-    db.query(`SELECT * FROM questions WHERE user_id = $1`, [userId])
+    db.query(
+      `SELECT questions.name as question_name, 
+      questions.date as date, tags.name as tag_name
+      FROM questions 
+      JOIN tags
+      ON questions.tag_id = tags.id
+      WHERE user_id = $1`,
+      [userId]
+    )
       .then((response) => {
-        console.log(response.rows);
         return res.json(response.rows);
       })
       .catch((err) => {
