@@ -89,7 +89,6 @@ export default class Audio extends Component {
           .post("/api/s3upload", audioFile)
           .then((data) => {
             console.log(data)
-
           })
           .catch(err => console.log("TEST FROM AXIOS ERR>>", err))
         //>>

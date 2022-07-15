@@ -7,7 +7,7 @@ export default function AnswerListItem(props) {
     <div>
       <div>
         <ul onClick={() => setAnswerId(answer_id)}>
-          { user_id }
+          { answer_id }
           <audio src={ audio_url } controls="controls" className="audio-player"/> 
           {date}
         </ul>
