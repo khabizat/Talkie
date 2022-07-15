@@ -43,7 +43,6 @@ export default function CommentList(props) {
   };
 
   const comments = selectedAnswer.map((sA) => {
-    console.log(sA);
     return (
       <CommentListItem
         key={sA.comment_id}
