@@ -67,6 +67,19 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/:userId", (req, res) => {
+    const { userId } = req.params;
+    db.query(`SELECT * FROM questions WHERE user_id = $1`, [userId])
+      .then((response) => {
+        console.log(response.rows);
+        return res.json(response.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.json(err);
+      });
+  });
+
   router.delete("/:questionId", (req, res) => {
     const { questionId } = req.params;
     db.query(
