@@ -14,6 +14,7 @@ export default function CommentListItem(props) {
     setSelectedAnswer,
   } = props;
 
+
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
