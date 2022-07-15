@@ -11,7 +11,6 @@ import HomePage from "./components/Home/HomePage";
 import QuestionsPage from "./components/Questions/QuestionsPage";
 import AddQuestionForm from "./components/Questions/AddQuestionForm";
 import About from "./components/About";
-import Contact from "./components/Contact";
 import User from "./components/User";
 
 function App() {
@@ -36,9 +35,6 @@ function App() {
         </Route>
         <Route exact path="/about">
           <About />
-        </Route>
-        <Route exact path="/contact">
-          <Contact />
         </Route>
         <Route exact path="/user">
           <User />
