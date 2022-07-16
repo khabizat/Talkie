@@ -71,11 +71,11 @@ export default class Audio extends Component {
       .stop()
       .getMp3()
       .then(([buffer, blob]) => {
-
-        const blobURL = URL.createObjectURL(blob)
-        this.setState({ blobURL, isRecording: false });
+        const blobURL = URL.createObjectURL(blob) //<< unused?
+        this.setState({ blobURL, isRecording: false }); //<< blobURL unused?
         this.setState({ isRecordingStp: true });
         this.setState({ recordingFile: blob});
+        return blob
       })
       .catch((e) => console.log(e));
     };
@@ -93,20 +93,14 @@ export default class Audio extends Component {
       audioFile.append('question_id', this.props.question_id)
       audioFile.append('user_id', findUser.id)
 
-
-
-      
       axios
         .post("/api/s3upload", audioFile)
         .then((data) => {
-          //append response from insert query onto page
-          console.log("question_id:", this.props.question_id)
-          console.log("TEST FROM Audio axios data>>", data)
-          //send return to caller for appending to question arr
+          this.state.isRecording = false;
+          this.state.isRecordingStp = false;
+          return data;
         })
-
-        .catch(err => console.log("TEST FROM AXIOS ERR>>", err))
-
+        .catch(err => console.log("SUBMIT_AXIOS_ERR>>", err))
   };
 
   render() {

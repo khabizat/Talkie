@@ -21,7 +21,7 @@ export default function EachQuestionPage(props) {
     if (questionId) {
       getSelectedQuestion(questionId);
     }
-  }, []);
+  }, [selectedQuestion]); // this needs to be watched
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function EachQuestionPage(props) {
         {selectedQuestion && (
           <AnswerList
             selectedQuestion={selectedQuestion}
-            setSelectedQuestion={setSelectedQuestion}
+            setSelectedQuestion={() => setSelectedQuestion} //<< this needs to be set as 'callback' to prevent looping
           />
         )}
       </div>
