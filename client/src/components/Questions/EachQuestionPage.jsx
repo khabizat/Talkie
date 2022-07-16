@@ -23,7 +23,7 @@ export default function EachQuestionPage(props) {
     if (questionId) {
       getSelectedQuestion(questionId);
     }
-  }, []);
+  }, [selectedQuestion]); // this needs to be watched
 
   return (
     <>
@@ -33,6 +33,7 @@ export default function EachQuestionPage(props) {
       >
         Back to questions
       </button>
+
       {answerId ? (
         <>
           {/* orange container that holds everything */}
@@ -44,10 +45,10 @@ export default function EachQuestionPage(props) {
             {/* Answers section */}
             {selectedQuestion && (
               <AnswerList
-                answerId={answerId}
-                setAnswerId={setAnswerId}
-                selectedQuestion={selectedQuestion}
-                setSelectedQuestion={setSelectedQuestion}
+              answerId={answerId}
+              setAnswerId={setAnswerId}
+              selectedQuestion={selectedQuestion}
+              setSelectedQuestion={()=>setSelectedQuestion}
               />
             )}
           </div>
@@ -60,7 +61,7 @@ export default function EachQuestionPage(props) {
               selectedQuestion[0] &&
               selectedQuestion[0].name}
             <div className="grid justify-items-center pb-2">
-              <AddAnswer />
+              <AddAnswer question_id={ questionId }  />
             </div>
             {/* Answers section */}
             {selectedQuestion && (
@@ -68,7 +69,7 @@ export default function EachQuestionPage(props) {
                 answerId={answerId}
                 setAnswerId={setAnswerId}
                 selectedQuestion={selectedQuestion}
-                setSelectedQuestion={setSelectedQuestion}
+                setSelectedQuestion={()=>setSelectedQuestion}
               />
             )}
           </div>
