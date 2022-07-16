@@ -35,7 +35,6 @@ module.exports = (db) => {
       ContentType: "audio/mpeg",
       ACL: "public-read",
     };
-    console.log(params);
     //send file to s3 which returns an object with link to file in bucket. link is in data.data.Location
 
     //

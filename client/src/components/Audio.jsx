@@ -94,27 +94,16 @@ export default class Audio extends Component {
     axios
       .post("/api/s3upload", audioFile)
       .then((data) => {
-        console.log("asdasdasdasdadadasdasdasdasdasda");
         this.state.isRecording = false;
         this.state.isRecordingStp = false;
-        let test = {
-          answer_id: 2,
-          user_id: 2,
-          audio_url: "I would approach this..lkajsdlkfjer.",
-          date: "2022-07-01T04:00:00.000Z",
-          tag_id: 1,
-          name: "What is a doubly-linked list (DLL)? What are its applications?",
-          user_name: "Daniel Smith",
-        };
-        // TODO:
-        // 1. Replace the test with the data variable in the newArray
-        // 2. Add an if statement if the data does not return an error and then in the if setSelectedQuestion
-        // 3. HIGHLY RECOMMEND TO CHANGE THE BUTTON AFTER CLIKING ON THE SUBMIT BUTTON TO SHOW THAT IT'S BEING SUBMITTED, and DISABLE the button while submitting
+
+        const newAnswer = data.data;
+        const user_name = findUser.name;
+        newAnswer.user_name = user_name;
 
         if (!Object.values(data.data).includes("ERR")) {
-          let newArray = [...this.props.selectedQuestion, data.data];
+          let newArray = [...this.props.selectedQuestion, newAnswer];
           this.props.setSelectedQuestion(newArray);
-          console.log(newArray);
         }
       })
       // this.props.setFinishedRecord(true);
