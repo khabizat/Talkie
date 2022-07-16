@@ -11,7 +11,6 @@ VALUES
 
 INSERT INTO tags (name)
 VALUES
-('All'),
 ('Data Structures and Algorithms'),
 ('JavaScript'),
 ('HTML'),
@@ -80,25 +79,25 @@ VALUES
 (8, 'Michael Weiss', 7, '🤯🤯🤯', '2022-08-2'),
 (2, 'Daniel Smith', 5, 'I think this is the best answer of all time! You are a genius', '2022-05-03');
 
-INSERT INTO likes (user_id, answer_id)
+INSERT INTO liked (user_id, question_name, tag_name)
 VALUES
 
-(1, 10),
-(1, 3),
-(1, 5),
-(2, 10),
-(2, 6),
-(2, 4),
-(3, 7),
-(3, 5),
-(3, 3),
-(4, 8),
-(4, 9),
-(4, 10),
-(5, 2),
-(5, 4),
-(5, 8),
-(6, 4),
-(6, 7),
-(6, 8),
-(7, 3);
+(2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
+(2, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
+(2, 'Explain how this works in JavaScript', 'JavaScript'),
+(2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
+(2, 'What is a closure, and how/why would you use one?', 'JavaScript'),
+(2, 'What is the difference between .call and .apply?', 'JavaScript'),
+(3, 'What is a closure, and how/why would you use one?', 'JavaScript'),
+(3, 'Explain how this works in JavaScript', 'JavaScript'),
+(3, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
+(4, 'What is the difference between .call and .apply?', 'JavaScript'),
+(4, 'What is a closure, and how/why would you use one?', 'JavaScript'),
+(4, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
+(5, 'What is the difference between .call and .apply?', 'JavaScript'),
+(5, 'What is a closure, and how/why would you use one?', 'JavaScript'),
+(5, 'How is responsive design different from adaptive design?', 'CSS'),
+(6, 'What is a stack? What are the applications of stack?', 'Data Structures and Algorithms'),
+(6, 'What is a stack? What are the applications of stack?', 'Data Structures and Algorithms'),
+(6, 'Explain how this works in JavaScript', 'JavaScript'),
+(7, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms');

@@ -4,7 +4,7 @@ const axios = require("axios");
 
 export default function QuestionList(props) {
   const [questions, setQuestions] = useState(null);
-  const { setQuestionId } = props;
+  const { setQuestionId, selectedQuestion } = props;
 
   const getAllQuestions = () => {
     axios
@@ -33,7 +33,9 @@ export default function QuestionList(props) {
                 date={question.date}
                 tag={question.tag_id}
                 user_name={question.user_name}
+                tag_name={question.tag_name}
                 questions={questions}
+                selectedQuestion={selectedQuestion}
                 setQuestions={setQuestions}
                 setQuestionId={setQuestionId}
               />

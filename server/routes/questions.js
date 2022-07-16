@@ -5,9 +5,12 @@ module.exports = (db) => {
     db.query(
       `SELECT questions.id as id, questions.user_id as user_id, questions.name as name, 
       questions.date as date, questions.tag_id as tag_id, 
-      users.name as user_name FROM questions 
+      users.name as user_name, tags.name as tag_name 
+      FROM questions
       JOIN users 
       ON users.id = questions.user_id
+      JOIN tags
+      ON questions.tag_id = tags.id
       ORDER BY questions.date DESC;`
     ).then((response) => {
       res.json(response.rows);
@@ -18,14 +21,13 @@ module.exports = (db) => {
     const { question, tag, userId } = req.body;
 
     db.query(
-      `INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3)`,
+      `INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3) RETURNING *`,
       [question, tag, userId]
     )
       .then((response) => {
         return res.json(response.rows);
       })
       .catch((err) => {
-        console.log("query ERROR");
         return res.json(err);
       });
   });
@@ -56,25 +58,17 @@ module.exports = (db) => {
   });
 
 
-  // router.get("/:questionId", (req, res) => {
-  //   const { questionId } = req.params;
-
-  //   const queryString = `
-  //   SELECT * FROM answers;`
-
-  //   db.query(queryString)
-  //     .then((response) => {
-  //       return res.json(response.rows);
-  //     })
-  //     .catch((err) => {
-  //       console.log("query ERROR");
-  //       return res.json(err);
-  //     });
-  // });
-
-  router.get("/:tagId", (req, res) => {
-    const { tagId } = req.params;
-    db.query(`SELECT * FROM questions WHERE tag_id = $1`, [tagId])
+  router.get("/user/:userId", (req, res) => {
+    const { userId } = req.params;
+    db.query(
+      `SELECT questions.name as question_name, 
+      questions.date as date, tags.name as tag_name
+      FROM questions 
+      JOIN tags
+      ON questions.tag_id = tags.id
+      WHERE user_id = $1`,
+      [userId]
+    )
       .then((response) => {
         return res.json(response.rows);
       })

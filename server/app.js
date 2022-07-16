@@ -3,7 +3,7 @@ const path = require("path");
 const cookieSession = require("cookie-session");
 const logger = require("morgan");
 const cors = require("cors");
-require("dotenv").config();  //<<?
+require("dotenv").config(); //<<?
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -12,12 +12,12 @@ const questionsRouter = require("./routes/questions");
 const answersRouter = require("./routes/answers");
 const tagsRouter = require("./routes/tags");
 const commentsRouter = require("./routes/comments");
+const likedRouter = require("./routes/liked");
 const s3 = require("./routes/s3");
 // db connection
 const db = require("./configs/db.config");
 
 const app = express();
-
 
 app.use(logger("dev"));
 app.use(cors());
@@ -41,7 +41,8 @@ app.use("/api/answers", answersRouter(db));
 app.use("/api/tags", tagsRouter(db));
 app.use("/api/comments", commentsRouter(db));
 app.use("/api/auth", authenticationRouter(db));
-app.use("/api/s3upload", s3(db))
+app.use("/api/s3upload", s3(db));
+app.use("/api/liked", likedRouter(db));
 
 app.listen(8080, () => {
   console.log("server is running");

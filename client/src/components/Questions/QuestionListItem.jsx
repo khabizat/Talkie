@@ -9,6 +9,7 @@ export default function QuestionListItem(props) {
     date,
     tag,
     user_name,
+    tag_name,
     questions,
     setQuestions,
     setQuestionId,
@@ -33,18 +34,34 @@ export default function QuestionListItem(props) {
       });
   };
 
+  const likedQuestionInfo = {
+    userId: creatorId,
+    question_name: name,
+    tag_name: tag_name,
+  };
+
+  const handleHeart = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("/api/liked", likedQuestionInfo)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
-      {/* If user logged in */}
+      {/* If user created this question */}
       {creatorId === user_id ? (
         <>
           <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
             {/* Header of the container */}
             <div className="flex items-center justify-between">
+              <button onClick={handleHeart}>heart</button>
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="text-xs text-neutral-500">
-                {user_name}
-              </span>
+              <span className="text-xs text-neutral-500">{user_name}</span>
               <span className="text-xs text-neutral-500">{date}</span>
               <button onClick={handleDelete}>
                 <svg
@@ -72,7 +89,7 @@ export default function QuestionListItem(props) {
             {/* Footer of the container */}
             <div className="flex items-center justify-between mt-4">
               <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold  text-neutral-500">
-                {tag} tag here
+                {tag_name}
               </button>
               <div className="flex items-center">
                 <button
@@ -86,14 +103,13 @@ export default function QuestionListItem(props) {
           </div>
         </>
       ) : (
-        //If user not logged in (no delete button)
+        //If user didn't created this question
         <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
           {/* Header of the container */}
           <div className="flex items-center justify-between">
+            <button onClick={handleHeart}>heart</button>
             <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-            <span className="text-xs text-neutral-500">
-              {user_name}
-            </span>
+            <span className="text-xs text-neutral-500">{user_name}</span>
             <span className="text-xs text-neutral-500">{date}</span>
           </div>
           {/* Body of the container */}
@@ -105,7 +121,7 @@ export default function QuestionListItem(props) {
           {/* Footer of the container */}
           <div className="flex items-center justify-between mt-4">
             <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold  text-neutral-500">
-              {tag} tag here
+              {tag_name}
             </button>
             <div className="flex items-center">
               <button
