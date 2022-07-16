@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
 export default function AnswerListItem(props) {
   const [good, setGood] = useState(0);
@@ -24,17 +25,23 @@ export default function AnswerListItem(props) {
     axios
       .delete(`/api/answers/${answer_id}`)
       .then((response) => {
-        const answerIndex = selectedQuestion.findIndex(
-          (e) => e.answer_id === answer_id
-        );
-        const thisAnswer = [...selectedQuestion];
-        thisAnswer.splice(answerIndex, 1);
-        setSelectedQuestion(thisAnswer);
+        // const answerIndex = selectedQuestion.findIndex(
+        //   (e) => e.answer_id === answer_id
+        // );
+        // const thisAnswer = [...selectedQuestion];
+        // thisAnswer.splice(answerIndex, 1);
+        // setSelectedQuestion(thisAnswer);
+        setSelectedQuestion((prev) => {
+          const newList = prev.filter((item) => item.answer_id != answer_id);
+          return newList;
+        });
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  useEffect(() => {}, [selectedQuestion]);
 
   const goodIncrement = () => {
     setGood(good + 1);
