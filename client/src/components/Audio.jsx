@@ -98,10 +98,10 @@ export default class Audio extends Component {
         this.state.isRecordingStp = false;
 
         const newAnswer = data.data;
-        const user_name = findUser.name;
-        newAnswer.user_name = user_name;
 
-        if (!Object.values(data.data).includes("ERR")) {
+        if (!Object.keys(newAnswer).includes("error")) {
+          const user_name = findUser.name;
+          newAnswer.user_name = user_name;
           let newArray = [...this.props.selectedQuestion, newAnswer];
           this.props.setSelectedQuestion(newArray);
         }

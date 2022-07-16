@@ -55,7 +55,7 @@ export default function EachQuestionPage(props) {
                 answerId={answerId}
                 setAnswerId={setAnswerId}
                 selectedQuestion={selectedQuestion}
-                setSelectedQuestion={() => setSelectedQuestion}
+                setSelectedQuestion={setSelectedQuestion}
               />
             )}
           </div>
@@ -81,7 +81,7 @@ export default function EachQuestionPage(props) {
                 answerId={answerId}
                 setAnswerId={setAnswerId}
                 selectedQuestion={selectedQuestion}
-                setSelectedQuestion={() => setSelectedQuestion}
+                setSelectedQuestion={setSelectedQuestion}
               />
             )}
           </div>

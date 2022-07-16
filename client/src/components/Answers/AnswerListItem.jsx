@@ -25,23 +25,15 @@ export default function AnswerListItem(props) {
     axios
       .delete(`/api/answers/${answer_id}`)
       .then((response) => {
-        // const answerIndex = selectedQuestion.findIndex(
-        //   (e) => e.answer_id === answer_id
-        // );
-        // const thisAnswer = [...selectedQuestion];
-        // thisAnswer.splice(answerIndex, 1);
-        // setSelectedQuestion(thisAnswer);
-        setSelectedQuestion((prev) => {
-          const newList = prev.filter((item) => item.answer_id != answer_id);
-          return newList;
-        });
+        const newList = selectedQuestion.filter(
+          (item) => item.answer_id != answer_id
+        );
+        setSelectedQuestion(newList);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  useEffect(() => {}, [selectedQuestion]);
 
   const goodIncrement = () => {
     setGood(good + 1);
