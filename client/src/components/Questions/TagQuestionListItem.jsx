@@ -91,7 +91,7 @@ export default function TagQuestionListItem(props) {
                   onClick={() => setQuestionId(questionId)}
                   class="text-blue-600 hover:underline hover:cursor-pointer "
                 >
-                  Listen to the answers ⟶
+                  Listen to answers ⟶
                 </button>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function TagQuestionListItem(props) {
                   onClick={() => setQuestionId(questionId)}
                   class="text-blue-600 hover:underline hover:cursor-pointer "
                 >
-                  Listen to the answers ⟶
+                  Listen to answers ⟶
                 </button>
               </div>
             </div>

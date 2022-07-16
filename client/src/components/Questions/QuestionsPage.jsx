@@ -9,6 +9,8 @@ export default function QuestionsPage(props) {
   const [seeAll, setSeeAll] = useState(true);
   const [selectedOptions, setSelectedOptions] = useState();
   const [questionId, setQuestionId] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(null);
+
   const { tagId, setTagId } = props;
 
   const history = useHistory();
@@ -21,6 +23,7 @@ export default function QuestionsPage(props) {
     setSeeAll(true);
     setTagId(null);
     setQuestionId(null);
+    setSelectedTag(null);
   };
 
   return (
@@ -36,6 +39,8 @@ export default function QuestionsPage(props) {
           setTagId={setTagId}
           setQuestionId={setQuestionId}
           setSeeAll={setSeeAll}
+          selectedTag={selectedTag}
+          setSelectedTag={setSelectedTag}
         />
       </div>
 
