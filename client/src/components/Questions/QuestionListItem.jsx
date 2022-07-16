@@ -15,7 +15,6 @@ export default function QuestionListItem(props) {
     setQuestionId,
   } = props;
 
-
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
