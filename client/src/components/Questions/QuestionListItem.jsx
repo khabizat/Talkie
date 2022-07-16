@@ -89,7 +89,7 @@ export default function QuestionListItem(props) {
             {/* Footer of the container */}
             <div className="flex items-center justify-between mt-4">
               <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold  text-neutral-500">
-                {tag_name} 
+                {tag_name}
               </button>
               <div className="flex items-center">
                 <button
@@ -121,7 +121,7 @@ export default function QuestionListItem(props) {
           {/* Footer of the container */}
           <div className="flex items-center justify-between mt-4">
             <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold  text-neutral-500">
-              {tag_name} 
+              {tag_name}
             </button>
             <div className="flex items-center">
               <button

@@ -21,7 +21,7 @@ module.exports = (db) => {
     const { question, tag, userId } = req.body;
 
     db.query(
-      `INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3)`,
+      `INSERT INTO questions (name, tag_id, user_id) VALUES ($1, $2, $3) RETURNING *`,
       [question, tag, userId]
     )
       .then((response) => {
