@@ -7,6 +7,7 @@ import TagList from "./TagList";
 
 export default function QuestionsPage(props) {
   const [seeAll, setSeeAll] = useState(true);
+  const [selectedOptions, setSelectedOptions] = useState();
   const [questionId, setQuestionId] = useState(null);
   const { tagId, setTagId } = props;
 
