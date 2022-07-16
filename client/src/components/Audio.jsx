@@ -3,11 +3,7 @@ import React, { Component } from "react";
 import MicRecorder from 'mic-recorder-to-mp3';
 import Button from "./Button";
 import axios from "axios";
-// import fs from "fs";
-// import multer from 'multer';
-// const upload = multer({ dest: 'public/docs' })
-// const multer = require('multer')
-// const upload = multer({ dest: 'public/docs' })
+
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -79,41 +75,37 @@ export default class Audio extends Component {
         const blobURL = URL.createObjectURL(blob)
         this.setState({ blobURL, isRecording: false });
         this.setState({ isRecordingStp: true });
-
-        const audioFile = new FormData();
-        audioFile.append('testAudio.mp3', blob, 'testAudio.mp3')
-
-
-
-        axios
-          .post("/api/s3upload", audioFile)
-          .then((data) => {
-            console.log(data)
-          })
-          .catch(err => console.log("TEST FROM AXIOS ERR>>", err))
-        //>>
-    })
-    .catch((e) => console.log(e));
-  };
-
-  reset() {
+        this.setState({ recordingFile: blob});
+      })
+      .catch((e) => console.log(e));
+    };
+    
+    reset() {
       document.getElementsByTagName('audio')[0].src = '';
       this.setState({ isRecordingStp: false });
-  };
+    };
+    //<<<<<<<<<<<
+    submit() {
+      
+      const findUser = JSON.parse(localStorage.getItem("user")); 
+      const audioFile = new FormData();
+      audioFile.append('testAudio.mp3', this.state.recordingFile, 'testAudio.mp3')
+      audioFile.append('question_id', this.props.question_id)
+      audioFile.append('user_id', findUser.id)
 
-  submit() {
 
-    const audioFile = new FormData();
-    audioFile.append('testAudio.mp3', this.state.recordingFile);
 
-    axios
-      .post("/api/s3upload", audioFile) // , upload.single('audioFile')
-      .then((req, res) => {
-        console.log("SUCCESS!!😁😴")
-        console.log(req.body.Location)
-      })
-      .catch(err => console.log(err))
+      
+      axios
+        .post("/api/s3upload", audioFile)
+        .then((data) => {
+          //append response from insert query onto page
+          console.log("question_id:", this.props.question_id)
+          console.log("TEST FROM Audio axios data>>", data)
+          //send return to caller for appending to question arr
+        })
 
+        .catch(err => console.log("TEST FROM AXIOS ERR>>", err))
 
   };
 

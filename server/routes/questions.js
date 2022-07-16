@@ -55,6 +55,23 @@ module.exports = (db) => {
       });
   });
 
+
+  // router.get("/:questionId", (req, res) => {
+  //   const { questionId } = req.params;
+
+  //   const queryString = `
+  //   SELECT * FROM answers;`
+
+  //   db.query(queryString)
+  //     .then((response) => {
+  //       return res.json(response.rows);
+  //     })
+  //     .catch((err) => {
+  //       console.log("query ERROR");
+  //       return res.json(err);
+  //     });
+  // });
+
   router.get("/:tagId", (req, res) => {
     const { tagId } = req.params;
     db.query(`SELECT * FROM questions WHERE tag_id = $1`, [tagId])
