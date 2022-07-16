@@ -3,11 +3,7 @@ import React, { Component } from "react";
 import MicRecorder from 'mic-recorder-to-mp3';
 import Button from "./Button";
 import axios from "axios";
-// import fs from "fs";
-// import multer from 'multer';
-// const upload = multer({ dest: 'public/docs' })
-// const multer = require('multer')
-// const upload = multer({ dest: 'public/docs' })
+
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -75,46 +71,36 @@ export default class Audio extends Component {
       .stop()
       .getMp3()
       .then(([buffer, blob]) => {
-
-        const blobURL = URL.createObjectURL(blob)
-        this.setState({ blobURL, isRecording: false });
+        const blobURL = URL.createObjectURL(blob) //<< unused?
+        this.setState({ blobURL, isRecording: false }); //<< blobURL unused?
         this.setState({ isRecordingStp: true });
-
-        const audioFile = new FormData();
-        audioFile.append('testAudio.mp3', blob, 'testAudio.mp3')
-
-
-
-        axios
-          .post("/api/s3upload", audioFile)
-          .then((data) => {
-            console.log(data)
-          })
-          .catch(err => console.log("TEST FROM AXIOS ERR>>", err))
-        //>>
-    })
-    .catch((e) => console.log(e));
-  };
-
-  reset() {
+        this.setState({ recordingFile: blob});
+        return blob
+      })
+      .catch((e) => console.log(e));
+    };
+    
+    reset() {
       document.getElementsByTagName('audio')[0].src = '';
       this.setState({ isRecordingStp: false });
-  };
+    };
+    //<<<<<<<<<<<
+    submit() {
+      
+      const findUser = JSON.parse(localStorage.getItem("user")); 
+      const audioFile = new FormData();
+      audioFile.append('testAudio.mp3', this.state.recordingFile, 'testAudio.mp3')
+      audioFile.append('question_id', this.props.question_id)
+      audioFile.append('user_id', findUser.id)
 
-  submit() {
-
-    const audioFile = new FormData();
-    audioFile.append('testAudio.mp3', this.state.recordingFile);
-
-    axios
-      .post("/api/s3upload", audioFile) // , upload.single('audioFile')
-      .then((req, res) => {
-        console.log("SUCCESS!!😁😴")
-        console.log(req.body.Location)
-      })
-      .catch(err => console.log(err))
-
-
+      axios
+        .post("/api/s3upload", audioFile)
+        .then((data) => {
+          this.state.isRecording = false;
+          this.state.isRecordingStp = false;
+          return data;
+        })
+        .catch(err => console.log("SUBMIT_AXIOS_ERR>>", err))
   };
 
   render() {
@@ -122,10 +108,10 @@ export default class Audio extends Component {
 
     return(
       <div className="row d-flex justify-content-center mt-5" style={{color:'red'}}>
-      { !this.state.isRecording && !this.state.isRecordingStp && <Button confirm onClick={this.start} disabled={this.state.isRecording}>Start📼</Button> }
-      { this.state.isRecording && <Button danger onClick={this.stop} disabled={!this.state.isRecording}>Stop📼</Button> }
-      { this.state.isRecordingStp && <Button danger onClick={this.reset} disabled={!this.state.isRecordingStp}>Reset/ Cancel📼</Button> }
-      { this.state.isRecordingStp && <Button confirm onClick={this.submit}>Submit📼</Button> }
+      { !this.state.isRecording && !this.state.isRecordingStp && <Button confirm onClick={this.start} disabled={this.state.isRecording}>Record Your answer 🎙</Button> }
+      { this.state.isRecording && <Button danger onClick={this.stop} disabled={!this.state.isRecording}>Stop Recording</Button> }
+      { this.state.isRecordingStp && <Button danger onClick={this.reset} disabled={!this.state.isRecordingStp}>Discard</Button> }
+      { this.state.isRecordingStp && <Button confirm onClick={this.submit}> Submit Your Answer ➕ </Button> }
       { this.state.isRecordingStp && <audio src={this.state.blobURL} controls="controls" className="audio-player"/> }
       </div>
     );
