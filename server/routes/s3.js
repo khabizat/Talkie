@@ -1,68 +1,65 @@
 const router = require("express").Router();
-const fs = require('fs');
-const aws = require('aws-sdk');
-const multer = require('multer');
+const fs = require("fs");
+const aws = require("aws-sdk");
+const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/docs')
+    cb(null, "public/docs");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' +file.originalname )
-  }
-})
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
 
 const upload = multer({ storage });
 
 module.exports = (db) => {
-
   //
 
   // save file to 'public/docs' as indicated on line ~5
-  router.post("/", upload.single('testAudio.mp3'), (req, res) => {
-
+  router.post("/", upload.single("testAudio.mp3"), (req, res) => {
     // reording in req.body.audioFile?
     // make new S3 object
     const s3 = new aws.S3({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-    })
-    console.log("READING MULTER>>", req.file.filename)
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    });
+    console.log("READING MULTER>>", req.file.filename);
     //read incoming file to send to S3
     const file = fs.createReadStream(req.file.path);
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME,
       Key: req.file.filename,
       Body: file,
-      ContentType: 'audio/mpeg',
-      ACL: 'public-read'
-    }
-
+      ContentType: "audio/mpeg",
+      ACL: "public-read",
+    };
+    console.log(params);
     //send file to s3 which returns an object with link to file in bucket. link is in data.data.Location
-    
+
     //
 
-    const postInDb = async(params) => {
+    const postInDb = async (params) => {
       try {
         const qs = `
         INSERT INTO answers (audio_url, user_id, question_id)
         VALUES ($1, $2, $3)
         RETURNING *;
       `;
-      const result = await db.query(qs, params);
-      return result.rows[0];
+        const result = await db.query(qs, params);
+        return result.rows[0];
       } catch (error) {
         console.log(error);
-        throw new Error(">>Can not post to db<<")
+        throw new Error(">>Can not post to db<<");
       }
-
-    }
+    };
 
     //const s3Output = await s3.upload(params).promise()
 
     s3.upload(params, async (err, data) => {
       if (err) {
-        res.send(`ERR FROM S3>>> ${err}`)
+        res.send(`ERR FROM S3>>> ${err}`);
         return err;
       }
       let audio_url = data.Location;
@@ -82,13 +79,9 @@ module.exports = (db) => {
       //     return res.json(err);
       //   });
       const output = await postInDb([audio_url, user_id, question_id]);
-      console.log("s3 upload >>>>>>>",output)
+      console.log("s3 upload >>>>>>>", output);
       return res.json(output);
-    })
-  })
+    });
+  });
   return router;
-}
-
-
-
-
+};

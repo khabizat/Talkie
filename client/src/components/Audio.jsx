@@ -1,120 +1,169 @@
 import React, { Component } from "react";
 
-import MicRecorder from 'mic-recorder-to-mp3';
+import MicRecorder from "mic-recorder-to-mp3";
 import Button from "./Button";
 import axios from "axios";
-
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 export default class Audio extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-        isRecording: false,
-        blobURL: '',
-        isBlocked: false,
-        isRecordingStp: false,
-        recordingFile: '',
-      }
+      isRecording: false,
+      blobURL: "",
+      isBlocked: false,
+      isRecordingStp: false,
+      recordingFile: "",
+    };
 
     //binds the methods to the component
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
     this.reset = this.reset.bind(this);
     this.submit = this.submit.bind(this);
-   }
+  }
 
-  componentDidMount(){
-
+  componentDidMount() {
     //Prompt the user for permission to allow audio device in browser
 
-    navigator.getUserMedia = (
+    navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia ||
-      navigator.msGetUserMedia
-     );
+      navigator.msGetUserMedia;
 
-     //Detects the action on user click to allow or deny permission of audio device
+    //Detects the action on user click to allow or deny permission of audio device
 
-     navigator.getUserMedia({ audio: true },
+    navigator.getUserMedia(
+      { audio: true },
       () => {
-        console.log('Permission Granted');
+        console.log("Permission Granted");
         this.setState({ isBlocked: false });
       },
 
       () => {
-        console.log('Permission Denied');
-        this.setState({ isBlocked: true })
-      },
+        console.log("Permission Denied");
+        this.setState({ isBlocked: true });
+      }
     );
   }
 
-  start(){
-
+  start() {
     if (this.state.isBlocked) {
-      alert('Permission Denied');
+      alert("Permission Denied");
     } else {
-      Mp3Recorder
-        .start()
+      Mp3Recorder.start()
         .then(() => {
           this.setState({ isRecording: true });
-        }).catch((e) => console.error(e));
+        })
+        .catch((e) => console.error(e));
     }
   }
 
   stop() {
-    Mp3Recorder
-      .stop()
+    Mp3Recorder.stop()
       .getMp3()
       .then(([buffer, blob]) => {
-        const blobURL = URL.createObjectURL(blob) //<< unused?
+        const blobURL = URL.createObjectURL(blob); //<< unused?
         this.setState({ blobURL, isRecording: false }); //<< blobURL unused?
         this.setState({ isRecordingStp: true });
-        this.setState({ recordingFile: blob});
-        return blob
+        this.setState({ recordingFile: blob });
+        return blob;
       })
       .catch((e) => console.log(e));
-    };
-    
-    reset() {
-      document.getElementsByTagName('audio')[0].src = '';
-      this.setState({ isRecordingStp: false });
-    };
-    //<<<<<<<<<<<
-    submit() {
-      
-      const findUser = JSON.parse(localStorage.getItem("user")); 
-      const audioFile = new FormData();
-      audioFile.append('testAudio.mp3', this.state.recordingFile, 'testAudio.mp3')
-      audioFile.append('question_id', this.props.question_id)
-      audioFile.append('user_id', findUser.id)
+  }
 
-      axios
-        .post("/api/s3upload", audioFile)
-        .then((data) => {
-          this.state.isRecording = false;
-          this.state.isRecordingStp = false;
-          return data;
-        })
-        .catch(err => console.log("SUBMIT_AXIOS_ERR>>", err))
-  };
+  reset() {
+    document.getElementsByTagName("audio")[0].src = "";
+    this.setState({ isRecordingStp: false });
+  }
+  //<<<<<<<<<<<
+  submit() {
+    const findUser = JSON.parse(localStorage.getItem("user"));
+    const audioFile = new FormData();
+    audioFile.append(
+      "testAudio.mp3",
+      this.state.recordingFile,
+      "testAudio.mp3"
+    );
+    audioFile.append("question_id", this.props.question_id);
+    audioFile.append("user_id", findUser.id);
+
+    axios
+      .post("/api/s3upload", audioFile)
+      .then((data) => {
+        console.log("asdasdasdasdadadasdasdasdasdasda");
+        this.state.isRecording = false;
+        this.state.isRecordingStp = false;
+        let test = {
+          answer_id: 2,
+          user_id: 2,
+          audio_url: "I would approach this..lkajsdlkfjer.",
+          date: "2022-07-01T04:00:00.000Z",
+          tag_id: 1,
+          name: "What is a doubly-linked list (DLL)? What are its applications?",
+          user_name: "Daniel Smith",
+        };
+        // TODO:
+        // 1. Replace the test with the data variable in the newArray
+        // 2. Add an if statement if the data does not return an error and then in the if setSelectedQuestion
+        // 3. HIGHLY RECOMMEND TO CHANGE THE BUTTON AFTER CLIKING ON THE SUBMIT BUTTON TO SHOW THAT IT'S BEING SUBMITTED, and DISABLE the button while submitting
+
+        if (!Object.values(data.data).includes("ERR")) {
+          let newArray = [...this.props.selectedQuestion, data.data];
+          this.props.setSelectedQuestion(newArray);
+          console.log(newArray);
+        }
+      })
+      // this.props.setFinishedRecord(true);
+      .catch((err) => console.log("SUBMIT_AXIOS_ERR>>", err));
+  }
 
   render() {
-
-
-    return(
-      <div className="row d-flex justify-content-center mt-5" style={{color:'red'}}>
-      { !this.state.isRecording && !this.state.isRecordingStp && <Button confirm onClick={this.start} disabled={this.state.isRecording}>Record Your answer 🎙</Button> }
-      { this.state.isRecording && <Button danger onClick={this.stop} disabled={!this.state.isRecording}>Stop Recording</Button> }
-      { this.state.isRecordingStp && <Button danger onClick={this.reset} disabled={!this.state.isRecordingStp}>Discard</Button> }
-      { this.state.isRecordingStp && <Button confirm onClick={this.submit}> Submit Your Answer ➕ </Button> }
-      { this.state.isRecordingStp && <audio src={this.state.blobURL} controls="controls" className="audio-player"/> }
+    return (
+      <div
+        className="row d-flex justify-content-center mt-5"
+        style={{ color: "red" }}
+      >
+        {!this.state.isRecording && !this.state.isRecordingStp && (
+          <Button
+            confirm
+            onClick={this.start}
+            disabled={this.state.isRecording}
+          >
+            Record Your answer 🎙
+          </Button>
+        )}
+        {this.state.isRecording && (
+          <Button danger onClick={this.stop} disabled={!this.state.isRecording}>
+            Stop Recording
+          </Button>
+        )}
+        {this.state.isRecordingStp && (
+          <Button
+            danger
+            onClick={this.reset}
+            disabled={!this.state.isRecordingStp}
+          >
+            Discard
+          </Button>
+        )}
+        {this.state.isRecordingStp && (
+          <Button confirm onClick={this.submit}>
+            {" "}
+            Submit Your Answer ➕{" "}
+          </Button>
+        )}
+        {this.state.isRecordingStp && (
+          <audio
+            src={this.state.blobURL}
+            controls="controls"
+            className="audio-player"
+          />
+        )}
       </div>
     );
   }
-
 }
