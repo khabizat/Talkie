@@ -66,7 +66,7 @@ VALUES
 ('Do not ask me, I am just here for the free coffee... wait, there is free coffee right?', 7, 3, '2022-07-01'),
 ('Because reasons', 8, 1, '2022-07-01');
 
-INSERT INTO comments (user_id, name,  answer_id, comment, timestamp)
+INSERT INTO comments (user_id, name,  answer_id, comment, date)
 VALUES
 
 (2, 'Daniel Smith', 4, 'I think this is the best answer of all time! You are a genius', '1995-01-01'),

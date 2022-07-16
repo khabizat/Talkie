@@ -52,7 +52,7 @@ export default function CommentList(props) {
             comment_name={sA.name}
             comment_id={sA.comment_id}
             comment={sA.comment}
-            timestamp={sA.timestamp}
+            date={sA.date}
             selectedAnswer={selectedAnswer}
             setSelectedAnswer={setSelectedAnswer}
           />
