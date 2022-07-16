@@ -47,10 +47,11 @@ export default function QuestionsPage(props) {
 
       {seeAll && !questionId && !tagId && (
         <>
-          <button
-            onClick={handleAddQuestion}
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded flex items-center gap-2"
-          >
+          <div className="flex justify-center px-8 py-4 mx-auto p-5">
+            <button
+              onClick={handleAddQuestion}
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded flex items-center gap-2"
+            >
             Add question
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,13 +61,14 @@ export default function QuestionsPage(props) {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
             </svg>
           </button>
+        </div>
 
           <QuestionList setQuestionId={setQuestionId} />
         </>
