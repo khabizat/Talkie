@@ -57,7 +57,6 @@ module.exports = (db) => {
       });
   });
 
-
   router.get("/user/:userId", (req, res) => {
     const { userId } = req.params;
     db.query(

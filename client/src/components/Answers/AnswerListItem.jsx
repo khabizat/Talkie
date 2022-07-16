@@ -71,7 +71,11 @@ export default function AnswerListItem(props) {
             {/* Body of the container */}
             <div className="mt-2">
               <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
-                <audio src={ audio_url } controls="controls" className="audio-player"/>
+                <audio
+                  src={audio_url}
+                  controls="controls"
+                  className="audio-player"
+                />
               </span>
             </div>
             {/* Footer of the container */}
@@ -123,7 +127,11 @@ export default function AnswerListItem(props) {
             {/* Body of the container */}
             <div className="mt-2">
               <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
-                <audio src={ audio_url } controls="controls" className="audio-player"/>
+                <audio
+                  src={audio_url}
+                  controls="controls"
+                  className="audio-player"
+                />
               </span>
             </div>
             {/* Footer of the container */}
@@ -172,5 +180,3 @@ export default function AnswerListItem(props) {
     </div>
   );
 }
-
-
