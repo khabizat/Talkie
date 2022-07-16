@@ -23,7 +23,7 @@ export default function EachQuestionPage(props) {
     if (questionId) {
       getSelectedQuestion(questionId);
     }
-  }, [selectedQuestion]); // this needs to be watched
+  }, []); // this needs to be watched
 
   return (
     <>

@@ -59,18 +59,26 @@ export default function QuestionListItem(props) {
           <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
             {/* Header of the container */}
             <div className="flex items-center justify-between">
-              <button onClick={handleHeart}>heart</button>
+              <button onClick={handleHeart}>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 hover:fill-red-700"
+                    fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
               <span className="text-xs text-neutral-500">{user_name}</span>
               <span className="text-xs text-neutral-500">{date}</span>
               <button onClick={handleDelete}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-6 w-6 hover:fill-red-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={1}
                 >
                   <path
                     strokeLinecap="round"
@@ -107,7 +115,15 @@ export default function QuestionListItem(props) {
         <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
           {/* Header of the container */}
           <div className="flex items-center justify-between">
-            <button onClick={handleHeart}>heart</button>
+            <button onClick={handleHeart}>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 hover:fill-red-700"
+                    fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
             <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
             <span className="text-xs text-neutral-500">{user_name}</span>
             <span className="text-xs text-neutral-500">{date}</span>
@@ -128,7 +144,7 @@ export default function QuestionListItem(props) {
                 onClick={() => setQuestionId(questionId)}
                 class="text-blue-600 hover:underline hover:cursor-pointer "
               >
-                Listen to the answers ⟶
+                Listen to answers ⟶
               </button>
             </div>
           </div>
