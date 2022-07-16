@@ -6,7 +6,7 @@
   height: 4rem;
   line-height: 1.2rem;
   margin-right: 1rem;
-  width: 8rem;
+  width: auto;
   border-width: 2px;
   border-style: solid;
   border-color: black;
@@ -28,7 +28,7 @@
 }
 
 .button--confirm {
-  color: green;
+  color: rgb(64, 173, 64);
   border-color: green;
   background-color: transparent;
 }

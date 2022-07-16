@@ -108,10 +108,10 @@ export default class Audio extends Component {
 
     return(
       <div className="row d-flex justify-content-center mt-5" style={{color:'red'}}>
-      { !this.state.isRecording && !this.state.isRecordingStp && <Button confirm onClick={this.start} disabled={this.state.isRecording}>Start📼</Button> }
-      { this.state.isRecording && <Button danger onClick={this.stop} disabled={!this.state.isRecording}>Stop📼</Button> }
-      { this.state.isRecordingStp && <Button danger onClick={this.reset} disabled={!this.state.isRecordingStp}>Reset/ Cancel📼</Button> }
-      { this.state.isRecordingStp && <Button confirm onClick={this.submit}>Submit📼</Button> }
+      { !this.state.isRecording && !this.state.isRecordingStp && <Button confirm onClick={this.start} disabled={this.state.isRecording}>Record Your answer 🎙</Button> }
+      { this.state.isRecording && <Button danger onClick={this.stop} disabled={!this.state.isRecording}>Stop Recording</Button> }
+      { this.state.isRecordingStp && <Button danger onClick={this.reset} disabled={!this.state.isRecordingStp}>Discard</Button> }
+      { this.state.isRecordingStp && <Button confirm onClick={this.submit}> Submit Your Answer ➕ </Button> }
       { this.state.isRecordingStp && <audio src={this.state.blobURL} controls="controls" className="audio-player"/> }
       </div>
     );
