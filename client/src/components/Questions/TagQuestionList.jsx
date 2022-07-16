@@ -23,7 +23,7 @@ export default function TagQuestionList(props) {
     <section>
       {tagQuestions &&
         tagQuestions.map((tagQuestion) => (
-          <ol role="list" className="p-4 divide-y divide-slate-100">
+          <ol className="p-4 divide-y divide-slate-100">
             <li key={tagQuestion.id}>
               <TagQuestionListItem
                 key={tagQuestion.id}
