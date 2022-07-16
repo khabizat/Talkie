@@ -13,7 +13,6 @@ export default function EachQuestionPage(props) {
     axios
       .get(`/api/questions/${questionId}`)
       .then((response) => {
-        console.log("DATA", response.data);
         setSelectedQuestion(response.data);
       })
       .catch((err) => console.log(err));
