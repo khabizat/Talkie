@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function TagList(props) {
   const [tags, setTags] = useState(null);
-  const { setTagId, setSeeAll } = props;
+  const { setTagId, setSeeAll, tagId, selectedTag, setSelectedTag } = props;
 
   const getTags = () => {
     axios.get("/api/tags").then((response) => {
@@ -39,7 +39,7 @@ export default function TagList(props) {
     { value: "20", label: "Java" },
     { value: "21", label: "APIs" },
     { value: "22", label: "System Design" },
-    { value: "23", label: "Behavioural" },
+    { value: "23", label: "Behavioural" }
   ];
 
   return (
@@ -49,9 +49,10 @@ export default function TagList(props) {
         onChange={(selectedOption) => {
           setTagId(selectedOption.value);
           setSeeAll(false);
+          setSelectedTag(selectedOption)
         }}
         options={options}
-        defaultValue={tags}
+        value={selectedTag}
       />
     </>
   );
