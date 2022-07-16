@@ -3,7 +3,7 @@ import AnswerListItem from "./AnswerListItem";
 import EachAnswerPage from "./EachAnswerPage";
 
 export default function AnswerList(props) {
-  const [answerId, setAnswerId] = useState(null);
+  const {answerId, setAnswerId} = props;
   const { selectedQuestion, setSelectedQuestion } = props;
   return (
     <section>
