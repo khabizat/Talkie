@@ -7,23 +7,31 @@ export default function EachQuestionPage(props) {
   const [answerId, setAnswerId] = useState(null);
   const { questionId, setQuestionId } = props;
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [finishedRecord, setFinishedRecord] = useState(null);
 
   const getSelectedQuestion = (questionId) => {
     axios
       .get(`/api/questions/${questionId}`)
       .then((response) => {
+        console.log("DATA", response.data);
         setSelectedQuestion(response.data);
       })
       .catch((err) => console.log(err));
   };
 
-  console.log(selectedQuestion);
-
   useEffect(() => {
     if (questionId) {
       getSelectedQuestion(questionId);
     }
-  }, [selectedQuestion]); // this needs to be watched
+  }, []); // this needs to be watched
+
+  useEffect(() => {
+    // USE THIS AS A BACK UP IF THE DATA PULLING FAILS, HIGHLY DO NOT RECOMMEND
+    // WILL ONLY WORK if in Audio.jsx, this.props.setFinishRecord is uncommented
+    if (finishedRecord) {
+      getSelectedQuestion(questionId);
+    }
+  }, [finishedRecord]);
 
   return (
     <>
@@ -45,10 +53,10 @@ export default function EachQuestionPage(props) {
             {/* Answers section */}
             {selectedQuestion && (
               <AnswerList
-              answerId={answerId}
-              setAnswerId={setAnswerId}
-              selectedQuestion={selectedQuestion}
-              setSelectedQuestion={()=>setSelectedQuestion}
+                answerId={answerId}
+                setAnswerId={setAnswerId}
+                selectedQuestion={selectedQuestion}
+                setSelectedQuestion={() => setSelectedQuestion}
               />
             )}
           </div>
@@ -61,7 +69,12 @@ export default function EachQuestionPage(props) {
               selectedQuestion[0] &&
               selectedQuestion[0].name}
             <div className="grid justify-items-center pb-2">
-              <AddAnswer question_id={ questionId }  />
+              <AddAnswer
+                question_id={questionId}
+                setSelectedQuestion={setSelectedQuestion}
+                selectedQuestion={selectedQuestion}
+                setFinishedRecord={setFinishedRecord}
+              />
             </div>
             {/* Answers section */}
             {selectedQuestion && (
@@ -69,7 +82,7 @@ export default function EachQuestionPage(props) {
                 answerId={answerId}
                 setAnswerId={setAnswerId}
                 selectedQuestion={selectedQuestion}
-                setSelectedQuestion={()=>setSelectedQuestion}
+                setSelectedQuestion={() => setSelectedQuestion}
               />
             )}
           </div>
