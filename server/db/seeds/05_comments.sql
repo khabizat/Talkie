@@ -1,4 +1,4 @@
-INSERT INTO comments (user_id, name,  answer_id, comment, date)
+INSERT INTO comments (user_id, name,  answer_id, comment, timestamp)
 VALUES
 
 (2, 'Daniel Smith', 4, 'I think this is the best answer of all time! You are a genius', '1995-01-01'),
