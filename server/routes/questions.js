@@ -67,8 +67,8 @@ module.exports = (db) => {
     const { userId } = req.params;
     db.query(
       `SELECT questions.name as question_name, 
-      questions.date as date, tags.name as tag_name
-      FROM questions 
+      TO_CHAR(questions.date, 'fmDay, fmMon DDth YYYY') as date,tags.name as tag_name
+      FROM questions
       JOIN tags
       ON questions.tag_id = tags.id
       WHERE user_id = $1`,
