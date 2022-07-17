@@ -30,7 +30,10 @@ module.exports = (db) => {
   router.get("/user/:userId", (req, res) => {
     const { userId } = req.params;
     db.query(
-      `SELECT answers.audio_url as answer_audio, answers.date as date, questions.name as question_name, tags.name as tag_name
+      `SELECT answers.audio_url as answer_audio,
+      TO_CHAR(answers.date, 'fmDay, fmMon DDth YYYY') as date,
+      questions.name as question_name,
+      tags.name as tag_name
       FROM answers
       JOIN questions
       ON answers.question_id = questions.id
