@@ -7,26 +7,30 @@ const axios = require("axios");
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { currentUser, setCurrentUser } = props;
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   const history = useHistory();
 
   const handleLoginButton = (e) => {
     e.preventDefault();
-
     const userCredentials = {
       email,
       password,
     };
-
+    
     axios
-      .post("/api/auth/login", userCredentials)
-      .then((response) => {
-        localStorage.setItem("user", JSON.stringify(response.data[0]));
-        history.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    .post("/api/auth/login", userCredentials)
+    .then((response) => {
+      window.localStorage.setItem("user", JSON.stringify(response.data[0]));
+      history.push("/questions");
+    })
+    .then(
+      setCurrentUser()
+    )
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
