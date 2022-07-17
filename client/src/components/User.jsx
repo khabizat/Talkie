@@ -49,16 +49,16 @@ export default function User() {
 
   return (
     <section>
-      <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600">
+      <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600 mt-4">
         My Questions
       </div>
       {/* My Questions Container */}
-      <div className="p-4 w-full flex flex-wrap text-left bg-white border sm:p-8 mb-4">
+      <div className="p-4 w-full flex flex-wrap text-left bg-white mb-2">
         {myQuestions &&
         myQuestions.map((myQuestion) => (
           <>
             {/* Header */}
-              <div className="p-4 w-1/2 text-left bg-blue-200 rounded-lg border shadow-md sm:p-8">
+              <div className="p-4 w-1/3 mx-4 text-left bg-blue-100 rounded-lg shadow-md sm:p-8 hover:scale-105">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-neutral-500">Posted on {myQuestion.date}</span>
                 </div>
@@ -83,12 +83,12 @@ export default function User() {
       <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600">
         My Answers
       </div>
-      <div className="p-4 w-full flex flex-wrap text-center bg-white border sm:p-8 mb-4">
+      <div className="p-4 w-full flex flex-wrap text-center bg-white sm:p-8 mb-4">
       {myAnswers &&
         myAnswers.map((myAnswer) => (
           <>
             {/* Header */}
-            <div className="p-4 w-1/2 text-left bg-blue-200 rounded-lg border shadow-md sm:p-8">
+            <div className="p-4 w-1/2 text-left bg-blue-100 rounded-lg border shadow-md sm:p-8 hover:scale-105">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-neutral-500">Posted on {myAnswer.date}</span>
               </div>
@@ -116,12 +116,12 @@ export default function User() {
       <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600">
         Favourite Questions
       </div>
-      <div className="p-4 w-full flex flex-wrap text-center bg-white border shadow-md sm:p-8">
+      <div className="p-4 w-full flex flex-wrap text-center bg-white shadow-md sm:p-8">
         {favourites &&
         favourites.map((favourite) => (
           <>
             {/* Header */}
-            <div className="p-4 w-1/2 text-left bg-blue-200 rounded-lg border shadow-md sm:p-8">
+            <div className="p-4 w-1/2 text-left bg-blue-100 rounded-lg border shadow-md sm:p-8 hover:scale-105">
             {/* Body */}
             <div className="flex items-center justify-between">
             <p className="text-xl font-bold text-gray-600 hover:text-gray-600">
