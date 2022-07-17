@@ -1,5 +1,4 @@
 import React from "react";
-import "../style.css";
 import banner from "../../Banner.jpg"
 
 export default function HomeBanner() {
