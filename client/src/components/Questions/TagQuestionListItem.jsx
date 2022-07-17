@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import moment from "moment";
 
 export default function TagQuestionListItem(props) {
   const {
@@ -15,6 +16,7 @@ export default function TagQuestionListItem(props) {
     setQuestionId,
   } = props;
 
+  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY')
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
@@ -47,7 +49,7 @@ export default function TagQuestionListItem(props) {
               <span className="text-xs text-neutral-500">
                 {user_name}
               </span>
-              <span className="text-xs text-neutral-500">{date}</span>
+              <span className="text-xs text-neutral-500">{dateFormatted}</span>
               <button onClick={handleDelete}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +115,7 @@ export default function TagQuestionListItem(props) {
               <span className="text-xs text-neutral-500">
                 {user_name}
               </span>
-              <span className="text-xs text-neutral-500">{date}</span>
+              <span className="text-xs text-neutral-500">{dateFormatted}</span>
             </div>
             {/* Body of the container */}
             <div className="mt-2">

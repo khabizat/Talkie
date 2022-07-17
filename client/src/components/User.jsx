@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./User.scss"
+import moment from "moment";
+import "./User.scss";
 
 export default function User() {
   const [myQuestions, setMyQuestions] = useState(null);
   const [myAnswers, setMyAnswers] = useState(null);
   const [favourites, setFavourites] = useState(null);
   const findUser = JSON.parse(localStorage.getItem("user"));
+
   const userId = findUser.id;
 
   const handleMyQuestions = (userId) => {
@@ -61,7 +63,7 @@ export default function User() {
             {/* Header */}
               <div className="p-4 w-1/3 mx-4 text-left bg-blue-100 rounded-lg shadow-md sm:p-8 hover:scale-105 mb-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-neutral-500">Posted on {myQuestion.date}</span>
+                  <span className="text-xs text-neutral-500">Posted on {moment(myQuestion.dateFormatted).format('ddd, MMMM Do YYYY')}</span>
                 </div>
               {/* Body */}
               <div className="flex items-center justify-between mb-2">
@@ -91,7 +93,7 @@ export default function User() {
             {/* Header */}
             <div className="p-4 w-1/3 mx-4 text-left bg-blue-100 rounded-lg shadow-md sm:p-8 hover:scale-105 mb-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-neutral-500">Posted on {myAnswer.date}</span>
+                <span className="text-xs text-neutral-500">Posted on {moment(myAnswer.dateFormatted).format('ddd, MMMM Do YYYY')}</span>
               </div>
             {/* Body */}
             <div className="flex items-center justify-between">
