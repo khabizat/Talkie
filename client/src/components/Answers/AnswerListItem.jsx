@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
 export default function AnswerListItem(props) {
   const [good, setGood] = useState(0);
@@ -21,15 +22,16 @@ export default function AnswerListItem(props) {
   const handleDelete = (e) => {
     e.preventDefault();
 
+    console.log(answer_id);
+    console.log(selectedQuestion);
+
     axios
       .delete(`/api/answers/${answer_id}`)
       .then((response) => {
-        const answerIndex = selectedQuestion.findIndex(
-          (e) => e.answer_id === answer_id
+        const newList = selectedQuestion.filter(
+          (item) => item.answer_id != answer_id
         );
-        const thisAnswer = [...selectedQuestion];
-        thisAnswer.splice(answerIndex, 1);
-        setSelectedQuestion(thisAnswer);
+        setSelectedQuestion(newList);
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +73,11 @@ export default function AnswerListItem(props) {
             {/* Body of the container */}
             <div className="mt-2">
               <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
-                <audio src={ audio_url } controls="controls" className="audio-player"/>
+                <audio
+                  src={audio_url}
+                  controls="controls"
+                  className="audio-player"
+                />
               </span>
             </div>
             {/* Footer of the container */}
@@ -123,7 +129,11 @@ export default function AnswerListItem(props) {
             {/* Body of the container */}
             <div className="mt-2">
               <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
-                <audio src={ audio_url } controls="controls" className="audio-player"/>
+                <audio
+                  src={audio_url}
+                  controls="controls"
+                  className="audio-player"
+                />
               </span>
             </div>
             {/* Footer of the container */}
@@ -172,5 +182,3 @@ export default function AnswerListItem(props) {
     </div>
   );
 }
-
-

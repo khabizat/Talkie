@@ -32,7 +32,6 @@ const options = [
 ];
 
 export default function AddQuestionForm(props) {
-
   const [question, setQuestion] = useState("");
   const [tag, setTag] = useState(null);
 
