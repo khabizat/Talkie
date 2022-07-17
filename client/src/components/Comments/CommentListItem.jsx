@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import moment from "moment";
 
 export default function CommentListItem(props) {
   const [good, setGood] = useState(0);
@@ -15,6 +16,7 @@ export default function CommentListItem(props) {
   } = props;
 
 
+  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY')
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
@@ -49,7 +51,7 @@ export default function CommentListItem(props) {
         <>
         <div className="max-w-2xl w-5/6 px-6 py-2 mx-auto bg-blue-50 rounded-none border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-neutral-500">You commented on {date}</span>
+              <span className="text-xs text-neutral-500">You commented on {dateFormatted}</span>
               {/* delete button */}
               <button onClick={handleDelete}>
                 <svg
@@ -111,7 +113,7 @@ export default function CommentListItem(props) {
         <div className="max-w-2xl w-5/6 px-8 py-4 mx-auto bg-blue-50 rounded-none border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
           <div className="flex items-center justify-between">
             <span className="text-xs text-neutral-500">{comment_name}</span>
-            <span className="text-xs text-neutral-500">{date}</span>
+            <span className="text-xs text-neutral-500">{dateFormatted}</span>
           </div>
             {/* Body of the container */}
           <div className="mt-2">
