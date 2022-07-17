@@ -1,11 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-export default function HomeWelcome() {
+export default function HomeWelcome(props) {
   const history = useHistory();
+  const { currentUser } = props
 
   const handleStartButton = () => {
-    history.push("/questions");
+    if (currentUser) {
+      return history.push("/questions");
+    }
+    history.push("/login")
   };
 
   return (

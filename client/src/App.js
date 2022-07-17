@@ -28,37 +28,37 @@ function App() {
       <Switch>
         //Home
         <Route exact path="/">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-          <HomePage />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
+          <HomePage currentUser={ currentUser } />
         </Route>
         //Login
         <Route exact path="/login">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-          <Login />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
+          <Login setCurrentUser={ setCurrentUser } />
         </Route>
         //Register
         <Route exact path="/register">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
           <Register />
         </Route>
         //Questions
         <Route exact path="/questions">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-          <QuestionsPage tagId={tagId} setTagId={setTagId} />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
+          <QuestionsPage tagId={ tagId } setTagId={ setTagId } />
         </Route>
         //Questions/new
         <Route exact path="/questions/new">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-          <AddQuestionForm tagId={tagId} setTagId={setTagId} />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
+          <AddQuestionForm tagId={ tagId } setTagId={ setTagId } />
         </Route>
         //About
         <Route exact path="/about">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
           <About />
         </Route>
         //User
         <Route exact path="/user">
-          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
           <User />
         </Route>
       </Switch>

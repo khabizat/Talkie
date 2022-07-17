@@ -3,14 +3,14 @@ import HomeWelcome from "./HomeWelcome";
 import HomeBanner from "./HomeBanner";
 import "./HomePage.scss";
 
-export default function HomePage() {
+export default function HomePage(props) {
 
 
   return (
     <>
       <main className="main-container">
         <HomeBanner />
-        <HomeWelcome />
+        <HomeWelcome currentUser={ props.currentUser}/>
       </main>
     </>
   );
