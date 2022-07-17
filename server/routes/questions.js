@@ -8,8 +8,7 @@ module.exports = (db) => {
       questions.name as name, 
       TO_CHAR(questions.date, 'fmDay, fmMon DDth YYYY') as date,
       questions.tag_id as tag_id, 
-      users.name as user_name,
-      tags.name as tag_name 
+      users.name as user_name, tags.name as tag_name
       FROM questions
       JOIN users 
       ON users.id = questions.user_id
@@ -63,7 +62,6 @@ module.exports = (db) => {
         return res.json(err);
       });
   });
-
 
   router.get("/user/:userId", (req, res) => {
     const { userId } = req.params;

@@ -17,6 +17,7 @@ export default function TagList(props) {
   }, []);
 
   const options = [
+    { value: "all", label: "All" },
     { value: "1", label: "Data Structures and Algorithms" },
     { value: "2", label: "JavaScript" },
     { value: "3", label: "HTML" },
@@ -39,7 +40,7 @@ export default function TagList(props) {
     { value: "20", label: "Java" },
     { value: "21", label: "APIs" },
     { value: "22", label: "System Design" },
-    { value: "23", label: "Behavioural" }
+    { value: "23", label: "Behavioural" },
   ];
 
   return (
@@ -47,9 +48,16 @@ export default function TagList(props) {
       <Select
         placeholder="Select tag..."
         onChange={(selectedOption) => {
-          setTagId(selectedOption.value);
-          setSeeAll(false);
-          setSelectedTag(selectedOption)
+          if (selectedOption.value == "all") {
+            setSeeAll(true);
+            setTagId(null);
+            // setQuestionId(null);
+            setSelectedTag(null);
+          } else {
+            setSeeAll(false);
+            setTagId(selectedOption.value);
+            setSelectedTag(selectedOption);
+          }
         }}
         options={options}
         value={selectedTag}
