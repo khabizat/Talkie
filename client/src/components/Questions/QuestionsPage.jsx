@@ -27,7 +27,7 @@ export default function QuestionsPage(props) {
   };
 
   return (
-    <>
+    <main className="main-content">
       <div className="mb-8">
         <button
           onClick={handleSeeAll}
@@ -91,6 +91,6 @@ export default function QuestionsPage(props) {
           <TagQuestionList tagId={tagId} setQuestionId={setQuestionId} />
         </>
       )}
-    </>
+    </main>
   );
 }

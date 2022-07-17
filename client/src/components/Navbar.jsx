@@ -5,18 +5,24 @@ import "./Navbar.scss";
 
 function Navbar(props) {
   const { currentUser, setCurrentUser } = props;
+  const user = JSON.parse(window.localStorage.getItem("user"));
   const history = useHistory();
 
   const handleLoginButton = () => {
+    console.log(">>>>usr",user)
+    console.log(">>>>curUsr",currentUser)
+    setCurrentUser(user);
+    console.log(">>>>usr",user)
+    console.log(">>>>curUsr",currentUser)
     history.push("/login");
   };
   const handleRegisterButton = () => {
     history.push("/register");
   };
-  const handleLogoutButton = () => {
+  const handleSignoutButton = () => {
     window.localStorage.removeItem("user");
     setCurrentUser(null);
-    history.go(0);
+    history.push("/login");
   };
   const handleHomeClick = () => {
     history.push("/");
@@ -27,22 +33,14 @@ function Navbar(props) {
   const handleAboutClick = () => {
     history.push("/about");
   };
-  const handleContactClick = () => {
-    history.push("/contact");
-  };
   const handleUserClick = () => {
     history.push("/user");
   };
 
   return (
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <nav class="bg-white  shadow-md w-full h-16 flex py-2.5">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="https://flowbite.com/" class="flex items-center">
-          <img
-            src="/docs/images/logo.svg"
-            class="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
+        <a href="#" class="flex items-center" onClick={handleHomeClick}>
           <span class="self-center text-xl font-semibold whitespace-nowrap ">
             Talkie
           </span>
@@ -55,7 +53,7 @@ function Navbar(props) {
             <li onClick={handleHomeClick}>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
               >
                 Home
@@ -64,7 +62,7 @@ function Navbar(props) {
             <li onClick={handlePracticeClick}>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
               >
                 Practice
               </a>
@@ -72,7 +70,7 @@ function Navbar(props) {
             <li onClick={handleAboutClick}>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
               >
                 About
               </a>
@@ -88,27 +86,27 @@ function Navbar(props) {
             <>
               <button
                 onClick={handleLoginButton}
-                class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-40"
+                class="h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-26 mx-2"
               >
                 Login
               </button>
               <button
                 onClick={handleRegisterButton}
-                class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-40"
+                class="h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-26 mx-2"
               >
                 Register
               </button>
             </>
           ) : (
             <>
-              <h2 id="user" class="font-serif" onClick={handleUserClick}>
+              <h2 id="user" class="md:text-sm md:font-medium block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 " onClick={handleUserClick}>
                 | {currentUser.name}
               </h2>
               <div>&nbsp;</div>
               <div>&nbsp;</div>
               <button
-                onClick={handleLogoutButton}
-                class="h-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                onClick={handleSignoutButton}
+                class="h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-26 mx-2"
               >
                 Sign Out
               </button>
