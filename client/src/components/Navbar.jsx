@@ -23,7 +23,10 @@ function Navbar(props) {
     history.push("/");
   };
   const handlePracticeClick = () => {
-    history.push("/questions");
+    if (currentUser) {
+      return history.push("/questions");
+    }
+    history.push("/login")
   };
   const handleAboutClick = () => {
     history.push("/about");
