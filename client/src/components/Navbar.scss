@@ -1,10 +1,18 @@
 nav {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 2em;
-  margin: 1em;
+  margin: 0;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
   gap: 10px;
+  background-color: red;
+  z-index: 1;
 }
+
 
 .navbar-logo {
   width: 4em;
