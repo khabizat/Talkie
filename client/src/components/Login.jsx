@@ -14,26 +14,27 @@ export default function Login(props) {
 
   const handleLoginButton = (e) => {
     e.preventDefault();
-    
     const userCredentials = {
       email,
       password,
     };
-
+    
     axios
-      .post("/api/auth/login", userCredentials)
-      .then((response) => {
-        window.localStorage.setItem("user", JSON.stringify(response.data[0]));
-        history.push("/questions");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    .post("/api/auth/login", userCredentials)
+    .then((response) => {
+      window.localStorage.setItem("user", JSON.stringify(response.data[0]));
+      history.push("/questions");
+    })
+    .then(
+      setCurrentUser()
+    )
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
     <>
-    <main className="main-content">
       <div className="login-page">
         <div class="h-screen flex bg-gray-bg1">
         <div class="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
@@ -74,7 +75,6 @@ export default function Login(props) {
         </div>
         </div>
       </div>
-      </main>
     </>
   );
 }

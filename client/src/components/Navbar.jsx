@@ -5,15 +5,10 @@ import "./Navbar.scss";
 
 function Navbar(props) {
   const { currentUser, setCurrentUser } = props;
-  const user = JSON.parse(window.localStorage.getItem("user"));
   const history = useHistory();
 
+  //this handles the navbar login button. Only a link.
   const handleLoginButton = () => {
-    console.log(">>>>usr",user)
-    console.log(">>>>curUsr",currentUser)
-    setCurrentUser(user);
-    console.log(">>>>usr",user)
-    console.log(">>>>curUsr",currentUser)
     history.push("/login");
   };
   const handleRegisterButton = () => {
