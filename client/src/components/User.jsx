@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "./User.scss"
 
 export default function User() {
   const [myQuestions, setMyQuestions] = useState(null);
@@ -48,12 +49,12 @@ export default function User() {
   }, []);
 
   return (
-    <section>
-      <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600 mt-20">
+    <section className="user-profile">
+      <div className="text-2xl text-center font-bold text-white pt-16">
         My Questions
       </div>
       {/* My Questions Container */}
-      <div className="p-4 w-full flex flex-wrap justify-center text-left bg-white mb-2">
+      <div className="p-4 w-full flex flex-wrap justify-center text-left mb-2">
         {myQuestions &&
         myQuestions.map((myQuestion) => (
           <>
@@ -80,10 +81,10 @@ export default function User() {
       </div>
 
       {/* My Answers */}
-      <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600">
+      <div className="text-2xl text-center font-bold text-white">
         My Answers
       </div>
-      <div className="p-4 w-full flex flex-wrap justify-center text-left bg-white mb-2">
+      <div className="p-4 w-full flex flex-wrap justify-center text-left mb-2">
       {myAnswers &&
         myAnswers.map((myAnswer) => (
           <>
@@ -113,10 +114,10 @@ export default function User() {
       </div>
 
       {/* Favourite Questions */}
-      <div className="text-2xl text-center font-bold text-gray-600 hover:text-gray-600">
+      <div className="text-2xl text-center font-bold text-white">
         Favourite Questions
       </div>
-      <div className="p-4 w-full flex flex-wrap justify-center text-left bg-white mb-2">
+      <div className="p-4 w-full flex flex-wrap justify-center text-left mb-2">
         {favourites &&
         favourites.map((favourite) => (
           <>
