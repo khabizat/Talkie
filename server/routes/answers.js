@@ -7,7 +7,7 @@ module.exports = (db) => {
       `SELECT 
       comments.id as comment_id,
       comments.comment as comment,
-      TO_CHAR(comments.date, 'fmDay, fmMon DDth YYYY') as date,
+      comments.date as date,
       comments.name as name,
       comments.user_id as user_id,
       comments.answer_id as answer_id,
@@ -31,7 +31,7 @@ module.exports = (db) => {
     const { userId } = req.params;
     db.query(
       `SELECT answers.audio_url as answer_audio,
-      TO_CHAR(answers.date, 'fmDay, fmMon DDth YYYY') as date,
+      answers.date as date,
       questions.name as question_name,
       tags.name as tag_name
       FROM answers
