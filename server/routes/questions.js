@@ -6,7 +6,7 @@ module.exports = (db) => {
       `SELECT questions.id as id,
       questions.user_id as user_id,
       questions.name as name, 
-      TO_CHAR(questions.date, 'fmDay, fmMon DDth YYYY') as date,
+      questions.date as date,
       questions.tag_id as tag_id, 
       users.name as user_name, tags.name as tag_name
       FROM questions
@@ -42,7 +42,7 @@ module.exports = (db) => {
     SELECT answers.id as answer_id,
     answers.user_id as user_id,
     answers.audio_url as audio_url,
-    TO_CHAR(answers.date, 'fmDay, fmMon DDth YYYY') as date,
+    answers.date as date,
     questions.tag_id as tag_id,
     questions.name as name, 
     users.name as user_name

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import moment from "moment";
 
 export default function QuestionListItem(props) {
   const [heart, setHeart] = useState(false);
@@ -15,7 +16,7 @@ export default function QuestionListItem(props) {
     setQuestions,
     setQuestionId,
   } = props;
-
+  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY')
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
@@ -63,7 +64,7 @@ export default function QuestionListItem(props) {
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
               <span className="text-xs text-neutral-500">{user_name}</span>
-              <span className="text-xs text-neutral-500">{date}</span>
+              <span className="text-xs text-neutral-500">{dateFormatted}</span>
               <button onClick={handleDelete}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +127,7 @@ export default function QuestionListItem(props) {
           <div className="flex items-center justify-between">
             <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
             <span className="text-xs text-neutral-500">{user_name}</span>
-            <span className="text-xs text-neutral-500">{date}</span>
+            <span className="text-xs text-neutral-500">{dateFormatted}</span>
           </div>
           {/* Body of the container */}
           <div className="mt-2">
