@@ -18,6 +18,8 @@ export default function EachQuestionPage(props) {
       .catch((err) => console.log(err));
   };
 
+  console.log(selectedQuestion);
+
   useEffect(() => {
     if (questionId) {
       getSelectedQuestion(questionId);

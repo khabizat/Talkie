@@ -82,6 +82,7 @@ module.exports = (db) => {
       //     console.log("INSERT ERROR>>", err);
       //     return res.json(err);
       //   });
+
       const output = await postInDb([audio_url, user_id, question_id]);
       console.log("s3 upload >>>>>>>", output);
       return res.json(output);

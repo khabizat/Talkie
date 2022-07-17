@@ -102,6 +102,7 @@ export default class Audio extends Component {
         if (!Object.keys(newAnswer).includes("error")) {
           const user_name = findUser.name;
           newAnswer.user_name = user_name;
+          newAnswer.answer_id = newAnswer.id;
           let newArray = [...this.props.selectedQuestion, newAnswer];
           this.props.setSelectedQuestion(newArray);
         }

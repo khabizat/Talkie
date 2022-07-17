@@ -22,6 +22,9 @@ export default function AnswerListItem(props) {
   const handleDelete = (e) => {
     e.preventDefault();
 
+    console.log(answer_id);
+    console.log(selectedQuestion);
+
     axios
       .delete(`/api/answers/${answer_id}`)
       .then((response) => {
