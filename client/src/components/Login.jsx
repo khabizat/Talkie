@@ -26,7 +26,6 @@ export default function Login(props) {
     })
     .then(() => {
       const user = JSON.parse(window.localStorage.getItem("user"));
-      console.log("LOGIN AXIOS USER>>>", user)
       setCurrentUser(user)
     })
     .catch((err) => {

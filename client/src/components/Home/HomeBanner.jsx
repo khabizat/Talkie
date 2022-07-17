@@ -5,7 +5,7 @@ export default function HomeBanner() {
   return (
     <div className="home-banner">
       <img
-        src={banner}
+        // src={banner}
         alt={"Banner image"}
       />
     </div>

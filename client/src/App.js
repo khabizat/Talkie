@@ -29,7 +29,7 @@ function App() {
         //Home
         <Route exact path="/">
           <Navbar currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
-          <HomePage />
+          <HomePage currentUser={ currentUser } />
         </Route>
         //Login
         <Route exact path="/login">
