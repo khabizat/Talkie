@@ -58,7 +58,12 @@ module.exports = (db) => {
 
     s3.upload(params, async (err, data) => {
       if (err) {
-        res.send(`ERR FROM S3>>> ${err}`);
+        let errorData = {
+          error: true,
+          message: err,
+        };
+        // res.send(`ERR FROM S3>>> ${err}`);
+        res.send(errorData);
         return err;
       }
       let audio_url = data.Location;
@@ -77,6 +82,7 @@ module.exports = (db) => {
       //     console.log("INSERT ERROR>>", err);
       //     return res.json(err);
       //   });
+
       const output = await postInDb([audio_url, user_id, question_id]);
       console.log("s3 upload >>>>>>>", output);
       return res.json(output);
