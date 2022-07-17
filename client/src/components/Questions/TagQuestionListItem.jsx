@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import moment from "moment";
 
 export default function TagQuestionListItem(props) {
   const {
@@ -15,6 +16,7 @@ export default function TagQuestionListItem(props) {
     setQuestionId,
   } = props;
 
+  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY')
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
@@ -44,18 +46,18 @@ export default function TagQuestionListItem(props) {
             {/* Header of the container */}
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="font-bold text-gray-700 cursor-pointer">
+              <span className="text-xs text-neutral-500">
                 {user_name}
               </span>
-              <span className="text-xs text-neutral-500">{date}</span>
+              <span className="text-xs text-neutral-500">{dateFormatted}</span>
               <button onClick={handleDelete}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-6 w-6 hover:fill-red-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={1}
                 >
                   <path
                     strokeLinecap="round"
@@ -110,10 +112,10 @@ export default function TagQuestionListItem(props) {
             {/* Header of the container */}
             <div className="flex items-center justify-between">
               <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="font-bold text-gray-700 cursor-pointer">
+              <span className="text-xs text-neutral-500">
                 {user_name}
               </span>
-              <span className="text-xs text-neutral-500">{date}</span>
+              <span className="text-xs text-neutral-500">{dateFormatted}</span>
             </div>
             {/* Body of the container */}
             <div className="mt-2">

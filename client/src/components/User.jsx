@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import moment from "moment";
+import "./User.scss";
 
 export default function User() {
   const [myQuestions, setMyQuestions] = useState(null);
   const [myAnswers, setMyAnswers] = useState(null);
   const [favourites, setFavourites] = useState(null);
   const findUser = JSON.parse(localStorage.getItem("user"));
+
   const userId = findUser.id;
 
   const handleMyQuestions = (userId) => {
@@ -48,34 +51,97 @@ export default function User() {
   }, []);
 
   return (
-    <section>
-      <div>My Questions</div>
-      {myQuestions &&
+    <section className="user-profile">
+      <div className="text-2xl text-center font-bold text-white pt-16">
+        My Questions
+      </div>
+      {/* My Questions Container */}
+      <div className="p-4 w-full flex flex-wrap justify-center text-left mb-2">
+        {myQuestions &&
         myQuestions.map((myQuestion) => (
           <>
-            <div>Question: {myQuestion.question_name}</div>
-            <div>Tag: {myQuestion.tag_name}</div>
-            <div>Date: {myQuestion.date}</div>
+            {/* Header */}
+              <div className="p-4 w-1/3 mx-4 text-left bg-blue-100 rounded-lg shadow-md sm:p-8 hover:scale-105 mb-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-neutral-500">Posted on {moment(myQuestion.dateFormatted).format('ddd, MMMM Do YYYY')}</span>
+                </div>
+              {/* Body */}
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-xl font-bold text-gray-600 hover:text-gray-600">
+                {myQuestion.question_name}
+                </p>
+              </div>
+              {/* Footer */}
+              <div className="flex items-center justify-between">
+                <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-500">
+                {myQuestion.tag_name}
+                </button>
+              </div>
+            </div>
           </>
         ))}
-      <div>My Answers</div>
+      </div>
+
+      {/* My Answers */}
+      <div className="text-2xl text-center font-bold text-white">
+        My Answers
+      </div>
+      <div className="p-4 w-full flex flex-wrap justify-center text-left mb-2">
       {myAnswers &&
         myAnswers.map((myAnswer) => (
           <>
-            <div>Answer: {myAnswer.answer_audio}</div>
-            <div>Question: {myAnswer.question_name}</div>
-            <div>Tag: {myAnswer.tag_name}</div>
-            <div>Date: {myAnswer.date}</div>
+            {/* Header */}
+            <div className="p-4 w-1/3 mx-4 text-left bg-blue-100 rounded-lg shadow-md sm:p-8 hover:scale-105 mb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-neutral-500">Posted on {moment(myAnswer.dateFormatted).format('ddd, MMMM Do YYYY')}</span>
+              </div>
+            {/* Body */}
+            <div className="flex items-center justify-between">
+              <p className="text-xl font-bold text-gray-600 hover:text-gray-600 mb-2">
+                {myAnswer.question_name}
+              </p>
+            </div>
+          {/* Footer */}
+            <div className="flex items-center justify-between">
+              <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-500">
+                {myAnswer.tag_name}
+              </button>
+            </div>
+          <div className="flex items-center justify-between mb-4">
+            <span>{myAnswer.answer_audio}</span>
+          </div>
+          </div>
           </>
         ))}
-      <div>Favorites Questions</div>
-      {favourites &&
+      </div>
+
+      {/* Favourite Questions */}
+      <div className="text-2xl text-center font-bold text-white">
+        Favourite Questions
+      </div>
+      <div className="p-4 w-full flex flex-wrap justify-center text-left mb-2">
+        {favourites &&
         favourites.map((favourite) => (
           <>
-            <div>Question: {favourite.question_name}</div>
-            <div>Tag: {favourite.tag_name}</div>
+            {/* Header */}
+            <div className="p-4 w-1/3 mx-4 text-left bg-blue-100 rounded-lg shadow-md sm:p-8 hover:scale-105 mb-4">
+            {/* Body */}
+            <div className="flex items-center justify-between">
+            <p className="text-xl font-bold text-gray-600 hover:text-gray-600 mb-2">
+            {favourite.question_name}
+            </p>
+          </div>
+          {/* Footer */}
+          <div className="flex items-center justify-between">
+              <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-500">
+              {favourite.tag_name}
+              </button>
+            </div>
+          </div>
           </>
         ))}
+      </div>
     </section>
   );
 }
+

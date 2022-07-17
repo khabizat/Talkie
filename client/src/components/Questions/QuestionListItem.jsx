@@ -16,7 +16,7 @@ export default function QuestionListItem(props) {
     setQuestions,
     setQuestionId,
   } = props;
-  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY')
+  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY');
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
