@@ -33,10 +33,6 @@ export default function Login(props) {
       });
   };
 
-  const handleRegister = () => {
-    history.push("/register");
-  };
-
   return (
     <>
       <div className="login-page">
@@ -66,10 +62,7 @@ export default function Login(props) {
                 ></input>
               </div>
               <div class="flex justify-center items-center">
-                <button
-                  onClick={handleRegister}
-                  class="text-blue-600 hover:underline hover:cursor-pointer items-center"
-                >
+                <button class="text-blue-600 hover:underline hover:cursor-pointer items-center">
                   Register
                 </button>
               </div>
