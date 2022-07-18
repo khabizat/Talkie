@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import moment from "moment";
-import AnswerListItem from "../Answers/AnswerListItem";
 
 export default function CommentListItem(props) {
   const [good, setGood] = useState(0);
@@ -54,7 +53,7 @@ export default function CommentListItem(props) {
     <>
       {creatorId === user_id ? (
         <>
-          <div className="max-w-2xl px-6 py-2 bg-blue-50 rounded-none border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
+          <div className="max-w-2xl w-5/6 px-6 py-2 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
             <div className="flex items-center justify-between">
               <span className="text-xs text-neutral-500">
                 You commented on {dateFormatted}
@@ -127,7 +126,7 @@ export default function CommentListItem(props) {
         </>
       ) : (
         <>
-          <div className="max-w-2xl px-8 py-4 bg-blue-50 rounded-none border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
+          <div className="max-w-2xl w-5/6 px-6 py-2 mx-auto bg-blue-50 rounded-lg border-round p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
             <div className="flex items-center justify-between">
               <span className="text-xs text-neutral-500">{comment_name}</span>
               <span className="text-xs text-neutral-500">{dateFormatted}</span>

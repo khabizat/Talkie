@@ -45,7 +45,7 @@ export default function AnswerListItem(props) {
 
   return (
     <div className="mb-5">
-      <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-200 rounded-none border-2 p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-300">
+      <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto my-4 bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
         {/* Header of the container */}
         {creatorId === user_id ? (
           <>
