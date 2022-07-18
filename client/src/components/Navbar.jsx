@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Navbar.scss";
-// import logo from "../logo.png";
 
 function Navbar(props) {
   const { currentUser, setCurrentUser } = props;
@@ -26,7 +25,7 @@ function Navbar(props) {
     if (currentUser) {
       return history.push("/questions");
     }
-    history.push("/login")
+    history.push("/login");
   };
   const handleAboutClick = () => {
     history.push("/about");
@@ -51,7 +50,7 @@ function Navbar(props) {
             <li onClick={handleHomeClick}>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 font-semibold"
                 aria-current="page"
               >
                 Home
@@ -60,7 +59,7 @@ function Navbar(props) {
             <li onClick={handlePracticeClick}>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 font-semibold"
               >
                 Practice
               </a>
@@ -68,7 +67,7 @@ function Navbar(props) {
             <li onClick={handleAboutClick}>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 font-semibold"
               >
                 About
               </a>
@@ -97,14 +96,18 @@ function Navbar(props) {
             </>
           ) : (
             <>
-              <h2 id="user" class="md:text-sm md:font-medium block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 " onClick={handleUserClick}>
+              <h2
+                id="user"
+                class="md:text-sm md:font-medium block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                onClick={handleUserClick}
+              >
                 | {currentUser.name}
               </h2>
               <div>&nbsp;</div>
               <div>&nbsp;</div>
               <button
                 onClick={handleSignoutButton}
-                class="h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-26 mx-2"
+                class="h-10 bg-blue-700 hover:bg-blue-700 text-white font-bold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-26 mx-2"
               >
                 Sign Out
               </button>
