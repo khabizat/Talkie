@@ -23,8 +23,6 @@ export default function CommentList(props) {
     comment,
   };
 
-  console.log(selectedAnswer);
-
   const handleCommentButton = (e) => {
     e.preventDefault();
 
@@ -47,19 +45,20 @@ export default function CommentList(props) {
   const comments = selectedAnswer.map((sA) => {
     return (
       // <ol role="list">
-      // <li key={sA.comment_id}>
-      <CommentListItem
-        key={sA.comment_id}
-        user_id={sA.user_id}
-        comment_name={sA.name}
-        comment_id={sA.comment_id}
-        comment={sA.comment}
-        date={sA.date}
-        selectedAnswer={selectedAnswer}
-        setSelectedAnswer={setSelectedAnswer}
-      />
-      // </li>
+        // <li key={sA.comment_id}>
+          <CommentListItem
+            key={sA.comment_id}
+            user_id={sA.user_id}
+            comment_name={sA.name}
+            comment_id={sA.comment_id}
+            comment={sA.comment}
+            date={sA.date}
+            selectedAnswer={selectedAnswer}
+            setSelectedAnswer={setSelectedAnswer}
+          />
+        // </li>
       // </ol>
+
     );
   });
 
@@ -67,32 +66,35 @@ export default function CommentList(props) {
     <>
       <button
         onClick={() => setAnswerId(null)}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded mb-4"
       >
-        Back to answers
+      Back to answers
       </button>
 
       <div>{comments}</div>
 
-      <div className="max-w-2xl px-6 py-2 bg-blue-50 rounded-none border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
-        <form action="" class="w-full p-4">
-          <label class="block mb-2">
-            <span class="text-gray-600">Leave your feedback</span>
-            <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              class="block w-full mt-1 rounded text-black"
-              rows="3"
-            ></textarea>
+      <div className="max-w-2xl w-5/6 px-6 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+        <form action="" class="w-full p-4 py-4 rounded-lg">
+          <label class="block">
+          <span class="font-bold text-gray-600">Leave your feedback</span>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            class="block w-full mt-1 rounded"
+            rows="3"
+            class="font-normal px-3 py-2 mt-6"
+          >
+          </textarea>
           </label>
           <button
             onClick={handleCommentButton}
-            class="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded"
-          >
-            Comment
+            class="px-3 py-2 text-sm  text-center text-blue-100 bg-blue-600 rounded"
+          >Comment
           </button>
         </form>
       </div>
+
+
     </>
   );
 }

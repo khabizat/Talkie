@@ -45,7 +45,7 @@ export default function EachQuestionPage(props) {
       {answerId ? (
         <>
           {/* orange container that holds everything */}
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-purple-100 rounded-lg p-5 transition hover:border-blue-100">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-white-300 rounded-lg border p-5 shadow-lg transition hover:border-blue-100 mb-8">
             <div class="question_name">
               {selectedQuestion &&
                 selectedQuestion[0] &&
@@ -66,7 +66,7 @@ export default function EachQuestionPage(props) {
       ) : (
         <>
           {/* orange container that holds everything */}
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-purple-100 rounded-lg p-5 transition hover:border-blue-100">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-blue-70 rounded-lg border p-5 shadow-lg transition hover:border-blue-100 mb-8">
             <div class="question_name">
               {selectedQuestion &&
                 selectedQuestion[0] &&
