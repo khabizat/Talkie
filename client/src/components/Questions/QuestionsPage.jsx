@@ -4,6 +4,7 @@ import QuestionList from "./QuestionList";
 import EachQuestionPage from "./EachQuestionPage";
 import TagQuestionList from "./TagQuestionList";
 import TagList from "./TagList";
+import "./QuestionsPage.scss";
 
 export default function QuestionsPage(props) {
   const [seeAll, setSeeAll] = useState(true);
@@ -28,7 +29,7 @@ export default function QuestionsPage(props) {
 
   return (
     <>
-      <main className="main-content">
+      <main className="questions-page">
         <div className="my-8 mx-auto width-50 w-2/4">
 
           <h1 className="mb-2">Select a category</h1>
