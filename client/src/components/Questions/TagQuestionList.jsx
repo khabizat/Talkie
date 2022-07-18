@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import TagQuestionListItem from "./TagQuestionListItem";
 
+import "./TagQuestionList.scss";
+
 export default function TagQuestionList(props) {
-  const [tagQuestions, setTagQuestions] = useState(null);
+  const [tagQuestions, setTagQuestions] = useState([]);
   const { tagId, setQuestionId } = props;
 
   const getTagQuestions = (tagId) => {
@@ -21,6 +23,11 @@ export default function TagQuestionList(props) {
 
   return (
     <section>
+      {!tagQuestions.length && (
+        <div className="no_questions">
+          <h1>There is no questions for this tag yet</h1>
+        </div>
+      )}
       {tagQuestions &&
         tagQuestions.map((tagQuestion) => (
           <ol className="p-4 divide-y divide-slate-100">
