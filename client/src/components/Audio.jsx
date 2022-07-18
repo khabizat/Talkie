@@ -4,6 +4,7 @@ import MicRecorder from "mic-recorder-to-mp3";
 import Button from "./Button";
 import axios from "axios";
 
+
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 export default class Audio extends Component {
