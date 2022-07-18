@@ -81,7 +81,7 @@ export default function CommentList(props) {
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              class="block w-full mt-1 rounded"
+              class="block w-full mt-1 rounded text-black"
               rows="3"
             ></textarea>
           </label>
