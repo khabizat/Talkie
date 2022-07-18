@@ -4,6 +4,7 @@ import moment from "moment";
 
 export default function AnswerListItem(props) {
   const [good, setGood] = useState(0);
+  const [clickedGood, setClikedGood] = useState(false);
 
   const {
     answer_id,
@@ -23,9 +24,6 @@ export default function AnswerListItem(props) {
   const handleDelete = (e) => {
     e.preventDefault();
 
-    console.log(answer_id);
-    console.log(selectedQuestion);
-
     axios
       .delete(`/api/answers/${answer_id}`)
       .then((response) => {
@@ -39,8 +37,10 @@ export default function AnswerListItem(props) {
       });
   };
 
-  const goodIncrement = () => {
+  const goodIncrement = (e) => {
+    e.preventDefault();
     setGood(good + 1);
+    setClikedGood((prevState) => !prevState);
   };
 
   return (
@@ -107,7 +107,7 @@ export default function AnswerListItem(props) {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 hover:fill-blue-700"
-                    fill="none"
+                    fill={clickedGood ? "fill-blue-700" : "none"}
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={2}
@@ -165,7 +165,7 @@ export default function AnswerListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-blue-700"
-                  fill="none"
+                  fill={clickedGood ? "fill-blue-700" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}

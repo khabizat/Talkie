@@ -5,7 +5,10 @@ import AnswerListItem from "../Answers/AnswerListItem";
 
 export default function CommentListItem(props) {
   const [good, setGood] = useState(0);
+  const [clickedGood, setClikedGood] = useState(false);
   const [bad, setBad] = useState(0);
+  const [clickedBad, setClickedBad] = useState(false);
+
   const {
     user_id,
     comment_name,
@@ -40,10 +43,12 @@ export default function CommentListItem(props) {
 
   const goodIncrement = () => {
     setGood(good + 1);
+    setClikedGood((prevState) => !prevState);
   };
 
   const badIncrement = () => {
     setBad(bad + 1);
+    setClickedBad((prevState) => !prevState);
   };
   return (
     <>
@@ -86,7 +91,7 @@ export default function CommentListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-blue-600"
-                  fill="none"
+                  fill={clickedGood ? "fill-blue-700" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={1}
@@ -104,7 +109,7 @@ export default function CommentListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-rose-600"
-                  fill="none"
+                  fill={clickedBad ? "fill-red-700" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={1}
@@ -140,7 +145,7 @@ export default function CommentListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-blue-600"
-                  fill="none"
+                  fill={clickedGood ? "fill-blue-700" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={1}
@@ -158,7 +163,7 @@ export default function CommentListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-rose-600"
-                  fill="none"
+                  fill={clickedBad ? "fill-red-700" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={1}
