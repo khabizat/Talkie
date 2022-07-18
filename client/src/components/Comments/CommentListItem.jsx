@@ -91,7 +91,7 @@ export default function CommentListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-blue-600"
-                  fill={clickedGood ? "fill-blue-700" : "none"}
+                  fill={clickedGood ? "fill-blue-600" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={1}
@@ -145,7 +145,7 @@ export default function CommentListItem(props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:fill-blue-600"
-                  fill={clickedGood ? "fill-blue-700" : "none"}
+                  fill={clickedGood ? "fill-blue-600" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={1}
