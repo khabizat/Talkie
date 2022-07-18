@@ -35,17 +35,22 @@ export default function EachQuestionPage(props) {
 
   return (
     <div>
-      <button
-        onClick={() => setQuestionId(null)}
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
-      >
-        Back to questions
-      </button>
+      <div className="h-8 flex justify-left px-8 py-4 mx-1 my-6 p-5">
+        <button
+          onClick={() => setQuestionId(null)}
+          className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-4 px-4 rounded flex items-center gap-2"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+          Back to questions
+        </button>
+      </div>
 
       {answerId ? (
         <>
           {/* orange container that holds everything */}
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-purple-100 rounded-lg p-5 transition hover:border-blue-100">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto justify-items-center text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-white-300 rounded-lg border p-5 shadow-lg transition hover:border-blue-100 mb-8">
             <div class="question_name">
               {selectedQuestion &&
                 selectedQuestion[0] &&
@@ -66,7 +71,7 @@ export default function EachQuestionPage(props) {
       ) : (
         <>
           {/* orange container that holds everything */}
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-purple-100 rounded-lg p-5 transition hover:border-blue-100">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-blue-70 rounded-lg border p-5 shadow-lg transition hover:border-blue-100 mb-8">
             <div class="question_name">
               {selectedQuestion &&
                 selectedQuestion[0] &&
