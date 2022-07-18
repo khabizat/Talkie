@@ -10,6 +10,7 @@ export default function CommentList(props) {
     setAnswerId,
     comment,
     setComment,
+    audio_url,
   } = props;
 
   const findUser = JSON.parse(localStorage.getItem("user"));
@@ -46,6 +47,7 @@ export default function CommentList(props) {
     return (
       // <ol role="list">
         // <li key={sA.comment_id}>
+        <>
           <CommentListItem
             key={sA.comment_id}
             user_id={sA.user_id}
@@ -56,6 +58,7 @@ export default function CommentList(props) {
             selectedAnswer={selectedAnswer}
             setSelectedAnswer={setSelectedAnswer}
           />
+          </>
         // </li>
       // </ol>
 
@@ -64,31 +67,37 @@ export default function CommentList(props) {
 
   return (
     <>
-      <button
-        onClick={() => setAnswerId(null)}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded mb-4"
-      >
-      Back to answers
-      </button>
+      <div className="h-8 flex justify-left px-8 py-4 mx-1 my-6 p-5">
+        <button
+          onClick={() => setAnswerId(null)}
+          className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-4 px-4 rounded flex items-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+          Back to answers
+        </button>
+      </div>
 
       <div>{comments}</div>
 
-      <div className="max-w-2xl w-5/6 px-6 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
-        <form action="" class="w-full p-4 py-4 rounded-lg">
-          <label class="block">
-          <span class="font-bold text-gray-600">Leave your feedback</span>
+      <div className="max-w-2xl w-5/6 px-6 py-2 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+        <form action="" className="w-full p-4 py-4 rounded-lg">
+          <label className="block">
+          <span className="font-bold text-xl text-gray-600">
+            Leave your feedback
+          </span>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            class="block w-full mt-1 rounded"
+            className="block w-full mt-4 rounded font-normal text-lg px-3 py-2 mt-6"
             rows="3"
-            class="font-normal px-3 py-2 mt-6"
           >
           </textarea>
           </label>
           <button
             onClick={handleCommentButton}
-            class="px-3 py-2 text-sm  text-center text-blue-100 bg-blue-600 rounded"
+            className="px-3 py-2 mt-4 text-sm  text-center text-blue-100 bg-blue-600 rounded"
           >Comment
           </button>
         </form>

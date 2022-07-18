@@ -23,9 +23,19 @@ export default function EachAnswerPage(props) {
 
   return (
     <>
-      {selectedAnswer && selectedAnswer[0] && selectedAnswer[0].audio_url}
+        
+      {selectedAnswer && selectedAnswer[0] && 
+      <div className="flex justify-center">
+        <audio
+          src={selectedAnswer[0].audio_url}
+          controls="controls"
+          className="audio-player"
+        />
+      </div>
+      }
       {selectedAnswer && (
         <CommentList
+          audio_url={selectedAnswer[0].audio_url}
           selectedAnswer={selectedAnswer}
           setSelectedAnswer={setSelectedAnswer}
           answerId={answerId}
