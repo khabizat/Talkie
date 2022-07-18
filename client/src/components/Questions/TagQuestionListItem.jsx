@@ -48,7 +48,7 @@ export default function TagQuestionListItem(props) {
             {/* Header of the container */}
             <div className="flex items-center justify-start">
               <div>
-                <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
+                <img src={photo} alt="Avatar" className="rounded-full h-10 w-10 bg-slate-400"/>
               </div>
               {/* Username with date */}
               <div className="grid mx-2 w-1/3">
@@ -107,7 +107,7 @@ export default function TagQuestionListItem(props) {
               <div className="flex items-center justify-start">
               {/* Header left */}
               <div>
-                <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
+                <img src={photo} alt="Avatar" className="rounded-full h-10 w-10 bg-slate-400"/>
               </div>
               <div className="grid mx-2 w-1/3">
                 <span className="text-xs text-neutral-500 font-bold">{user_name}</span>
