@@ -46,7 +46,8 @@ module.exports = (db) => {
     answers.date as date,
     questions.tag_id as tag_id,
     questions.name as name, 
-    users.name as user_name
+    users.name as user_name,
+    users.photo_url as photo
     FROM questions 
     LEFT JOIN answers 
     ON answers.question_id = questions.id 

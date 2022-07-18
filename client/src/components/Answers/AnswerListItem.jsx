@@ -11,6 +11,7 @@ export default function AnswerListItem(props) {
     audio_url,
     date,
     user_name,
+    photo,
     setAnswerId,
     selectedQuestion,
     setSelectedQuestion,
@@ -45,32 +46,28 @@ export default function AnswerListItem(props) {
 
   return (
     <div className="mb-5">
-      <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-200 rounded-none border-2 p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-300">
-        {/* Header of the container */}
+      <div className="max-w-2xl w-3/4 px-8 py-4 mx-auto bg-blue-200 rounded-md border-2 p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-300">
         {creatorId === user_id ? (
           <>
-            <div className="flex items-center justify-between">
-              <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="text-xs text-neutral-500">{user_name}</span>
-              <span className="text-xs text-neutral-500">{dateFormatted}</span>
-            </div>
-            {/* Body of the container */}
-            <div className="mt-2">
-              <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
-                <audio
-                  src={audio_url}
-                  controls="controls"
-                  className="audio-player"
-                />
-              </span>
-            </div>
-            {/* Footer of the container */}
-            <div className="flex justify-between mt-2">
+            {/* Header of the container */}
+            <div>
+            <div className="flex items-center justify-start">
+              {/* Header left */}
+              <div>
+                <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
+              </div>
+              <div className="grid mx-2 w-1/3">
+                <span className="text-xs text-neutral-500 font-bold">You posted</span>
+                <span className="text-xs text-neutral-500">{dateFormatted}</span>
+              </div>
+              {/* Header right / Delete button */}
+              <div className="flex w-2/3 justify-end">
+              <div className="flex justify-between mt-2">
               {/* delete button */}
               <button className="mr-2" onClick={handleDelete}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-6 w-6 hover:fill-red-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -83,7 +80,20 @@ export default function AnswerListItem(props) {
                   />
                 </svg>
               </button>
-
+              </div>
+              </div>
+            </div>
+            {/* Body of the container */}
+            <div className="mt-4 flex justify-start">
+              <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
+                <audio
+                  src={audio_url}
+                  controls="controls"
+                  className="audio-player"
+                />
+              </span>
+            </div>
+            {/* Footer of the container */}
               <div className="flex justify-end">
                 {/* comment button */}
                 <button className="mr-2" onClick={() => setAnswerId(answer_id)}>
@@ -93,7 +103,7 @@ export default function AnswerListItem(props) {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={1}
                   >
                     <path
                       strokeLinecap="round"
@@ -110,7 +120,7 @@ export default function AnswerListItem(props) {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={1}
                   >
                     <path
                       strokeLinecap="round"
@@ -119,19 +129,26 @@ export default function AnswerListItem(props) {
                     />
                   </svg>
                 </button>
-                <span>{good}</span>
+                <span className="font-light text-base">{good}</span>
               </div>
             </div>
           </>
         ) : (
           <>
-            <div className="flex items-center justify-between">
-              <div className="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg')]"></div>
-              <span className="text-xs text-neutral-500">{user_name}</span>
-              <span className="text-xs text-neutral-500">{dateFormatted}</span>
+            {/* If user is not author of the answer */}
+            <div>
+            <div className="flex items-center justify-start">
+                {/* Header left */}
+                <div>
+                <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
+                </div>
+                <div className="grid mx-2 w-2/3">
+                  <span className="text-xs text-neutral-500 font-bold">{user_name}</span>
+                  <span className="text-xs text-neutral-500">{dateFormatted}</span>
+                </div>
             </div>
             {/* Body of the container */}
-            <div className="mt-2">
+            <div className="mt-4 flex justify-start">
               <span className="text-xl font-bold text-gray-600 hover:text-gray-600">
                 <audio
                   src={audio_url}
@@ -141,7 +158,6 @@ export default function AnswerListItem(props) {
               </span>
             </div>
             {/* Footer of the container */}
-            {/* <div className="flex items-center justify-between mt-4"> */}
             <div className="flex justify-end mt-2">
               {/* comment button */}
               <button className="mr-2" onClick={() => setAnswerId(answer_id)}>
@@ -151,7 +167,7 @@ export default function AnswerListItem(props) {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={1}
                 >
                   <path
                     strokeLinecap="round"
@@ -168,7 +184,7 @@ export default function AnswerListItem(props) {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={1}
                 >
                   <path
                     strokeLinecap="round"
@@ -177,11 +193,11 @@ export default function AnswerListItem(props) {
                   />
                 </svg>
               </button>
-              <span>{good}</span>
+              <span className="font-light text-base">{good}</span>
             </div>
+          </div>
           </>
         )}
-        {/* </div> */}
       </div>
     </div>
   );
