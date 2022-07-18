@@ -1,8 +1,8 @@
 INSERT INTO users (name, email, password, photo_url)
 VALUES
-('Eva Edison', 'test@test.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg'),
-('Daniel Smith', 'daniel@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg'), 
-('Bella Scott', 'bellas@outlook.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg'),
+('Jeongmin', 'test1@test.com', '12345', 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg'),
+('Kabby', 'test2@test.com', '123456', 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg'), 
+('Muhammad', 'test3@test.com', '1234567', 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg'),
 ('Alice Jackson', 'alicejackson@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg'),
 ('Anthony Marlou', 'marlou@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg'),
 ('Katia Cheng', 'katiacheng@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg'),
@@ -50,12 +50,28 @@ VALUES
 ('What is a closure, and how/why would you use one?', '2022-07-07', 3, 2),
 ('What is the difference between .call and .apply?', '2022-07-01', 3, 2),
 ('How is responsive design different from adaptive design?', '2022-07-03', 3, 4),
-('What is a stack? What are the applications of stack?', '2022-07-02', 3, 1);
+('What is a stack? What are the applications of stack?', '2022-07-02', 3, 1),
+
+-- tag #3 HTML => everyone
+('What is a Tag in HTML?', '2021-10-17', 1, 3),
+('What are Attributes in HTML?', '2020-10-19', 2, 3),
+('What is the Use of Comments in HTML?', '2019-08-18', 3, 3),
+
+-- tag #4 CSS => Jeongmin, Kabby
+('Explain a few advantages of CSS', '2018-10-18', 2, 4),
+('How can CSS be integrated into an HTML page?', '2022-01-23', 1, 4),
+
+-- tag #5 Ruby => Kabby
+('Why Ruby is known as a language of flexibility?', '2021-10-23', 2, 5),
+
+--tag #6 Ruby on Rails => Jeongmin, Muhammad
+('What is the Rails Controller?', '2017-10-17', 1, 6),
+('What are the advantages of using Ruby on Rails?', '2021-02-02', 3, 6);
 
 INSERT INTO answers (audio_url, user_id, question_id, date)
 VALUES
 
-('Because... reasons', 1, 1, '2022-07-11'),
+('https://talkieproject.s3.amazonaws.com/Audio//1658180405683-testAudio.mp3', 1, 1, '2022-07-11'),
 ('I would approach this...', 2, 2, '2022-07-01'),
 ('Because reasons!', 3, 3, '2022-11-01'),
 ('Because reasons', 4, 4, '2022-04-21'),
@@ -69,9 +85,9 @@ VALUES
 INSERT INTO comments (user_id, name,  answer_id, comment, date)
 VALUES
 
-(2, 'Daniel Smith', 4, 'I think this is the best answer of all time! You are a genius', '1995-01-01'),
-(3, 'Bella Scott', 3, 'This has truly inspired me!', '1995-01-01'),
-(4, 'Alice Jackson', 6, 'I have no clue what you are saying?', '1995-01-01'),
+(2, 'Daniel Smith', 4, 'I think this is the best answer of all time! You are a genius', '2019-01-01'),
+(3, 'Bella Scott', 3, 'This has truly inspired me!', '2021-08-02'),
+(4, 'Alice Jackson', 6, 'I have no clue what you are saying?', '2021-07-22'),
 (5, 'Anthony Marlou', 8, 'I think this is the best answer of all time! You are a genius', '2021-10-03'),
 (6, 'Katia Cheng', 10, 'Whuuuuuut!', '2022-05-03'),
 (7, 'Michael Weiss', 2, '🤔🤔', '2022-05-03'),

@@ -2,7 +2,7 @@ INSERT INTO tags (name)
 VALUES
 ('Data Structures and Algorithms'),
 ('JavaScript'),
-('HLML'),
+('HTML'),
 ('CSS'),
 ('Ruby'),
 ('Ruby on Rails'),

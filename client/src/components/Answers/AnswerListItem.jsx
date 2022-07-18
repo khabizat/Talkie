@@ -106,8 +106,10 @@ export default function AnswerListItem(props) {
                 <button className="mr-2" onClick={goodIncrement}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 hover:fill-blue-700"
-                    fill={clickedGood ? "fill-blue-700" : "none"}
+                    className={`h-6 w-6 hover:fill-blue-700 ${
+                      clickedGood && "fill-blue-700"
+                    }`}
+                    fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={2}
@@ -164,8 +166,10 @@ export default function AnswerListItem(props) {
               <button className="mr-2" onClick={goodIncrement}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 hover:fill-blue-700"
-                  fill={clickedGood ? "fill-blue-700" : "none"}
+                  className={`h-6 w-6 hover:fill-blue-700 ${
+                    clickedGood && "fill-blue-700"
+                  }`}
+                  fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
