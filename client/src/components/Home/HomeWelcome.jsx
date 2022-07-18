@@ -3,17 +3,17 @@ import { useHistory } from "react-router-dom";
 
 export default function HomeWelcome(props) {
   const history = useHistory();
-  const { currentUser } = props
+  const { currentUser } = props;
 
   const handleStartButton = () => {
     if (currentUser) {
       return history.push("/questions");
     }
-    history.push("/login")
+    history.push("/login");
   };
 
   return (
-    <section className="main-content">
+    <section className="">
       <main className="home-welcome">
         <section className="welcome">
           <h3 class="font-serif">Take your interview prep to the next level</h3>

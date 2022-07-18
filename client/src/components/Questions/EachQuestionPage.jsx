@@ -36,7 +36,7 @@ export default function EachQuestionPage(props) {
   }, [finishedRecord]);
 
   return (
-    <>
+    <div>
       <button
         onClick={() => setQuestionId(null)}
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
@@ -47,7 +47,7 @@ export default function EachQuestionPage(props) {
       {answerId ? (
         <>
           {/* orange container that holds everything */}
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-yellow-100 h-5 rounded-lg border p-5 shadow-lg transition hover:border-blue-100">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-purple-100 rounded-lg p-5 transition hover:border-blue-100">
             {selectedQuestion &&
               selectedQuestion[0] &&
               selectedQuestion[0].name}
@@ -66,7 +66,7 @@ export default function EachQuestionPage(props) {
       ) : (
         <>
           {/* orange container that holds everything */}
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-yellow-100 h-5rounded-lg border p-5 shadow-lg transition hover:border-blue-100">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto text-2xl font-bold text-gray-600 hover:text-gray-600 hover:text-gray-600 bg-opacity-50 bg-purple-100 rounded-lg p-5 transition hover:border-blue-100">
             {selectedQuestion &&
               selectedQuestion[0] &&
               selectedQuestion[0].name}
@@ -90,6 +90,6 @@ export default function EachQuestionPage(props) {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
