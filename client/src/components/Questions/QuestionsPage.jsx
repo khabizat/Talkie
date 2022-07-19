@@ -30,17 +30,16 @@ export default function QuestionsPage(props) {
   return (
     <>
       <main className="questions-page">
-        <div className="mt-24 mb-4 mx-auto width-50 w-2/4">
-
-          {!questionId &&
+        {!questionId && 
+          <div className="mt-24 mb-4 mx-auto width-50 w-2/4">
           <TagList
             setTagId={setTagId}
             setQuestionId={setQuestionId}
             setSeeAll={setSeeAll}
             selectedTag={selectedTag}
             setSelectedTag={setSelectedTag}
-          />}
-        </div>
+          />
+        </div>}
 
         {questionId && (
           <EachQuestionPage

@@ -108,7 +108,12 @@ export default function User() {
               </button>
             </div>
           <div className="flex items-center justify-between mb-4">
-            <span>{myAnswer.answer_audio}</span>
+            <audio
+              src={myAnswer.answer_audio}
+              controls="controls"
+              className="audio-player mt-6"
+            >
+            </audio>
           </div>
           </div>
           </>
