@@ -4,7 +4,10 @@ import moment from "moment";
 
 export default function CommentListItem(props) {
   const [good, setGood] = useState(0);
+  const [clickedGood, setClikedGood] = useState(false);
   const [bad, setBad] = useState(0);
+  const [clickedBad, setClickedBad] = useState(false);
+
   const {
     user_id,
     comment_name,
@@ -15,8 +18,7 @@ export default function CommentListItem(props) {
     setSelectedAnswer,
   } = props;
 
-
-  const dateFormatted = moment(date).format('ddd, MMMM Do YYYY')
+  const dateFormatted = moment(date).format("ddd, MMMM Do YYYY");
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
@@ -37,13 +39,15 @@ export default function CommentListItem(props) {
         console.log(err);
       });
   };
-  
+
   const goodIncrement = () => {
     setGood(good + 1);
+    setClikedGood((prevState) => !prevState);
   };
 
   const badIncrement = () => {
-    setBad(bad - 1);
+    setBad(bad + 1);
+    setClickedBad((prevState) => !prevState);
   };
   return (
     <>
@@ -110,7 +114,11 @@ export default function CommentListItem(props) {
             <button onClick={goodIncrement}>
               <svg 
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 hover:fill-blue-600" fill="none" viewBox="0 0 24 24"
+                className={`h-6 w-6 hover:fill-blue-700 ${
+                  clickedGood && "fill-blue-700"
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor" strokeWidth={1}
               >
               <path
@@ -122,21 +130,26 @@ export default function CommentListItem(props) {
               </button>
               {/* downvote button */}
               <button onClick={badIncrement} className="hover:fill-blue-600">
-                <svg 
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 hover:fill-rose-600" fill="none"
+                  className={`h-6 w-6 hover:fill-rose-700 ${
+                    clickedBad && "fill-rose-700"
+                  }`}
+                  fill={"none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={1}>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round" 
-                  d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
+                  strokeWidth={1}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"
+                  />
                 </svg>
                 <span className="text-rose-600 text-base">{bad}</span>
               </button>
+            </div>
           </div>
-        </div>
         </>
       )}
     </>

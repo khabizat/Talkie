@@ -4,6 +4,7 @@ import moment from "moment";
 
 export default function AnswerListItem(props) {
   const [good, setGood] = useState(0);
+  const [clickedGood, setClikedGood] = useState(false);
 
   const {
     answer_id,
@@ -24,9 +25,6 @@ export default function AnswerListItem(props) {
   const handleDelete = (e) => {
     e.preventDefault();
 
-    console.log(answer_id);
-    console.log(selectedQuestion);
-
     axios
       .delete(`/api/answers/${answer_id}`)
       .then((response) => {
@@ -40,8 +38,10 @@ export default function AnswerListItem(props) {
       });
   };
 
-  const goodIncrement = () => {
+  const goodIncrement = (e) => {
+    e.preventDefault();
     setGood(good + 1);
+    setClikedGood((prevState) => !prevState);
   };
 
   return (
@@ -117,7 +117,9 @@ export default function AnswerListItem(props) {
                 <button className="mr-2" onClick={goodIncrement}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 hover:fill-blue-700"
+                    className={`h-6 w-6 hover:fill-blue-700 ${
+                      clickedGood && "fill-blue-700"
+                    }`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -141,7 +143,7 @@ export default function AnswerListItem(props) {
             <div className="flex items-center justify-start">
                 {/* Header left */}
                 <div>
-                <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
+                  <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
                 </div>
                 <div className="grid mx-2 w-2/3">
                   <span className="text-xs text-neutral-500 font-bold">{user_name}</span>
@@ -181,7 +183,9 @@ export default function AnswerListItem(props) {
               <button className="mr-2" onClick={goodIncrement}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 hover:fill-blue-700"
+                  className={`h-6 w-6 hover:fill-blue-700 ${
+                    clickedGood && "fill-blue-700"
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
