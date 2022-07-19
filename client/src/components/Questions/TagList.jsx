@@ -46,7 +46,7 @@ export default function TagList(props) {
   return (
     <>
       <Select
-        placeholder="Select tag..."
+        placeholder="Select a category..."
         onChange={(selectedOption) => {
           if (selectedOption.value == "all") {
             setSeeAll(true);
@@ -61,6 +61,7 @@ export default function TagList(props) {
         }}
         options={options}
         value={selectedTag}
+        className="m-t-8"
       />
     </>
   );
