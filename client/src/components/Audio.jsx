@@ -116,7 +116,7 @@ export default class Audio extends Component {
   render() {
     return (
       <div
-        className="row d-flex justify-content-center mt-5"
+        className="row d-flex justify-center mt-5"
         style={{ color: "red" }}
       >
         {!this.state.isRecording && !this.state.isRecordingStp && (
@@ -149,11 +149,14 @@ export default class Audio extends Component {
           </Button>
         )}
         {this.state.isRecordingStp && (
-          <audio
-            src={this.state.blobURL}
-            controls="controls"
-            className="audio-player"
-          />
+          <div className="flex justify-center">
+              <audio
+                src={this.state.blobURL}
+                controls="controls"
+                className="audio-player mt-4"
+            />
+          </div>
+
         )}
       </div>
     );
