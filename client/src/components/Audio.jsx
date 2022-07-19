@@ -104,6 +104,7 @@ export default class Audio extends Component {
           const user_name = findUser.name;
           newAnswer.user_name = user_name;
           newAnswer.answer_id = newAnswer.id;
+          newAnswer.photo = findUser.photo_url;
           let newArray = [...this.props.selectedQuestion, newAnswer];
           this.props.setSelectedQuestion(newArray);
         }

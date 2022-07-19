@@ -16,7 +16,6 @@ export default function AnswerList(props) {
       {!answerId &&
         selectedQuestion.map((sQ) => (
           <ol role="list">
-            {/* <ol role="list" className="p-2 divide-y divide-slate-100"> */}
             <li key={sQ.answer_id}>
               <AnswerListItem
                 answer_id={sQ.answer_id}
