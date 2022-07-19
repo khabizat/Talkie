@@ -34,8 +34,8 @@ export default function EachQuestionPage(props) {
   }, [finishedRecord]);
 
   return (
-    <div>
-      <div className="h-8 flex justify-left px-8 py-4 mx-1 my-6 p-5">
+    <>
+      <div className="max-w-2xl w-9/12 h-8 flex justify-items-center px-8 py-4 mx-1 ml-24 my-6 p-5">
         <button
           onClick={() => setQuestionId(null)}
           className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-4 px-4 rounded flex items-center gap-2"
@@ -43,7 +43,7 @@ export default function EachQuestionPage(props) {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
           </svg>
-          Back to questions
+          Questions
         </button>
       </div>
 
@@ -97,6 +97,6 @@ export default function EachQuestionPage(props) {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }

@@ -32,13 +32,16 @@ export default function QuestionsPage(props) {
       <main className="questions-page">
         <div className="my-8 mx-auto width-50 w-2/4">
           <h1 className="mb-2 font-bold text-xl">Select a category</h1>
-          <TagList
-            setTagId={setTagId}
-            setQuestionId={setQuestionId}
-            setSeeAll={setSeeAll}
-            selectedTag={selectedTag}
-            setSelectedTag={setSelectedTag}
-          />
+
+          {!questionId && (
+            <TagList
+              setTagId={setTagId}
+              setQuestionId={setQuestionId}
+              setSeeAll={setSeeAll}
+              selectedTag={selectedTag}
+              setSelectedTag={setSelectedTag}
+            />
+          )}
         </div>
 
         {questionId && (
