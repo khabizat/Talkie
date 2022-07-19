@@ -1,9 +1,9 @@
 INSERT INTO liked (user_id, question_name, tag_name)
 VALUES
 
-(2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
-(2, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
-(2, 'Explain how this works in JavaScript', 'JavaScript'),
+(1, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
+(1, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
+(1, 'Explain how this works in JavaScript', 'JavaScript'),
 (2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
 (2, 'What is a closure, and how/why would you use one?', 'JavaScript'),
 (2, 'What is the difference between .call and .apply?', 'JavaScript'),
