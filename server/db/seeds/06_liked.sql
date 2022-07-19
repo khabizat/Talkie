@@ -8,8 +8,6 @@ VALUES
 (2, 'What is a closure, and how/why would you use one?', 'JavaScript'),
 (2, 'What is the difference between .call and .apply?', 'JavaScript'),
 (3, 'What is a closure, and how/why would you use one?', 'JavaScript'),
-(3, 'Explain how this works in JavaScript', 'JavaScript'),
-(3, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
 (4, 'What is the difference between .call and .apply?', 'JavaScript'),
 (4, 'What is a closure, and how/why would you use one?', 'JavaScript'),
 (4, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
