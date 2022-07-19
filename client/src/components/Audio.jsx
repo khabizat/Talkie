@@ -145,7 +145,7 @@ export default class Audio extends Component {
         {this.state.isRecordingStp && (
           <Button confirm onClick={this.submit}>
             {" "}
-            Submit Your Answer ➕{" "}
+            Submit Your Answer ➕ {" "}
           </Button>
         )}
         {this.state.isRecordingStp && (
