@@ -21,7 +21,7 @@ export default function CommentList(props) {
     userId,
     userName,
     answerId,
-    comment,
+    comment
   };
 
   const handleCommentButton = (e) => {
@@ -45,8 +45,6 @@ export default function CommentList(props) {
 
   const comments = selectedAnswer.map((sA) => {
     return (
-      // <ol role="list">
-        // <li key={sA.comment_id}>
         <>
           <CommentListItem
             key={sA.comment_id}
@@ -59,15 +57,13 @@ export default function CommentList(props) {
             setSelectedAnswer={setSelectedAnswer}
           />
           </>
-        // </li>
-      // </ol>
 
     );
   });
 
   return (
     <>
-      <div className="h-8 flex justify-left px-8 py-4 mx-1 my-6 p-5">
+      <div className="h-8 flex justify-left py-4 my-6">
         <button
           onClick={() => setAnswerId(null)}
           className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-4 px-4 rounded flex items-center gap-2"
@@ -81,10 +77,10 @@ export default function CommentList(props) {
 
       <div>{comments}</div>
 
-      <div className="max-w-2xl w-5/6 px-6 py-2 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+      <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
         <form action="" className="w-full p-4 py-4 rounded-lg">
           <label className="block">
-          <span className="font-bold text-xl text-gray-600">
+          <span className="font-semibold text-xl text-gray-600">
             Leave your feedback
           </span>
           <textarea

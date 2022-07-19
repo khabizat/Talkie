@@ -104,6 +104,7 @@ export default class Audio extends Component {
           const user_name = findUser.name;
           newAnswer.user_name = user_name;
           newAnswer.answer_id = newAnswer.id;
+          newAnswer.photo = findUser.photo_url;
           let newArray = [...this.props.selectedQuestion, newAnswer];
           this.props.setSelectedQuestion(newArray);
         }
@@ -115,7 +116,7 @@ export default class Audio extends Component {
   render() {
     return (
       <div
-        className="row d-flex justify-content-center mt-5"
+        className="row d-flex justify-center mt-5"
         style={{ color: "red" }}
       >
         {!this.state.isRecording && !this.state.isRecordingStp && (
@@ -144,15 +145,18 @@ export default class Audio extends Component {
         {this.state.isRecordingStp && (
           <Button confirm onClick={this.submit}>
             {" "}
-            Submit Your Answer ➕{" "}
+            Submit Your Answer ➕ {" "}
           </Button>
         )}
         {this.state.isRecordingStp && (
-          <audio
-            src={this.state.blobURL}
-            controls="controls"
-            className="audio-player"
-          />
+          <div className="flex justify-center">
+              <audio
+                src={this.state.blobURL}
+                controls="controls"
+                className="audio-player mt-4"
+            />
+          </div>
+
         )}
       </div>
     );
