@@ -92,7 +92,7 @@ export default function CommentListItem(props) {
         </>
       ) : (
         <>
-        <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-50 rounded-lg border-round p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
+        <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-50 rounded-lg border-round p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 border-2">
           <div className="flex items-center justify-between">
             {/* <div>
               <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
