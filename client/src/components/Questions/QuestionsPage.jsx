@@ -31,7 +31,7 @@ export default function QuestionsPage(props) {
     <>
       <main className="questions-page">
           {!questionId &&
-          <div className="mt-24 mb-4 mx-auto width-50 w-2/4">
+          <div className="mt-18 pt-14 mb-4 mx-auto width-50 w-2/4">
           <TagList
             setTagId={setTagId}
             setQuestionId={setQuestionId}
