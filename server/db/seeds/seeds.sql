@@ -35,6 +35,13 @@ VALUES
 ('System Design'),
 ('Behavioural');
 
+
+question by you
+answer1 by Jeongmin
+  comment1 by Muhammad
+answer2 by Muhammad
+
+
 INSERT INTO questions (name, date, user_id, tag_id)
 VALUES
 
@@ -44,7 +51,7 @@ VALUES
 
 -- Seed Daniel (user #2) / tag #2 JavaScript
 ('Explain how this works in JavaScript', '2022-07-08', 2, 2),
-('Describe event bubbling', '2022-07-08', 2, 2),
+('Describe event bubbling', '2022-07-10', 2, 2),
 
 -- Seed Bella (user #3) / tag #2 JavaScript / tag #4 CSS / tag#1 Data Structures and Algorithms
 ('What is a closure, and how/why would you use one?', '2022-07-07', 3, 2),
@@ -74,8 +81,8 @@ VALUES
 ('https://talkieproject.s3.amazonaws.com/Audio//1658186855734-testAudio.mp3', 1, 1, '2022-07-11'),
 ('https://talkieproject.s3.amazonaws.com/Audio//1658180405683-testAudio.mp3', 2, 2, '2022-07-01'),
 ('https://talkieproject.s3.amazonaws.com/Audio//1658186957126-testAudio.mp3', 3, 3, '2022-11-01'),
-('https://talkieproject.s3.amazonaws.com/Audio//1658187133810-testAudio.mp3', 4, 4, '2022-04-21'),
-('https://talkieproject.s3.amazonaws.com/Audio//1658187211977-testAudio.mp3', 5, 4, '2022-07-01'),
+('https://talkieproject.s3.amazonaws.com/Audio//1658187133810-testAudio.mp3', 1, 4, '2022-07-10'),
+('https://talkieproject.s3.amazonaws.com/Audio//1658187211977-testAudio.mp3', 3, 4, '2022-07-10'),
 ('https://talkieproject.s3.amazonaws.com/Audio//1658180405683-testAudio.mp3', 5, 5, '2022-04-30'),
 ('https://talkieproject.s3.amazonaws.com/Audio//1658180405683-testAudio.mp3', 6, 6, '2022-06-26'),
 ('https://talkieproject.s3.amazonaws.com/Audio//1658180405683-testAudio.mp3', 7, 6, '2022-07-01'),
@@ -85,7 +92,7 @@ VALUES
 INSERT INTO comments (user_id, name,  answer_id, comment, date)
 VALUES
 
-(2, 'Daniel Smith', 4, 'I think this is the best answer of all time! You are a genius', '2019-01-01'),
+(3, 'Daniel Smith', 4, 'I think this is the best answer of all time! You are a genius', '2022-07-11'),
 (3, 'Bella Scott', 3, 'This has truly inspired me!', '2021-08-02'),
 (4, 'Alice Jackson', 6, 'I have no clue what you are saying?', '2021-07-22'),
 (5, 'Anthony Marlou', 8, 'I think this is the best answer of all time! You are a genius', '2021-10-03'),
@@ -98,9 +105,9 @@ VALUES
 INSERT INTO liked (user_id, question_name, tag_name)
 VALUES
 
-(2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
-(2, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
-(2, 'Explain how this works in JavaScript', 'JavaScript'),
+(1, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
+(1, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
+(1, 'Explain how this works in JavaScript', 'JavaScript'),
 (2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
 (2, 'What is a closure, and how/why would you use one?', 'JavaScript'),
 (2, 'What is the difference between .call and .apply?', 'JavaScript'),
