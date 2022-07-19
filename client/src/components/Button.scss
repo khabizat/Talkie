@@ -24,25 +24,25 @@
 }
 
 .button--danger {
-  color: red;
+  color: white;
   border-color: red;
-  background-color: transparent;
+  background-color: red;
 }
 
 .button--confirm {
-  color: rgb(64, 173, 64);
+  color: white;
   border-color: green;
-  background-color: transparent;
+  background-color: green;
 }
 
 .button--danger:hover {
   color: white;
-  background-color: red;
+  background-color: rgb(218, 44, 44);
 }
 
 .button--confirm:hover {
   color: white;
-  background-color: green;
+  background-color: darkgreen;
 }
 
 .button:last-of-type {

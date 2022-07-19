@@ -16,7 +16,6 @@ export default function AnswerList(props) {
       {!answerId &&
         selectedQuestion.map((sQ) => (
           <ol role="list">
-            {/* <ol role="list" className="p-2 divide-y divide-slate-100"> */}
             <li key={sQ.answer_id}>
               <AnswerListItem
                 answer_id={sQ.answer_id}
@@ -24,6 +23,7 @@ export default function AnswerList(props) {
                 audio_url={sQ.audio_url}
                 date={sQ.date}
                 user_name={sQ.user_name}
+                photo={sQ.photo}
                 setAnswerId={setAnswerId}
                 selectedQuestion={selectedQuestion}
                 setSelectedQuestion={setSelectedQuestion}

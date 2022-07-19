@@ -30,8 +30,8 @@ export default function QuestionsPage(props) {
   return (
     <>
       <main className="questions-page">
-        {!questionId && 
-          <div className="mt-24 mb-4 mx-auto width-50 w-2/4">
+          {!questionId &&
+          <div className="mt-18 pt-14 mb-4 mx-auto width-50 w-2/4">
           <TagList
             setTagId={setTagId}
             setQuestionId={setQuestionId}
@@ -39,8 +39,8 @@ export default function QuestionsPage(props) {
             selectedTag={selectedTag}
             setSelectedTag={setSelectedTag}
           />
-        </div>}
-
+          </div>
+          }
         {questionId && (
           <EachQuestionPage
             questionId={questionId}
@@ -79,13 +79,13 @@ export default function QuestionsPage(props) {
 
         {tagId && !questionId && (
           <>
-          <div className="flex justify-center px-8 py-4 mx-auto p-5">
-            <button
-              onClick={handleAddQuestion}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded flex items-center gap-2"
-            >
-              Add Question
-              <svg
+            <div className="flex justify-center px-8 py-4 mx-auto p-5">
+              <button
+                onClick={handleAddQuestion}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded flex items-center gap-2"
+              >
+                Add Question
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
                   fill="none"
@@ -99,7 +99,7 @@ export default function QuestionsPage(props) {
                     d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-            </button>
+              </button>
             </div>
             <TagQuestionList tagId={tagId} setQuestionId={setQuestionId} />
           </>

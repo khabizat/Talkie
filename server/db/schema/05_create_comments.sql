@@ -7,4 +7,7 @@ CREATE TABLE comments (
   answer_id  INTEGER REFERENCES answers(id) ON DELETE CASCADE,
   comment VARCHAR(255),
   date DATE NOT NULL DEFAULT CURRENT_DATE
+
+
 );
+
