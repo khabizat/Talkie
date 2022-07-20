@@ -20,13 +20,15 @@ VALUES
 ('What are Attributes in HTML?', '2020-10-19', 2, 3),
 ('What is the Use of Comments in HTML?', '2019-08-18', 3, 3),
 
--- tag #4 CSS => Jeongmin, Kabby
+-- tag #4 CSS => Kabby
 ('Explain a few advantages of CSS', '2018-10-18', 2, 4),
-('How can CSS be integrated into an HTML page?', '2022-01-23, 1, 4'),
 
 -- tag #5 Ruby => Kabby
 ('Why Ruby is known as a language of flexibility?', '2021-10-23', 2, 5),
 
 --tag #6 Ruby on Rails => Jeongmin, Muhammad
 ('What is the Rails Controller?', '2017-10-17', 1, 6),
-('What are the advantages of using Ruby on Rails?', '2021-02-02', 3, 6);
+('What are the advantages of using Ruby on Rails?', '2021-02-02', 3, 6),
+
+----tag #23 Behavioral => Jeongmin
+('What strengths do you think are most important for your job position?', '2022-05-25', 1, 23);
