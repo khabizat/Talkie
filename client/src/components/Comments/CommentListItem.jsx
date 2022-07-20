@@ -46,7 +46,7 @@ export default function CommentListItem(props) {
   };
 
   const badIncrement = () => {
-    setBad(bad + 1);
+    setBad(bad - 1);
     setClickedBad((prevState) => !prevState);
   };
   return (
