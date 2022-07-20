@@ -77,7 +77,7 @@ export default function CommentList(props) {
 
       <div>{comments}</div>
 
-      <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+      <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-100 rounded-lg border p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-100 hover:scale-105">
         <form action="" className="w-full p-4 py-4 rounded-lg">
           <label className="block">
           <span className="font-semibold text-xl text-gray-600">
