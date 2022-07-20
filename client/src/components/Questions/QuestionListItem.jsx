@@ -60,7 +60,7 @@ export default function QuestionListItem(props) {
       {/* If user created this question */}
       {creatorId === user_id ? (
         <>
-          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+          <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-100 rounded-lg border p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-200 hover:scale-105">
             {/* Header of the container */}
             <div>
               {/* Header left */}
@@ -127,7 +127,7 @@ export default function QuestionListItem(props) {
         </>
       ) : (
         //If user didn't create this question
-        <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 hover:scale-105">
+        <div className="max-w-2xl w-9/12 px-8 py-4 mx-auto bg-blue-100 rounded-lg border p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-200 hover:scale-105">
           {/* Header of the container */}
           <div>
             <div className="flex items-center justify-start">
