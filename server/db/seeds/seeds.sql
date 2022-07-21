@@ -1,7 +1,7 @@
 INSERT INTO users (name, email, password, photo_url)
 VALUES
 ('Jeongmin', 'test1@test.com', '12345', 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg'),
-('Kabby', 'test2@test.com', '123456', 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg'), 
+('Kabby', 'kabby@kabby.com', '123456', 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg'), 
 ('Muhammad', 'test3@test.com', '1234567', 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg'),
 ('Alice Jackson', 'alicejackson@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg'),
 ('Anthony Marlou', 'marlou@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg'),
@@ -57,16 +57,18 @@ VALUES
 ('What are Attributes in HTML?', '2020-10-19', 2, 3),
 ('What is the Use of Comments in HTML?', '2019-08-18', 3, 3),
 
--- tag #4 CSS => Jeongmin, Kabby
+-- tag #4 CSS => Kabby
 ('Explain a few advantages of CSS', '2018-10-18', 2, 4),
-('How can CSS be integrated into an HTML page?', '2022-01-23', 1, 4),
 
 -- tag #5 Ruby => Kabby
 ('Why Ruby is known as a language of flexibility?', '2021-10-23', 2, 5),
 
 --tag #6 Ruby on Rails => Jeongmin, Muhammad
 ('What is the Rails Controller?', '2017-10-17', 1, 6),
-('What are the advantages of using Ruby on Rails?', '2021-02-02', 3, 6);
+('What are the advantages of using Ruby on Rails?', '2021-02-02', 3, 6),
+
+----tag #23 Behavioral => Jeongmin
+('What strengths do you think are most important for your job position?', '2022-05-25', 1, 23);
 
 INSERT INTO answers (audio_url, user_id, question_id, date)
 VALUES
@@ -102,9 +104,6 @@ VALUES
 (1, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
 (1, 'Explain how this works in JavaScript', 'JavaScript'),
 (2, 'How are linked lists more efficient than arrays?', 'Data Structures and Algorithms'),
-(2, 'What is a closure, and how/why would you use one?', 'JavaScript'),
-(2, 'What is the difference between .call and .apply?', 'JavaScript'),
-(3, 'What is a closure, and how/why would you use one?', 'JavaScript'),
 (3, 'Explain how this works in JavaScript', 'JavaScript'),
 (3, 'What is a doubly-linked list (DLL)? What are its applications?', 'Data Structures and Algorithms'),
 (4, 'What is the difference between .call and .apply?', 'JavaScript'),

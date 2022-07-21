@@ -18,7 +18,7 @@ export default function CommentListItem(props) {
     setSelectedAnswer,
   } = props;
 
-  const dateFormatted = moment(date).format("ddd, MMMM Do YYYY");
+  const dateFormatted = moment.utc(date.toLocaleString()).format("ddd, MMMM Do YYYY");
   const findCreator = JSON.parse(localStorage.getItem("user"));
   const creatorId = findCreator.id;
 
@@ -46,14 +46,14 @@ export default function CommentListItem(props) {
   };
 
   const badIncrement = () => {
-    setBad(bad + 1);
+    setBad(bad - 1);
     setClickedBad((prevState) => !prevState);
   };
   return (
     <>
       {creatorId === user_id ? (
         <>
-        <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-50 rounded-lg border p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100">
+        <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-100 rounded-lg border p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-100 border-2">
             {/* Header of the container */}
             <div className="flex items-center justify-between">
               {/* <div>
@@ -69,7 +69,7 @@ export default function CommentListItem(props) {
               </p>
             </div>
             {/* Footer of the container */}
-            <div className="flex justify-end mt-4 mb-2">
+            <div className="flex justify-end mt-8 mb-2">
               {/* delete button */}
               <button onClick={handleDelete}>
                 <svg
@@ -92,7 +92,7 @@ export default function CommentListItem(props) {
         </>
       ) : (
         <>
-        <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-50 rounded-lg border-round p-5 shadow-lg transition hover:bg-blue-100 hover:border-blue-100 border-2">
+        <div className="max-w-2xl w-full px-6 py-2 mx-auto bg-blue-100 rounded-lg border-round p-5 shadow-lg transition hover:bg-blue-200 hover:border-blue-100 border-2">
           <div className="flex items-center justify-between">
             {/* <div>
               <img src={photo} alt="Avatar" className="rounded-full h-12 w-12 bg-slate-400"/>
@@ -109,7 +109,7 @@ export default function CommentListItem(props) {
             </p>
           </div>
           {/* Footer of the container */}
-          <div className="flex justify-end mt-4 mb-2">
+          <div className="flex justify-end mt-2 mb-2">
             {/* upvote button */}
             <button onClick={goodIncrement}>
               <svg 
