@@ -8,10 +8,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('file:///Users/habizat/Downloads/pexels-johannes-plenio-1103970.jpeg') no-repeat center center fixed;;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .main-content {
   justify-content: center;
   align-items: center;
   margin-top: 6em;
+}
+
+.user-profile {
+  background: url('file:///Users/habizat/Downloads/pexels-johannes-plenio-1103970.jpeg') no-repeat center center fixed;;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 2em;
 }
